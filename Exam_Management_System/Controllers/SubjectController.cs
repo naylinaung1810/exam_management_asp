@@ -18,7 +18,7 @@ namespace Exam_Management_System.Controllers
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM subject,grade where subject.year_id=grade.id", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM subject,year,major where subject.year_id=year.id and subject.major_id=major.id", conn);
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -30,7 +30,8 @@ namespace Exam_Management_System.Controllers
                         {
                             Id = id,
                             Name = name,
-                            Year = reader["grade_name"].ToString(),
+                            Year = reader["year_name"].ToString(),
+                            Major= reader["major_name"].ToString(),
                         });
                     }
                 }
@@ -48,7 +49,7 @@ namespace Exam_Management_System.Controllers
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                string sql = $"Insert Into subject (subject_name,year_id) Values ('{subject.Name}','{subject.Year_id}')";
+                string sql = $"Insert Into subject (subject_name,year_id,major_id) Values ('{subject.Name}','{subject.Year_id}','{subject.Major_id}')";
                 using (MySqlCommand command = new MySqlCommand(sql, conn))
                 {
                     command.ExecuteNonQuery();

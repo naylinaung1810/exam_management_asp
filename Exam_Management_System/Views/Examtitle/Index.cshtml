@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Exam Title";
 }
-
+@model IEnumerable<Exam_Management_System.Models.Examtitle>
 <section class="content-header bg-gray" style="padding-top:10px">
     <h1 style="padding-top:10px;padding-bottom:20px">
         Exam Title
@@ -20,7 +20,7 @@
                 <div class="panel-body">
                     <form>
                         <div class="form-group">
-                            <label>Class Name</label>
+                            <label>Exam Title</label>
                             <input type="text" class="form-control" name="Name" />
                         </div>
                         <div class="form-group text-center">
@@ -48,6 +48,18 @@
                                 <th>Edit</th>
                             </tr>
                         </thead>
+                        <tbody>
+                           @foreach(var exam in Model)
+                           {
+                               <tr>
+                                   <td>@exam.Id</td>
+                                   <td>@exam.Name</td>
+                                   <td>
+                                       Edit
+                                   </td>
+                               </tr>
+                           }
+                        </tbody>
                     </table>
                 </div>
             </div>

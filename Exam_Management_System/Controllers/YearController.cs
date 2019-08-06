@@ -18,14 +18,14 @@ namespace Exam_Management_System.Controllers
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM grade", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM year", conn);
 
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["id"]);
-                        String name = reader["grade_name"].ToString();
+                        String name = reader["year_name"].ToString();
                         list.Add(new Year()
                         {
                             Id = id,
@@ -42,7 +42,7 @@ namespace Exam_Management_System.Controllers
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                string sql = $"Insert Into grade (grade_name) Values ('{year.Name}')";
+                string sql = $"Insert Into year (year_name) Values ('{year.Name}')";
                 using (MySqlCommand command = new MySqlCommand(sql, conn))
                 {
                     command.ExecuteNonQuery();

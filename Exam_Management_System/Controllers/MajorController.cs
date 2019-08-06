@@ -17,14 +17,14 @@ namespace Exam_Management_System.Controllers
             using (MySqlConnection conn =context.GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM subjecttype", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM major", conn);
 
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["id"]);
-                        String name = reader["subject_type_name"].ToString();
+                        String name = reader["major_name"].ToString();
                         list.Add(new Major()
                         {
                             Id = id,
@@ -42,7 +42,7 @@ namespace Exam_Management_System.Controllers
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                string sql = $"Insert Into subjecttype (subject_type_name) Values ('{major.Name}')";
+                string sql = $"Insert Into major (major_name) Values ('{major.Name}')";
                 using (MySqlCommand command = new MySqlCommand(sql, conn))
                 {
                     command.ExecuteNonQuery();
