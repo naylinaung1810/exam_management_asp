@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "AddSubject";
+}
+
+<section class="content-header bg-gray" style="padding-top:10px">
+    <h1 style="padding-top:10px;padding-bottom:20px">
+        Subject
+        <small>Add</small>
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 hidden-sm hidden-lg hidden-md">
+                <a asp-controller="Subject" asp-action="Index" class="btn btn-success text-center btn-block hidden-sm hidden-lg hidden-md" style="margin-bottom:10px"><i class="fa fa-arrow-circle-left"></i> Subject</a>
+            </div>
+        </div>
+        <div class="row">          
+            <a asp-controller="Subject" asp-action="Index" class="btn btn-success pull-left hidden-xs"><i class="fa fa-arrow-circle-left"></i> Subject</a>
+            <div class="col-md-4 col-sm-6 col-sm-offset-1 col-md-offset-2">
+                <div class="panel">
+                    <div class="panel-heading" style="border-bottom:1px solid lightgrey">
+                        <i class="fa fa-plus-square fa-2x"></i> <span style="font-size:25px">Add Subject</span>
+                    </div>
+                    <div class="panel-body">
+                        <form asp-controller="Subject" asp-action="PostAddSubject" method="post">
+                            <div class="form-group">
+                                <label>Year</label>
+                                <select name="Year_id" class="form-control">
+                                    <option>----Select---</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Major</label>
+                                <select name="Major_id" class="form-control">
+                                    <option>----Select---</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control" name="Name" />
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-primary">Save <i class="fa fa-arrow-circle-right"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

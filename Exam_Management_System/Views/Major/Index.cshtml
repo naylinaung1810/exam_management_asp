@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewData["Title"] = "Major";
+}
+@model IEnumerable<Exam_Management_System.Models.Major>;
+    <section class="content-header bg-gray" style="padding-top:10px">
+        <div class="row">
+            <div class="col-sm-4">
+                <h2 style="">
+                    Major
+                    <small>Data</small>
+                </h2>
+            </div>
+            <div class="col-sm-8">
+                <div class="row" style="padding-top:15px;padding-bottom:5px">
+                    <div class="col-md-6 col-md-offset-3">
+                        <input type="text" class="form-control" id="search" placeholder="Search.........." />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Main content -->
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-heading">
+                    <i class="fa fa-plus-square fa-2x"></i><span style="font-size:25px"> Add Major</span>
+                </div>
+                <div class="panel-body">
+                    <form asp-controller="Major" asp-action="AddMajor" method="post">
+                        <div class="form-group">
+                            <label>Major</label>
+                            <input type="text" class="form-control" name="Name" />
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary">Save <i class="fa fa-arrow-circle-right"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="panel">
+               
+                <div class="panel-body table-responsive">
+                    <table class="table table-hover">
+                        <thead class="bg-gray">
+                            <tr>
+                                <th>Id</th>
+                                <th>Major</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            @foreach(var major in Model)
+                            {
+                                <tr>
+                                    <td>@major.Id</td>
+                                    <td>@major.Name</td>
+                                    <td>
+                                        <a class="btn btn-primary" asp-controller="Major" asp-action="EditMajor" asp-route-id="@major.Id"><i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-danger" asp-controller="Major" asp-action="RemoveMajor" asp-route-id="@major.Id"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewData["Title"] = "Subject";
+}
+@model IEnumerable<Exam_Management_System.Models.Subject>;
+    <section class="content-header bg-gray" style="padding-top:0px">
+        <div class="row">
+            <div class="col-sm-4">
+                <h2 style="">
+                    Subject
+                    <small>Data</small>
+                </h2>
+            </div>
+            <div class="col-sm-8">
+                <div class="row" style="padding-top:15px;padding-bottom:5px">
+                    <div class="col-md-6 col-md-offset-3">
+                        <input type="text" class="form-control" id="search" placeholder="Search.........." />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Main content -->
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-4"><a asp-controller="Subject" asp-action="AddSubject" class="btn btn-success" style="margin-left:10px"><i class="fa fa-plus-square"></i> Add Subject</a></div>
+        <div class="col-md-8">
+            <!--div class="row">
+                <div class="col-xs-6 col-xs-offset-3">
+                    <input type="text" class="form-control" id="search" placeholder="Search.........." />
+                </div>
+            </div-->
+        </div>
+        
+    </div>
+    <div class="row" style="padding:10px">
+        <div class="panel">
+           
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="bg-gray">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Year</th>
+                            <th>Major</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        @foreach (var subjec in Model)
+                        {
+                            <tr>
+                                <td>@subjec.Id</td>
+                                <td>@subjec.Name</td>
+                                <td>@subjec.Year</td>
+                                <td>@subjec.Major</td>
+                                <td>
+                                    <a class="btn btn-primary" asp-controller="Subject" asp-action="EditSubject" asp-route-id="@subjec.Id"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-danger" asp-controller="Subject" asp-action="RemoveSubject" asp-route-id="@subjec.Id"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
