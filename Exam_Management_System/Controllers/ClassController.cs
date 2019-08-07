@@ -36,6 +36,33 @@ namespace Exam_Management_System.Controllers
             }
             return View(list);
         }
+        public JsonResult GetYear()
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            List<Year> list = new List<Year>();
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM year ", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["id"]);
+                        String name = reader["year_name"].ToString();
+                        list.Add(new Year()
+                        {
+                            Id = id,
+                            Name = name,
+
+                        });
+                    }
+                }
+            }
+            return Json(list);
+        }
+
         [HttpPost]
         public string AddYear(Class classes)
         {

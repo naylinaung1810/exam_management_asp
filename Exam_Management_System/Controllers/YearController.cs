@@ -51,5 +51,7 @@ namespace Exam_Management_System.Controllers
             }
             return "Year is successfully added!";
         }
+
+       
     }
 }

@@ -3,23 +3,23 @@
     ViewData["Title"] = "Major";
 }
 @model IEnumerable<Exam_Management_System.Models.Major>;
-    <section class="content-header bg-gray" style="padding-top:10px">
-        <div class="row">
-            <div class="col-sm-4">
-                <h2 style="">
-                    Major
-                    <small>Data</small>
-                </h2>
-            </div>
-            <div class="col-sm-8">
-                <div class="row" style="padding-top:15px;padding-bottom:5px">
-                    <div class="col-md-6 col-md-offset-3">
-                        <input type="text" class="form-control" id="search" placeholder="Search.........." />
-                    </div>
+<section class="content-header bg-gray" style="padding-top:10px">
+    <div class="row">
+        <div class="col-sm-4">
+            <h2 style="">
+                Major
+                <small>Data</small>
+            </h2>
+        </div>
+        <div class="col-sm-8">
+            <div class="row" style="padding-top:15px;padding-bottom:5px">
+                <div class="col-md-6 col-md-offset-3">
+                    <input type="text" class="form-control" id="search" placeholder="Search.........." />
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 <!-- Main content -->
 <section class="content container-fluid">
     <div class="row">
@@ -43,7 +43,7 @@
         </div>
         <div class="col-md-8">
             <div class="panel">
-               
+
                 <div class="panel-body table-responsive">
                     <table class="table table-hover">
                         <thead class="bg-gray">
@@ -54,7 +54,7 @@
                             </tr>
                         </thead>
                         <tbody id="myTable">
-                            @foreach(var major in Model)
+                            @foreach (var major in Model)
                             {
                                 <tr>
                                     <td>@major.Id</td>
@@ -73,4 +73,15 @@
     </div>
 </section>
 
-
+@section Scripts{
+    <script>
+        $(function () {
+            $("#search").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+}

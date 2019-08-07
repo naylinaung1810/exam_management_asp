@@ -31,6 +31,10 @@ namespace Exam_Management_System
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddDistributedMemoryCache();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(1);//You can set Time
+            });
 
             services.Add(new ServiceDescriptor(typeof(SystemContext), new SystemContext(Configuration.GetConnectionString("DefaultConnection"))));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -48,7 +52,7 @@ namespace Exam_Management_System
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

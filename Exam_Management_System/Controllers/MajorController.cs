@@ -51,5 +51,30 @@ namespace Exam_Management_System.Controllers
             }
             return "Major is successfully added!";
         }
+
+        public JsonResult GetMajor()
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            List<Major> list = new List<Major>();
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM major", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        String name = reader["major_name"].ToString();
+                        list.Add(new Major()
+                        {
+                            Id = Convert.ToInt32(reader["id"]),
+                            Name = name,
+                        });
+                    }
+                }
+            }
+            return Json(list);
+        }
     }
 }

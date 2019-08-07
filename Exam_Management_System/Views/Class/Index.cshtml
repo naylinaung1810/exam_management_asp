@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <label>Year</label>
-                            <select name="Year_id" class="form-control">
+                            <select name="Year_id" id="year" class="form-control">
                                 <option>----Select----</option>
                             </select>
                         </div>
@@ -80,3 +80,28 @@
         </div>
     </div>
 </section>
+@section Scripts{ 
+<script>
+    $(function () {
+        //console.log("OK")
+         $("#search").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        ///////////////////////////////////////////////
+        $.ajax({
+            url: "/class/getYear",
+            type: "GET",
+            success: function (data) {
+                console.log(data);
+                $.each(data, function (i, year) {
+                    var str = ' <option value="' + year.id + '">' + year.name + '</option>';
+                    $('#year').append(str);
+                })
+            }
+        })
+    })
+</script>
+}

@@ -21,19 +21,25 @@ namespace Exam_Management_System.Models
         }
 
         ///////////////////////////////////////////////////////
-        public string AddAcademic(AcademicYear academic)
+        public AcademicYear GetAcademic()
         {
+            //List<AcademicYear> list = new List<AcademicYear>();
+            AcademicYear academicYear = new AcademicYear();
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                string sql = $"Insert Into academicyear (academic_name) Values ('{academic.Name}')";
-                using (MySqlCommand command = new MySqlCommand(sql, conn))
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM academicyear ORDER BY  id DESC LIMIT 1", conn);
+
+                using (var reader = cmd.ExecuteReader())
                 {
-                    command.ExecuteNonQuery();
-                    conn.Close();
+                    while (reader.Read())
+                    {
+                        academicYear.Id = Convert.ToInt32(reader["id"]);
+                        academicYear.Name = reader["academic_name"].ToString();
+                    }
                 }
             }
-             return "Acadmic Year is Added successful!";
+            return academicYear;
         }
     }
 }

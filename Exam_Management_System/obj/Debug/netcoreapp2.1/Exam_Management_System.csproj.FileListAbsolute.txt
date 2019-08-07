@@ -88,3 +88,4 @@ C:\Users\Lenovo\Desktop\Exam_management\exam_management_asp\Exam_Management_Syst
 C:\Users\Lenovo\Desktop\Exam_management\exam_management_asp\Exam_Management_System\obj\Debug\netcoreapp2.1\Exam_Management_System.dll
 C:\Users\Lenovo\Desktop\Exam_management\exam_management_asp\Exam_Management_System\obj\Debug\netcoreapp2.1\Exam_Management_System.pdb
 C:\Users\Lenovo\Desktop\Exam_management\exam_management_asp\Exam_Management_System\obj\Debug\netcoreapp2.1\Exam_Management_System.csproj.CopyComplete
+C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Attendence\AddAttendence.g.cshtml.cs
