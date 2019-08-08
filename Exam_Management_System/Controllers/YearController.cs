@@ -51,5 +51,21 @@ namespace Exam_Management_System.Controllers
             }
             return "Year is successfully added!";
         }
+        [HttpPost]
+        public IActionResult EditYear(Year years)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                string sql = $"Update year set year_name='{years.Name}' where id={years.Id}";
+                using (MySqlCommand command = new MySqlCommand(sql, conn))
+                {
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            return Redirect("/year/index");
+        }
     }
 }

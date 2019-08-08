@@ -67,7 +67,7 @@ using Exam_Management_System.Models;
             WriteLiteral("\r\n<h2>Index</h2>\r\n");
             EndContext();
             BeginContext(61, 218, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "42464d9c84d343138421f4b265363a74", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "034dac11966e478dbe4c438133f56034", async() => {
                 BeginContext(156, 116, true);
                 WriteLiteral("\r\n    <input type=\"file\" class=\"form-control\"  name=\"Photo\"/>\r\n    <button type=\"submit\" class=\"btn\">Save</button>\r\n");
                 EndContext();
