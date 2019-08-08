@@ -71,7 +71,7 @@ using Exam_Management_System.Models;
             WriteLiteral("    <link href=\"//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">\r\n");
             EndContext();
             BeginContext(182, 65, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "2ac1a0b02ff34becbce26bcb222f0511", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "78afa4bf8fad474da75749a9da41459f", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -106,7 +106,7 @@ using Exam_Management_System.Models;
         ");
             EndContext();
             BeginContext(852, 358, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "953f3b3b0d7e42bb92bdedea7a5db045", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b5a19e1d6c7e4046b822b90ed5a0133e", async() => {
                 BeginContext(912, 291, true);
                 WriteLiteral(@"
             <input type=""text"" id=""name"" class=""fadeIn second"" name=""login"" placeholder=""username"">
