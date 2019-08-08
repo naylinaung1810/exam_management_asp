@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewData["Title"] = "AddMark";
+}
+
+<section class="content-header bg-gray" style="padding-top:10px">
+    <h1 style="padding-top:10px;padding-bottom:20px">
+        Result
+        <small> > Mark</small><small style="font-size:16px"> > Add</small>
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 hidden-sm hidden-lg hidden-md">
+                <a asp-controller="Subject" asp-action="Index" class="btn btn-success text-center btn-block hidden-sm hidden-lg hidden-md" style="margin-bottom:10px"><i class="fa fa-arrow-circle-left"></i> Mark</a>
+            </div>
+        </div>
+        <div class="row">
+            <a asp-controller="Subject" asp-action="Index" class="btn btn-success pull-left hidden-xs"><i class="fa fa-arrow-circle-left"></i> Mark</a>
+            <div class="col-md-4 col-sm-6 col-sm-offset-1 col-md-offset-2">
+                <div class="panel">
+                    <div class="panel-heading" style="border-bottom:1px solid lightgrey">
+                        <i class="fa fa-plus-square fa-2x"></i> <span style="font-size:25px">Add Mark</span>
+                    </div>
+                    <div class="panel-body">
+                        <form>
+                            <div class="form-group">
+                                <label>Year</label>
+                                <select name="Year_id" id="year" class="form-control">
+                                    <option>----Select---</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Roll No</label>
+                                <input list="rollno" class="form-control" name="Rollno">
+
+                                <datalist id="rollno">
+                                </datalist>
+                            </div>
+                            <div class="form-group">
+                                <label>Subject</label>
+                                <select name="Subject_id" id="subject" class="form-control">
+                                    <option>----Select---</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Mark</label>
+                                <input type="number" class="form-control" id="mark" name="S_mark" />
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-primary">Save <i class="fa fa-arrow-circle-right"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts{
+    <script>
+        $(function () {
+            console.log("OK")
+
+            $('#year').change(function () {
+                console.log($('#year').val());
+
+                $.ajax({
+                    url: "/Result/GetRollNo/"+$('#year').val(),
+                    type: "GET",
+                    success: function (data) {
+                        //console.log(data);
+                        $("#rollno").html(null);
+                        $.each(data, function (i, rollno) {
+                            var str = ' <option value="' + rollno.roll + '"></option>';
+                            $('#rollno').append(str);
+                        });
+                    }
+                });
+                 $.ajax({
+                    url: "/Result/GetSubject/"+$('#year').val(),
+                    type: "GET",
+                    success: function (data) {
+                        //console.log(data);
+                        $("#subject").html(null);
+                        $.each(data, function (i, subject) {
+                            var str = ' <option value="' + subject.id + '">' + subject.name + '</option>';
+                            $('#subject').append(str);
+                        });
+                    }
+                });
+
+            });
+            ////////////////////////////////////////////////////////////////
+            $("form").submit(function () {
+                $.ajax({
+                    url: "/Result/PostAddMark",
+                    type: "POST",
+                    data: $('form').serialize(),
+                    success: function (data) {
+                        console.log(data);
+                        $('#mark').val(null);
+                    }
+                });
+            });
+
+            
+            $.ajax({
+                url: "/Result/getYear",
+                type: "GET",
+                success: function (data) {
+                    console.log(data);
+                    $.each(data, function (i, year) {
+                        var str = ' <option value="' + year.id + '">' + year.name + '</option>';
+                       $('#year').append(str);
+                    })
+                }
+            });
+        });
+    </script>
+}

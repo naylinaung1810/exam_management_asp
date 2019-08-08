@@ -2,13 +2,27 @@
 @{
     ViewData["Title"] = "AddSubject";
 }
-
+@using Microsoft.AspNetCore.Session
+@using Microsoft.AspNetCore.Http
 <section class="content-header bg-gray" style="padding-top:10px">
     <h1 style="padding-top:10px;padding-bottom:20px">
         Subject
-        <small>Add</small>
+        <small>Add</small> <b>@ViewBag.session</b>
     </h1>
 </section>
+@{
+        var info = Context.Session.GetString("info");
+        if (info!=null)
+        {
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Well done!</strong> You successfully add Subject.
+        </div>
+        }    
+    <p>@info</p>
+   
+    <b>@ViewBag.data</b>
+}
 <!-- Main content -->
 <section class="content container-fluid">
     <div class="container">
@@ -17,7 +31,7 @@
                 <a asp-controller="Subject" asp-action="Index" class="btn btn-success text-center btn-block hidden-sm hidden-lg hidden-md" style="margin-bottom:10px"><i class="fa fa-arrow-circle-left"></i> Subject</a>
             </div>
         </div>
-        <div class="row">          
+        <div class="row">
             <a asp-controller="Subject" asp-action="Index" class="btn btn-success pull-left hidden-xs"><i class="fa fa-arrow-circle-left"></i> Subject</a>
             <div class="col-md-4 col-sm-6 col-sm-offset-1 col-md-offset-2">
                 <div class="panel">
@@ -28,16 +42,31 @@
                         <form asp-controller="Subject" asp-action="PostAddSubject" method="post">
                             <div class="form-group">
                                 <label>Year</label>
-                                <select name="Year_id" class="form-control">
+                                <select name="Year_id" id="year" class="form-control">
                                     <option>----Select---</option>
+                                    @{
+                                        var year = ViewBag.year;
+                                        foreach (var y in year)
+                                        {
+                                            <option value="@y.Id">@y.Name</option>
+                                        }
+                                    }
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Major</label>
-                                <select name="Major_id" class="form-control">
+                                <select name="Major_id" id="major" class="form-control">
                                     <option>----Select---</option>
+                                    @{
+                                        var major = ViewBag.major;
+                                        foreach (var m in major)
+                                        {
+                                            <option value="@m.Id">@m.Name</option>
+                                        }
+                                    }
                                 </select>
                             </div>
+
                             <div class="form-group">
                                 <label>Name</label>
                                 <input type="text" class="form-control" name="Name" />
@@ -52,4 +81,34 @@
         </div>
     </div>
 </section>
+@section Scripts{
+    <script>
+        $(function () {
+            console.log("OK")
+            /*
+            $.ajax({
+                url: "/subject/getYear",
+                type: "GET",
+                success: function (data) {
+                    console.log(data);
+                    $.each(data, function (i, year) {
+                        var str = ' <option value="' + year.id + '">' + year.name + '</option>';
+                        //$('#year').append(str);
+                    })
+                }
+            });
+            $.ajax({
+                url: "/major/getMajor",
+                type: "GET",
+                success: function (data) {
+                    console.log(data);
+                    $.each(data, function (i, major) {
+                        var str = ' <option value="' + major.id + '">' + major.name + '</option>';
+                       // $('#major').append(str);
+                    })
+                }
+            });*/
+        })
+    </script>
+}
 

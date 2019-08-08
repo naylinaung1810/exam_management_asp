@@ -35,7 +35,7 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-6 col-xs-offset-3">
-                            <input type="text" class="form-control" id="search" placeholder="Search.........."/>
+                            <input type="text" class="form-control" id="search" placeholder="Search.........." />
                         </div>
                     </div>
                 </div>
@@ -48,17 +48,17 @@
                                 <th>Edit</th>
                             </tr>
                         </thead>
-                        <tbody>
-                           @foreach(var exam in Model)
-                           {
-                               <tr>
-                                   <td>@exam.Id</td>
-                                   <td>@exam.Name</td>
-                                   <td>
-                                       Edit
-                                   </td>
-                               </tr>
-                           }
+                        <tbody id="myTable">
+                            @foreach (var exam in Model)
+                            {
+                                <tr>
+                                    <td>@exam.Id</td>
+                                    <td>@exam.Name</td>
+                                    <td>
+                                        Edit
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -66,4 +66,15 @@
         </div>
     </div>
 </section>
-
+@section Scripts{
+    <script>
+        $(function () {
+            $("#search").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+}

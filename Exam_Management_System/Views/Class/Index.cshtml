@@ -136,10 +136,21 @@
 @section Scripts{ 
 <script>
     $(function () {
+<<<<<<< HEAD
         console.log("OK")
         /*
+=======
+        //console.log("OK")
+         $("#search").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        ///////////////////////////////////////////////
+>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
         $.ajax({
-            url: "class/getYear",
+            url: "/class/getYear",
             type: "GET",
             success: function (data) {
                 console.log(data);

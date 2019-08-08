@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewData["Title"] = "AddAttendence";
+}
+
+<section class="content-header bg-gray" style="padding-top:10px">
+    <div class="row">
+        <div class="col-sm-4">
+            <h2 style="">
+                Attendence
+                <small>Add</small>
+            </h2>
+        </div>
+        <div class="col-sm-8">
+            <div class="row" style="padding-top:15px;padding-bottom:5px">
+                <div class="col-md-6 col-md-offset-3">
+                    <input type="text" class="form-control" id="search" placeholder="Search.........." />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-2">
+            <div class="panel">
+                <div class="panel-body">
+                    <form asp-controller="attendence" asp-action="PostAddAttendence" method="post">
+                        <div class="form-group">
+                            <label>Year</label>
+                            <select id="year" class="form-control">
+                                <option>----Select----</option>
+                                @{ 
+                                    var year = ViewBag.year;
+                                    foreach(var y in year)
+                                    {
+                                        <option value="@y.Id">@y.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Roll No</label>
+                            <input list="rollno" class="form-control" name="Rollno">
+                           
+                            <datalist id="rollno">
+                                @{
+                                    var roll = ViewBag.rollno;
+                                    foreach (var r in roll)
+                                    {
+                                        <option value="@r.Roll"></option>
+                                    }
+                                }
+                            </datalist>
+                        </div>
+                        <div class="form-group">
+                            <label>Month</label>
+                            <select id="month" name="Month" class="form-control">
+                                <option>----Select----</option>
+                                <option>December</option>
+                                <option>January</option>
+                                <option>February</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Total (Monthly)</label>
+                            <input type="number" class="form-control" name="total" />
+                        </div>
+                        <div class="form-group">
+                            <label>Current (Monthly)</label>
+                            <input type="number" class="form-control" name="current" />
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Save <i class="fa fa-arrow-circle-right"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

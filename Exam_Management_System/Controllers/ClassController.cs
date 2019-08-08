@@ -57,7 +57,7 @@ namespace Exam_Management_System.Controllers
                         {
                             Id = id,
                             Name = name,
-                           
+
                         });
                     }
                 }
