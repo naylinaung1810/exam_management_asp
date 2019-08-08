@@ -122,7 +122,7 @@ using Exam_Management_System.Models;
                                        <li style=""border:1px solid grey;border-radius:5px;padding:3px"">");
             EndContext();
             BeginContext(2112, 92, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8f13b9d983a5420a8611ffdb53db053b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0a0074aa1c3a4d1b9749691e098396da", async() => {
                 BeginContext(2196, 4, true);
                 WriteLiteral("CST ");
                 EndContext();
@@ -171,7 +171,7 @@ using Exam_Management_System.Models;
             WriteLiteral("                   <li style=\"border:1px solid grey;border-radius:5px;padding:3px\">");
             EndContext();
             BeginContext(3311, 91, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2be16ff2951045978983f6c1b4ff39d7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cbe6c68e4cb2418eb7916434260d687d", async() => {
                 BeginContext(3395, 3, true);
                 WriteLiteral("CS ");
                 EndContext();
@@ -203,7 +203,7 @@ using Exam_Management_System.Models;
             WriteLiteral("</li>\r\n                                       <li style=\"border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px\">");
             EndContext();
             BeginContext(3527, 90, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9c3810ed4b24202af2e5aca41691ced", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "70b32348b57044ccbe6f9fca5cde5043", async() => {
                 BeginContext(3611, 2, true);
                 WriteLiteral("CT");
                 EndContext();

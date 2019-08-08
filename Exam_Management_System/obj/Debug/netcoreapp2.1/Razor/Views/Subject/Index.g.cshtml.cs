@@ -90,7 +90,7 @@ using Exam_Management_System.Models;
         <div class=""col-md-4"">");
             EndContext();
             BeginContext(891, 150, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1872b1660514452c90600355cd17d3a0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "87865edf7ea54f288827c64af8700b35", async() => {
                 BeginContext(992, 45, true);
                 WriteLiteral("<i class=\"fa fa-plus-square\"></i> Add Subject");
                 EndContext();
@@ -190,7 +190,7 @@ using Exam_Management_System.Models;
             WriteLiteral("</td>\r\n                                <td>\r\n                                    ");
             EndContext();
             BeginContext(2358, 133, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d64a4a122a1c43679915ca3e1fc67c57", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "977b68de0c3d4c11af4ca9e3ca13edd1", async() => {
                 BeginContext(2461, 26, true);
                 WriteLiteral("<i class=\"fa fa-edit\"></i>");
                 EndContext();
@@ -228,7 +228,7 @@ using Exam_Management_System.Models;
             WriteLiteral("\r\n                                    ");
             EndContext();
             BeginContext(2529, 135, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5f92507d63af4312af4f9823e30448ba", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5a1df00abc6a4b949b853c88193a54cf", async() => {
                 BeginContext(2633, 27, true);
                 WriteLiteral("<i class=\"fa fa-trash\"></i>");
                 EndContext();

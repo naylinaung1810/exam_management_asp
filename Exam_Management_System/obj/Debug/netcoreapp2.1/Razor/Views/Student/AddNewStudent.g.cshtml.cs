@@ -78,7 +78,7 @@ using Exam_Management_System.Models;
             WriteLiteral("\r\n<section class=\"content-header\" style=\"padding-top:0px\">\r\n    \r\n</section>\r\n<!-- Main content -->\r\n<section class=\"content container-fluid\">\r\n    ");
             EndContext();
             BeginContext(199, 8998, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7638b7891311431b87411fefb2add869", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "96c7b0b9dc9d43208c29381921f487b7", async() => {
                 BeginContext(308, 310, true);
                 WriteLiteral(@"
 
@@ -93,7 +93,7 @@ using Exam_Management_System.Models;
                 ");
                 EndContext();
                 BeginContext(618, 121, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9a2f38bff85340e98d82a2db720fa947", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "fa32eca94df84a05b1a4d66e3adb48d2", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -166,7 +166,7 @@ using Exam_Management_System.Models;
                             ");
                 EndContext();
                 BeginContext(3523, 31, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6ed1e1d516d0481897ef155912db9ff9", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6e8ec5b8330b40e08b8ef457f7671f69", async() => {
                     BeginContext(3541, 4, true);
                     WriteLiteral("Male");
                     EndContext();
@@ -188,7 +188,7 @@ using Exam_Management_System.Models;
                 WriteLiteral("\r\n                            ");
                 EndContext();
                 BeginContext(3584, 33, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2c6198b59c64483a8c5173a672018871", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "96ae6dffb20c489db2cc6f0fde5d02bb", async() => {
                     BeginContext(3602, 6, true);
                     WriteLiteral("Female");
                     EndContext();

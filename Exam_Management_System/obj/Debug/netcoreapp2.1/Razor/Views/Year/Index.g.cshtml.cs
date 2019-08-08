@@ -97,7 +97,7 @@ using Exam_Management_System.Models;
             WriteLiteral("nel-body\">\r\n                    ");
             EndContext();
             BeginContext(1155, 531, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e1f397a8f44c423f9720e770982dc1b1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "275643df0c1c4080950c68d9ab42635a", async() => {
                 BeginContext(1218, 461, true);
                 WriteLiteral(@"
                         <div class=""form-group"">
@@ -179,7 +179,7 @@ using Exam_Management_System.Models;
             WriteLiteral("</td>\r\n                                    <td>\r\n                                        ");
             EndContext();
             BeginContext(2602, 125, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "50c7884077434bafad8afd75fed0b78d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0efa461ea9cc47688289ce940d10c707", async() => {
                 BeginContext(2697, 26, true);
                 WriteLiteral("<i class=\"fa fa-edit\"></i>");
                 EndContext();
@@ -217,7 +217,7 @@ using Exam_Management_System.Models;
             WriteLiteral("\r\n                                        ");
             EndContext();
             BeginContext(2769, 127, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "335e8250f6eb4e93bd4f1746df98906e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5400cde1985347a9bb0e31f039ff5452", async() => {
                 BeginContext(2865, 27, true);
                 WriteLiteral("<i class=\"fa fa-trash\"></i>");
                 EndContext();

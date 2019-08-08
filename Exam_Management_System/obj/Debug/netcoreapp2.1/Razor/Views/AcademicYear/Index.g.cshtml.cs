@@ -86,7 +86,7 @@ using Exam_Management_System.Models;
                     ");
             EndContext();
             BeginContext(708, 552, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2303b8aeda2b474abeca1382fdeb13a9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "247c96997d994070a7a2bccfbd5b5370", async() => {
                 BeginContext(783, 470, true);
                 WriteLiteral(@"
                         <div class=""form-group"">
@@ -174,7 +174,7 @@ using Exam_Management_System.Models;
             WriteLiteral("</td>\r\n                                    <td>\r\n                                        ");
             EndContext();
             BeginContext(2514, 141, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d3cc4fc8681d4ff7a897bba2850ac7c7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "41a0198b10c54030a3abb68211ea687c", async() => {
                 BeginContext(2625, 26, true);
                 WriteLiteral("<i class=\"fa fa-edit\"></i>");
                 EndContext();
@@ -212,7 +212,7 @@ using Exam_Management_System.Models;
             WriteLiteral("\r\n                                        ");
             EndContext();
             BeginContext(2697, 143, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1be91c2429114bbe89a1b7d1850568f9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d3265e812d114d979f816e7f783748b7", async() => {
                 BeginContext(2809, 27, true);
                 WriteLiteral("<i class=\"fa fa-trash\"></i>");
                 EndContext();
