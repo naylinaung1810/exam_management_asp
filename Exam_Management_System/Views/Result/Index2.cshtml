@@ -14,7 +14,7 @@
         <div class="col-sm-4">
             <h2 style="">
                 Final Result
-                <small> > @ViewBag.year</small><small style="font-size:16px"> > @ViewBag.major</small>
+                <small> > <span id="year"></span></small><small style="font-size:16px"> > <span id="major"></span></small>
             </h2>
         </div>
         <div class="col-sm-8">
@@ -127,6 +127,8 @@
             </div>
         </div>
         <div class="col-md-10">
+           <input class="hidden" value="@ViewBag.year_id" id="year_id" />
+            <input class="hidden" value="@ViewBag.major_id" id="major_id" />
             <div class="panel">
                 <div class="panel-body">
                     <table class="table">
@@ -153,4 +155,39 @@
         </div>
     </div>
 </section>
+@section Scripts{ 
+<script>
+    $(function () {
+        var id = $('#year_id').val();
+        var major = $('#major_id').val();
+         $.ajax({
+            url: "/Result/ResultMarkFinal/"+id+"?major="+major,
+            type: "GET",
+            success: function (data) {
+                var start = 0;         
+                console.log(data);
+                $('tbody').html(null);
+                $.each(data, function (i, item) {
+                    $('#year').html(item.year);
+                    $('#major').html(item.major);
+                    if (item.Rollno_id == start) {
+                        start = item.Rollno_id;
+                        var td = '<td>' + item.s_mark + '</td>';
+                        $('#t' + item.Rollno_id).append(td);
+                    } else {
+                        start = item.student_id;
+                        var tr = ' <tr id="t' + item.Rollno_id + '">' +
+                            '<td>' + item.rollno + '</td>' +
+                            '<td>' + item.name + '</td>' +
+                            '<td>' + item.grade + '</td>' +
+                        '</tr > ';
+                        $('tbody').append(tr);
+                    }
+                });
+            },
+        });
+    });
+</script>
+
+}
 

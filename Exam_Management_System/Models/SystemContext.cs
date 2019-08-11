@@ -41,5 +41,30 @@ namespace Exam_Management_System.Models
             }
             return academicYear;
         }
+        public String Grade(int mark)
+        {
+            string grade = null;
+            if (mark >= 81)
+            {
+                grade = "A";
+            }
+            else if (mark >= 61 && mark <= 80)
+            {
+                grade = "B";
+            }
+            else if (mark >= 41 && mark <= 60)
+            {
+                grade = "C";
+            }
+
+            else if (mark >= 21 && mark <= 40)
+            {
+                grade = "D";
+
+            }
+            else
+            { grade = "E"; }
+            return grade;
+        }
     }
 }

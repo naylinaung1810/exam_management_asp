@@ -10,17 +10,17 @@
         color: white;
     }
 </style>
-<section class="content-header bg-gray" style="padding-top:10px">
+<section class="content-header bg-gray" style="padding-bottom:5px">
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-6">
             <h2 style="">
                 Mid_term Result
-                <small> > @ViewBag.year</small><small style="font-size:16px"> > @ViewBag.major</small>
+                <small> > <span id="year"></span></small><small style="font-size:16px"> > <span id="major"></span></small>
             </h2>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-6">
             <div class="row" style="padding-top:15px;padding-bottom:5px">
-                <div class="col-md-6 col-md-offset-3">
+                <div class="col-md-6 ">
                     <input type="text" class="form-control" id="search" placeholder="Search.........." />
                 </div>
             </div>
@@ -52,7 +52,7 @@
                     <div id="collapseOne" class='panel-collapse collapse' role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
                             <ul class="list-unstyled text-center" style="font-size:18px">
-                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Attendence" asp-action="Index" asp-route-id="1" asp-route-major="1">CST </a></li>
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Result" asp-action="Index" asp-route-id="1" asp-route-major="1">CST </a></li>
                             </ul>
                         </div>
                     </div>
@@ -68,8 +68,8 @@
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
                             <ul class="list-unstyled text-center" style="font-size:18px">
-                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Attendence" asp-action="Index" asp-route-id="2" asp-route-major="2">CS </a></li>
-                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Attendence" asp-action="Index" asp-route-id="2" asp-route-major="3">CT</a></li>
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Result" asp-action="Index" asp-route-id="2" asp-route-major="2">CS </a></li>
+                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Result" asp-action="Index" asp-route-id="2" asp-route-major="3">CT</a></li>
                             </ul>
                         </div>
                     </div>
@@ -85,8 +85,8 @@
                     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
                             <ul class="list-unstyled text-center" style="font-size:18px">
-                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Attendence" asp-action="Index" asp-route-id="3" asp-route-major="2">CS </a></li>
-                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Attendence" asp-action="Index" asp-route-id="3" asp-route-major="3">CT</a></li>
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Result" asp-action="Index" asp-route-id="3" asp-route-major="2">CS </a></li>
+                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Result" asp-action="Index" asp-route-id="3" asp-route-major="3">CT</a></li>
                             </ul>
                         </div>
                     </div>
@@ -102,8 +102,8 @@
                     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
                             <ul class="list-unstyled text-center" style="font-size:18px">
-                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Attendence" asp-action="Index" asp-route-id="4" asp-route-major="2">CS</a></li>
-                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Attendence" asp-action="Index" asp-route-id="4" asp-route-major="3">CT</a></li>
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Result" asp-action="Index" asp-route-id="4" asp-route-major="2">CS</a></li>
+                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Result" asp-action="Index" asp-route-id="4" asp-route-major="3">CT</a></li>
                             </ul>
                         </div>
                     </div>
@@ -119,8 +119,8 @@
                     <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
                             <ul class="list-unstyled text-center" style="font-size:18px">
-                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Attendence" asp-action="Index" asp-route-id="5" asp-route-major="2">CS </a></li>
-                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Attendence" asp-action="Index" asp-route-id="5" asp-route-major="3">CT</a></li>
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Result" asp-action="Index" asp-route-id="5" asp-route-major="2">CS </a></li>
+                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Result" asp-action="Index" asp-route-id="5" asp-route-major="3">CT</a></li>
                             </ul>
                         </div>
                     </div>
@@ -128,25 +128,159 @@
             </div>
         </div>
         <div class="col-md-10">
+            <input class="hidden" value="@ViewBag.year_id" id="year_id" />
+            <input class="hidden" value="@ViewBag.major_id" id="major_id" />
             <div class="panel">
                 <div class="panel-body">
-                    <table class="table">
+                    <table class="table text-center table-hover" style="margin-right:10px">
                         <thead>
                             <tr>
+
                                 <th>Roll no</th>
                                 <th>Name</th>
-                                <th>Class</th>
-
+                                @{
+                                    var subject = ViewBag.subject;
+                                    foreach (var s in subject)
+                                    {
+                                        <th>@s.Name</th>
+                                    }
+                                }
+                                <th>Profile</th>
                             </tr>
                         </thead>
                         <tbody id="myTable">
                         </tbody>
                     </table>
+                    <!--////////////////////////////////////////////////////////////////-->
+                    <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" ><i class="fa fa-user-circle fa-2x"></i> <span id="title" style="font-size:25px"></span> <span style="font-size:25px"> Info</span></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="~/adminLTE/img/avatar04.png" class="image img-circle img-responsive" />
+                                            </div>
+                                            <div class="col-xs-8" style="border-left:1px solid gray">
+                                                <div>
+                                                    <div class="row" style="margin-top:5px">
+                                                        <div class="col-xs-4 text-center">Roll No :</div>
+                                                        <div class="col-xs-8" id="stu_roll"></div>
+                                                    </div>
+                                                    <div class="row" style="margin-top:7px">
+                                                        <div class="col-xs-4 text-center" style="font-size:16px;">Name :</div>
+                                                        <div class="col-xs-8" id="stu_name"></div>
+                                                    </div>
+                                                    <div class="row" style="margin-top:7px">
+                                                        <div class="col-xs-4 text-center" style="font-size:16px;">Class :</div>
+                                                        <div class="col-xs-8" id="stu_class"></div>
+                                                    </div>
+                                                    <div class="row" style="margin-top:7px">
+                                                        <div class="col-xs-4 text-center" style="font-size:16px;">Year :</div>
+                                                        <div class="col-xs-8" id="stu_year"></div>
+                                                    </div>
+                                                    <div class="row" style="margin-top:7px">
+                                                        <div class="col-xs-4 text-center" style="font-size:16px;">Phone :</div>
+                                                        <div class="col-xs-8" id="stu_phone"></div>
+                                                    </div>
+                                                    <div class="row" style="margin-top:7px">
+                                                        <div class="col-xs-4 text-center" style="font-size:16px;">Email :</div>
+                                                        <div class="col-xs-8" id="stu_email"></div>
+                                                    </div>
+                                                    <div class="row" style="margin-top:7px">
+                                                        <div class="col-xs-4 text-center" style="font-size:16px;">Address :</div>
+                                                        <div class="col-xs-8" id="stu_address"></div>
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top:10px">
+                                            <div class="container" id="showMark" style="border:1px solid gray;padding:15px;border-radius:10px">
+                                                
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+@section Scripts{
+    <script>
+    $(function () {
+        var id = $('#year_id').val();
+        var major = $('#major_id').val();
+         $.ajax({
+            url: "/Result/ResultMarkMid/"+id+"?major="+major,
+            type: "GET",
+            success: function (data) {
+                var start = 0;
+                //console.log(data);
+                $('tbody').html(null);
+                $.each(data, function (i, item) {
+                    $('#year').html(item.year);
+                    $('#major').html(item.major);
+                    if (item.Rollno_id == start) {
+                        start = item.Rollno_id;
+                        var td = '<td>' + item.grade + '</td>';
+                        $('#p' + item.Rollno_id).before(td);
+                    } else {
+                        start = item.student_id;
+                        var tr = ' <tr id="t' + item.Rollno_id + '">' +                          
+                            '<td>' + item.rollno + '</td>' +
+                            '<td>' + item.name + '</td>' +
+                            '<td>' + item.grade + '</td>' +
+                            '<td id="p' + item.Rollno_id + '"><a id="' + item.rollno_id + '"><i class="fa fa-user" id="' + item.rollno_id + '"></i></a></td>' +
+                        '</tr > ';
+                        $('#myTable').append(tr);
+                    }
+                });
+            },
+         });
+        ///////////////////////////////////////////////////////
+        $('body').delegate('table tbody tr td a', 'click', function (e) {
+            console.log(e.target.id);
+           $('#myModal').modal('toggle');
+            $.ajax({
+                url: "/Result/GetStudentResult/" + e.target.id,
+                type: "GET",
+                success: function (data) {
+                    $('#title').html(data[0].name);
+                    $('#stu_roll').html(data[0].rollno);
+                    $('#stu_name').html(data[0].name);
+                    $('#stu_class').html(data[0].year);
+                    $('#stu_year').html(data[0].year);
+                    $('#stu_phone').html(data[0].name);
+                    $('#stu_email').html(data[0].name);
+                    $('#stu_address').html(data[0].name);
+                    $.each(data, function (i, item) {
+                        var str = '<div class="row text-center">' +
+                            '<div class="col-xs-4 " >' + item.subject + '</div>' +
+                            '<div class="col-xs-4">' + item.s_mark + '</div>' +
+                            '<div class="col-xs-4">' + item.grade + '</div>' +
+                            '</div><hr/>';
+                        $('#showMark').append(str);
+                    });
+                     
+                }
+            });
+        })
+    });
+    </script>
 
+}
 
