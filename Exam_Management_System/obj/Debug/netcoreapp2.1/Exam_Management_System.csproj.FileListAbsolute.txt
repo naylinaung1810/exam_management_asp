@@ -92,3 +92,6 @@ C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\D
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Result\Index.g.cshtml.cs
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Result\AddMark.g.cshtml.cs
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Result\Index2.g.cshtml.cs
+C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Exam\Index.g.cshtml.cs
+C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Exam\Index2.g.cshtml.cs
+C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Exam\AddExam.g.cshtml.cs

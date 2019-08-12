@@ -8,7 +8,8 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
-        
+        <link rel="stylesheet" href="~/css/bootstrap-timepicker.css" />
+        <link rel="stylesheet" href="~/css/bootstrap-datepicker.css" />
         <link rel="stylesheet" href="~/css/slider.css" />
         <link rel="stylesheet" href="~/css/adminLTE/adminlte.css" />
         <link rel="stylesheet" href="~/css/adminLTE/skin-blue.css" />
@@ -144,6 +145,19 @@
                     </li>
                     <li class="treeview">
                         <a href="#">
+                            <i class="fa fa-pie-chart"></i> <span>Exam</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a asp-controller="Exam" asp-action="AddExam"><i class="fa fa-plus-square"></i> Add Exam</a></li>
+                            <li><a asp-controller="Exam" asp-action="Index" asp-route-id="1" asp-route-major="1"><i class="fa fa-folder-open"></i> Mid_term Exam</a></li>
+                            <li><a asp-controller="Exam" asp-action="Index2" asp-route-id="1" asp-route-major="1"><i class="fa fa-folder-open"></i> Final Exam</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
                             <i class="fa fa-pie-chart"></i> <span>Result</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
@@ -210,12 +224,14 @@
            
 
 
-            <environment include="Development">
-                <script src="~/lib/jquery/dist/jquery.js"></script>
-                <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-                <script src="~/js/adminlte.js"></script>
-                <script src="~/js/site.js" asp-append-version="true"></script>
-            </environment>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/adminlte.js"></script>
+        <script src="~/js/bootstrap-timepicker.js"></script>
+        <script src="~/js/bootstrap-datepicker.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
         <environment exclude="Development">
             <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
                     asp-fallback-src="~/lib/jquery/dist/jquery.min.js"

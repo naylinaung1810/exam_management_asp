@@ -66,5 +66,125 @@ namespace Exam_Management_System.Models
             { grade = "E"; }
             return grade;
         }
+
+        public int CheckResult(int id, int academic)
+        {
+            int total = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select count(*) from result where studentrollno_id=" + id + " and academic_id=" + academic , conn);
+
+                total = Convert.ToInt32(cmd.ExecuteScalar());
+                conn.Close();
+            }
+            return total;
+        }
+      public  int tt = 0;
+        public int GetPass(int id, int academic,int subject)
+        {
+            int total = 0;
+            int res = 0;
+            int cu = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from mark_mid where studentrollno_id=" + id + " and academic_id=" + academic+" and subject_id="+subject, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int mark = Convert.ToInt32(reader["mark"]);
+                        total += (100 / mark) * 80;
+                    }
+                }
+
+                MySqlCommand cmd1 = new MySqlCommand("select * from assignment where studentrollno_id=" + id + " and academic_id=" + academic + " and subject_id=" + subject, conn);
+
+                using (var reader = cmd1.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        total += Convert.ToInt32(reader["mark"]);
+                    }
+                }
+                MySqlCommand cmd2 = new MySqlCommand("select * from result where studentrollno_id=" + id + " and academic_id=" + academic , conn);
+
+                using (var reader = cmd2.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        cu= Convert.ToInt32(reader["pass"]);
+                    }
+                }
+                tt = total;
+                if (total<40)
+                {
+                    res = 0;
+                   
+                }else
+                {
+                    res = 1;
+                   
+                }
+            }
+            return res*cu;
+        }
+        public int GetMid_Mark(int id,int academic)
+        {
+            int total = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select *,sum(mark) from mark_mid where studentrollno_id="+id+" and academic_id="+academic+" group by studentrollno_id", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        total = Convert.ToInt32(reader["SUM(mark)"]);
+                    }
+                }
+               
+            }
+            return total;
+        }
+        public int GetFinal_Mark(int id, int academic)
+        {
+            int total = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select *,sum(mark) from mark_final where studentrollno_id=" + id + " and academic_id=" + academic + " group by studentrollno_id", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        total = Convert.ToInt32(reader["SUM(mark)"]);
+                    }
+                }
+            }
+            return total;
+        }
+        public int GetAss_Mark(int id, int academic)
+        {
+            int total = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select *,sum(mark) from assignment where studentrollno_id=" + id + " and academic_id=" + academic + " group by studentrollno_id", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        total = Convert.ToInt32(reader["SUM(mark)"]);
+                    }
+                }
+            }
+            return total;
+        }
     }
 }

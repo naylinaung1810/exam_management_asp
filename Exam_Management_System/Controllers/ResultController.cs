@@ -161,17 +161,41 @@ namespace Exam_Management_System.Controllers
                 if (mark.Exam_id==1)
                 {
                     sql = $"Insert Into mark_mid (studentrollno_id,mark,subject_id,academic_id) Values ('{student_id}','{mark.S_mark}','{mark.Subject_id}','{academic_id}')";
+                    using (MySqlCommand command = new MySqlCommand(sql, conn))
+                    {
+                        command.ExecuteNonQuery();
+                        conn.Close();
+                    }
                 }
                 else
                 {
+                    
                     sql = $"Insert Into mark_final (studentrollno_id,mark,subject_id,academic_id) Values ('{student_id}','{mark.S_mark}','{mark.Subject_id}','{academic_id}')";
+                    using (MySqlCommand command = new MySqlCommand(sql, conn))
+                    {
+                        command.ExecuteNonQuery();
+                        //conn.Close();
+                    }
+                    int mid_mark = context.GetMid_Mark(student_id, academic_id);
+                    int assignment = context.GetAss_Mark(student_id, academic_id);
+                    int pass = context.GetPass(student_id, academic_id, mark.Subject_id);
+                    int final_mark = context.GetFinal_Mark(student_id, academic_id);
+                    if (context.CheckResult(student_id,academic_id)==0)
+                    {
+                        sql = $"Insert Into result (studentrollno_id,mid_mark,final_mark,assigment_mark,attendence_mark,pass,academic_id) Values ('{student_id}','{mid_mark}','{final_mark}','{assignment}','{context.tt}','{pass}','{academic_id}')";
+                    }
+                    else
+                    {
+                        sql = $"UPDATE result SET final_mark={final_mark},pass={pass},attendence_mark={context.tt} where studentrollno_id={student_id} and academic_id={academic_id}";
+                    }                    
+                    using (MySqlCommand command = new MySqlCommand(sql, conn))
+                    {
+                        command.ExecuteNonQuery();
+                        conn.Close();
+                    }
                 }
                
-                using (MySqlCommand command = new MySqlCommand(sql, conn))
-                {
-                    command.ExecuteNonQuery();
-                    conn.Close();
-                }
+               
             }
             return "OK";
         }
