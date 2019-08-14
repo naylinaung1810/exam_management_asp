@@ -66,7 +66,7 @@ namespace Exam_Management_System.Controllers
         }
 
         [HttpPost]
-        public string AddYear(Class classes)
+        public IActionResult AddClass(Class classes)
         {
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
             using (MySqlConnection conn = context.GetConnection())
@@ -79,7 +79,7 @@ namespace Exam_Management_System.Controllers
                     conn.Close();
                 }
             }
-            return "New Class is successfully added!";
+            return Redirect("/Class/Index");
         }
         [HttpPost]
         public IActionResult EditClass(Class classes)
@@ -97,5 +97,22 @@ namespace Exam_Management_System.Controllers
             }
             return Redirect("/class/index");
         }
+        public IActionResult RemoveClass(int id)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                string sql = $"Delete from class where id={id}";
+
+                using (MySqlCommand command = new MySqlCommand(sql, conn))
+                {
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            return Redirect("/class/index");
+        }
+
     }
 }
