@@ -84,9 +84,23 @@ using Exam_Management_System.Models;
                 <div class=""panel-body"">
                     ");
             EndContext();
+<<<<<<< HEAD
             BeginContext(715, 552, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9971d8a7dd07416495565ac41c14dd30", async() => {
                 BeginContext(790, 470, true);
+=======
+            BeginContext(708, 552, false);
+<<<<<<< HEAD
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0582199cd229467a997c113b0bde3f92", async() => {
+=======
+<<<<<<< HEAD
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "786d6453b08c4fc4ad10b553d8dbb047", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d128a941c753429ab55f6891ab3e807d", async() => {
+>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
+>>>>>>> 1fa0f8bee1d8676aebcfa8e2d7beb42530027ddd
+                BeginContext(783, 470, true);
+>>>>>>> 4bc344637d7b959a108eb8dd4bb3ad761e6c9638
                 WriteLiteral(@"
                         <div class=""form-group"">
                             <label>Academic Year</label>
@@ -186,6 +200,18 @@ using Exam_Management_System.Models;
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d574decbb632425fbc8d45ef4c1f8d8f", async() => {
                 BeginContext(2793, 27, true);
                 WriteLiteral("<i class=\"fa fa-trash\"></i>");
+<<<<<<< HEAD
+=======
+=======
+            BeginContext(2438, 89, true);
+            WriteLiteral("</td>\r\n                                    <td>\r\n                                        ");
+            EndContext();
+            BeginContext(2527, 141, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b2f7c8705b264c5db1da7a1919189079", async() => {
+                BeginContext(2638, 26, true);
+                WriteLiteral("<i class=\"fa fa-edit\"></i>");
+>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
+>>>>>>> 4bc344637d7b959a108eb8dd4bb3ad761e6c9638
                 EndContext();
             }
             );
@@ -243,7 +269,37 @@ WriteAttributeValue("", 2996, academic.Id, 2996, 12, false);
                 EndContext();
                 BeginWriteAttribute("value", " value=\"", 3888, "\"", 3908, 1);
 #line 71 "C:\Users\Lenovo\Desktop\Exam_management\exam_management_asp\Exam_Management_System\Views\AcademicYear\Index.cshtml"
+<<<<<<< HEAD
 WriteAttributeValue("", 3896, academic.Id, 3896, 12, false);
+=======
+WriteAttributeValue("", 3877, academic.Id, 3877, 12, false);
+=======
+            BeginContext(2668, 42, true);
+            WriteLiteral("\r\n                                        ");
+            EndContext();
+            BeginContext(2710, 143, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6cb51f1d15494367b8082dd1ffead92f", async() => {
+                BeginContext(2822, 27, true);
+                WriteLiteral("<i class=\"fa fa-trash\"></i>");
+                EndContext();
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_TagHelpers_AnchorTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_TagHelpers_AnchorTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_5);
+            __Microsoft_AspNetCore_Mvc_TagHelpers_AnchorTagHelper.Controller = (string)__tagHelperAttribute_0.Value;
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_0);
+            __Microsoft_AspNetCore_Mvc_TagHelpers_AnchorTagHelper.Action = (string)__tagHelperAttribute_6.Value;
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_6);
+            if (__Microsoft_AspNetCore_Mvc_TagHelpers_AnchorTagHelper.RouteValues == null)
+            {
+                throw new InvalidOperationException(InvalidTagHelperIndexerAssignment("asp-route-id", "Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper", "RouteValues"));
+            }
+            BeginWriteTagHelperAttribute();
+#line 59 "C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\Views\AcademicYear\Index.cshtml"
+                                                                                                                              WriteLiteral(academic.Id);
+>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
+>>>>>>> 4bc344637d7b959a108eb8dd4bb3ad761e6c9638
 
 #line default
 #line hidden

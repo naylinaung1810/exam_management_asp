@@ -97,7 +97,19 @@ using Microsoft.AspNetCore.Http.Features;
                     ");
             EndContext();
             BeginContext(1234, 92, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b6fcd3be7b74439aae97855ce181e0c", async() => {
+=======
+<<<<<<< HEAD
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d031aa75c294653b5160e9d810623a9", async() => {
+=======
+<<<<<<< HEAD
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d0ab184a7a74f238eb08d4652f80c1d", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "612acaf8cfcb42158f2ee56e8e7d8917", async() => {
+>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
+>>>>>>> 1fa0f8bee1d8676aebcfa8e2d7beb42530027ddd
+>>>>>>> 4bc344637d7b959a108eb8dd4bb3ad761e6c9638
                 BeginContext(1312, 10, true);
                 WriteLiteral("Learn More");
                 EndContext();

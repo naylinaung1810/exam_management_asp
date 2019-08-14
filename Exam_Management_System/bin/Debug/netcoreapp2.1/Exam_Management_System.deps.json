@@ -1,7 +1,11 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
+<<<<<<< HEAD
     "signature": "3fe9902051964020ba18b5b10d5b166ca72490ab"
+=======
+    "signature": "e962ca91756efc0e7197a59c4782d07f947123a2"
+>>>>>>> 4bc344637d7b959a108eb8dd4bb3ad761e6c9638
   },
   "compilationOptions": {
     "defines": [
@@ -24,6 +28,8 @@
     ".NETCoreApp,Version=v2.1": {
       "Exam_Management_System/1.0.0": {
         "dependencies": {
+          "Bootstrap.v3.Datetimepicker": "4.17.45",
+          "Bootstrap.v3.Datetimepicker.CSS": "4.17.45",
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
           "Microsoft.AspNetCore.Session": "2.1.1",
@@ -36,6 +42,28 @@
         },
         "compile": {
           "Exam_Management_System.dll": {}
+        }
+      },
+      "bootstrap/3.3.0": {
+        "dependencies": {
+          "jQuery": "1.9.1"
+        }
+      },
+      "bootstrap.less/3.3.5": {
+        "dependencies": {
+          "jQuery": "1.9.1"
+        }
+      },
+      "Bootstrap.v3.Datetimepicker/4.17.45": {
+        "dependencies": {
+          "Moment.js": "2.9.0",
+          "bootstrap.less": "3.3.5"
+        }
+      },
+      "Bootstrap.v3.Datetimepicker.CSS/4.17.45": {
+        "dependencies": {
+          "Moment.js": "2.9.0",
+          "bootstrap": "3.3.0"
         }
       },
       "BouncyCastle.NetCore/1.8.3": {
@@ -68,6 +96,7 @@
           "lib/netstandard1.0/Google.Protobuf.dll": {}
         }
       },
+      "jQuery/1.9.1": {},
       "Microsoft.AspNetCore.Razor.Design/2.1.2": {},
       "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
         "dependencies": {
@@ -390,6 +419,7 @@
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll": {}
         }
       },
+      "Moment.js/2.9.0": {},
       "MySql.Data/8.0.17": {
         "dependencies": {
           "BouncyCastle.NetCore": "1.8.3",
@@ -3693,6 +3723,34 @@
       "serviceable": false,
       "sha512": ""
     },
+    "bootstrap/3.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8Fn3Tnk23NpT0i1Osj3mydnknbzbFA/rOVk5hoGlqb0XXl/rDn085qanSCcCqsZlIGL2VWSbO4vihOs1hMtZ5A==",
+      "path": "bootstrap/3.3.0",
+      "hashPath": "bootstrap.3.3.0.nupkg.sha512"
+    },
+    "bootstrap.less/3.3.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+xxiEyTJdWwO9G7Ig9gHoXl7grsncyQVy1bhWY9L41fSFUayIZYlziGcwB+ORQDzHAZJrCNa+y1bke11wJy0Ug==",
+      "path": "bootstrap.less/3.3.5",
+      "hashPath": "bootstrap.less.3.3.5.nupkg.sha512"
+    },
+    "Bootstrap.v3.Datetimepicker/4.17.45": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0/m8BCfhDRhWdiXm8RAHS0lVfaE64/93tDyINtrf4/cBpXGnVU7o5pFP6FhGhelTX7eH0hpLc8+j2obumhI9oA==",
+      "path": "bootstrap.v3.datetimepicker/4.17.45",
+      "hashPath": "bootstrap.v3.datetimepicker.4.17.45.nupkg.sha512"
+    },
+    "Bootstrap.v3.Datetimepicker.CSS/4.17.45": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-O6uUKSMe4KvfSJ1pON8yI8JzTxpf/InaDChbC3kwfUFG7hjysyIpx8fmgEtb8sojMJcfRRO5NFyLsz+rRX3Fdw==",
+      "path": "bootstrap.v3.datetimepicker.css/4.17.45",
+      "hashPath": "bootstrap.v3.datetimepicker.css.4.17.45.nupkg.sha512"
+    },
     "BouncyCastle.NetCore/1.8.3": {
       "type": "package",
       "serviceable": true,
@@ -3706,6 +3764,13 @@
       "sha512": "sha512-741fGeDQjixBJaU2j+0CbrmZXsNJkTn/hWbOh4fLVXndHsCclJmWznCPWrJmPoZKvajBvAz3e8ECJOUvRtwjNQ==",
       "path": "google.protobuf/3.6.1",
       "hashPath": "google.protobuf.3.6.1.nupkg.sha512"
+    },
+    "jQuery/1.9.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HiX9icLyiJGgiL5EOIn0d1MBPHVV2M9mzWT4mANdniDNR51RvAFTyKEXEd2+5yQJ4PJ5xePOR61Vjj/omQzYcw==",
+      "path": "jquery/1.9.1",
+      "hashPath": "jquery.1.9.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Razor.Design/2.1.2": {
       "type": "package",
@@ -3825,6 +3890,13 @@
       "sha512": "sha512-bmqEQaGpXME9ErK6N+Ew3g7hia2t5tJeARZYrD6T21TT/2+OIwDrVuI3cu9RpeoLWXJa76eqcyC7tC+SYGfIZA==",
       "path": "microsoft.visualstudio.web.codegenerators.mvc/2.1.9",
       "hashPath": "microsoft.visualstudio.web.codegenerators.mvc.2.1.9.nupkg.sha512"
+    },
+    "Moment.js/2.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4rhbvFzmgXp/gjvwjxt9Qjmdz+2CD9T99erXEDtZHlYxaI06F9A4628/Vpxklm8D9RmwJjKjp1244FwEh+a5WQ==",
+      "path": "moment.js/2.9.0",
+      "hashPath": "moment.js.2.9.0.nupkg.sha512"
     },
     "MySql.Data/8.0.17": {
       "type": "package",

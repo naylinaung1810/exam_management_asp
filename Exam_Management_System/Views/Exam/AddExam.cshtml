@@ -1,0 +1,167 @@
+﻿
+@{
+    ViewData["Title"] = "AddExam";
+}
+
+<section class="content-header bg-gray" style="padding-top:10px">
+    <h1 style="padding-top:10px;padding-bottom:20px">
+        Result
+        <small> > Mark</small><small style="font-size:16px"> > Add</small>
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 hidden-sm hidden-lg hidden-md">
+                <a asp-controller="Subject" asp-action="Index" class="btn btn-success text-center btn-block hidden-sm hidden-lg hidden-md" style="margin-bottom:10px"><i class="fa fa-arrow-circle-left"></i> Mark</a>
+            </div>
+        </div>
+        <div class="row">
+            <a asp-controller="Exam" asp-action="Index" class="btn btn-success pull-left hidden-xs"><i class="fa fa-arrow-circle-left"></i> Exam Info</a>
+            <div class="col-md-6 col-sm-6 col-sm-offset-1 col-md-offset-2">
+                <span id="alert"></span>
+                <div class="box box-success">
+                    <div class="box-header" style="border-bottom:1px solid lightgrey">
+                        <i class="fa fa-plus-square fa-2x"></i> <span style="font-size:25px">Add Exam</span>
+                    </div>
+                    <div class="box-body">
+                        <form>
+                            <div class="form-group">
+                                <label>Exam Title</label>
+                                <select name="Exam_id" id="exam" class="form-control">
+                                    <option disabled>----Select---</option>
+                                    <option value="1">Mid_term Exam</option>
+                                    <option value="2">Final Exam</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Year</label>
+                                <select name="Year_id" id="year" class="form-control">
+                                    <option>----Select---</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Subject</label>
+                                <select name="Subject_id" id="subject" class="form-control">
+                                    <option>----Select---</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Date:</label>
+
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" name="Date" class="form-control pull-right" id="datepicker">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                            <div class="bootstrap-timepicker">
+                                <div class="form-group">
+                                    <label>Start Time:</label>
+
+                                    <div class="input-group">
+                                        <input type="text" name="Start_time" class="form-control timepicker">
+
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-clock-o"></i>
+                                        </div>
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
+                                <!-- /.form group -->
+                            </div>
+                            <div class="bootstrap-timepicker">
+                                <div class="form-group">
+                                    <label>End Time:</label>
+
+                                    <div class="input-group">
+                                        <input type="text" name="End_time" class="form-control timepicker">
+
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-clock-o"></i>
+                                        </div>
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
+                                <!-- /.form group -->
+                            </div>
+
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-primary">Save <i class="fa fa-arrow-circle-right"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts{
+    <script>
+        $(function () {
+            $('.timepicker').timepicker({
+                showInputs: false
+            });
+            $('#datepicker').datepicker({
+                autoclose: true
+            });
+
+            ////////////////////////////////////////
+            $('#year').change(function () {
+                console.log($('#year').val());
+
+                $.ajax({
+                    url: "/Exam/GetSubject/" + $('#year').val(),
+                    type: "GET",
+                    success: function (data) {
+                        //console.log(data);
+                        $("#subject").html(null);
+                        $.each(data, function (i, subject) {
+                            var str = ' <option value="' + subject.id + '">' + subject.name + '</option>';
+                            $('#subject').append(str);
+                        });
+                    }
+                });
+
+            });
+
+             $.ajax({
+                url: "/Result/getYear",
+                type: "GET",
+                success: function (data) {
+                    //console.log(data);
+                    $.each(data, function (i, year) {
+                        var str = ' <option value="' + year.id + '">' + year.name + '</option>';
+                       $('#year').append(str);
+                    })
+                }
+             });
+            ////////////////////////////////////////////
+
+            $('form').submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: "/Exam/PostAddExam",
+                    type: "POST",
+                    data: $('form').serialize(),
+                    success: function (data) {
+                        var str = '<div class="alert alert-success alert-dismissible">' +
+                            ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
+                            '<h4><i class="icon fa fa-check"></i> Alert!</h4>' +
+                            'Success alert preview. This alert is dismissable.' +
+                            '</div>';
+                        $('#alert').html(str);
+
+                    }
+                })
+            })
+        });
+    </script>
+
+}
+

@@ -74,7 +74,19 @@ using Exam_Management_System.Models;
             WriteLiteral("    <link href=\"//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">\r\n");
             EndContext();
             BeginContext(182, 65, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "0f6e7837c2e14e99b316127c80bfff11", async() => {
+=======
+<<<<<<< HEAD
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "7c21e746322542f3a0a8474e9c391422", async() => {
+=======
+<<<<<<< HEAD
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9f44d2a5a1f8486aa69abfbff7592b50", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "78afa4bf8fad474da75749a9da41459f", async() => {
+>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
+>>>>>>> 1fa0f8bee1d8676aebcfa8e2d7beb42530027ddd
+>>>>>>> 4bc344637d7b959a108eb8dd4bb3ad761e6c9638
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -126,6 +138,14 @@ using Exam_Management_System.Models;
             BeginContext(809, 369, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b9ea60adf5a94a798c99653dd8d0dbe2", async() => {
                 BeginContext(873, 298, true);
+<<<<<<< HEAD
+=======
+=======
+            BeginContext(852, 358, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "82277f58535a4dc8baa1ef81e59306be", async() => {
+                BeginContext(912, 291, true);
+>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
+>>>>>>> 4bc344637d7b959a108eb8dd4bb3ad761e6c9638
                 WriteLiteral(@"
             <input type=""text"" id=""name"" class=""fadeIn second"" name=""User_Name"" placeholder=""username"">
             <input type=""password"" id=""password"" class=""fadeIn third"" name=""password"" placeholder=""password"">
