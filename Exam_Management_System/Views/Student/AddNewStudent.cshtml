@@ -8,7 +8,7 @@
 </section>
 <!-- Main content -->
 <section class="content container-fluid">
-    <form id="form1" asp-controller="Student" asp-action="PostNewStudent" method="post" style="margin-top:10px;">
+    <form id="form1" asp-controller="Student" asp-action="PostNewStudent" method="post" style="margin-top:10px;" enctype="multipart/form-data">
 
         <center>
             <h2>University of Computer Studies(Thaton)</h2>
@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-md-4 text-center" style="margin-left:0px;">
                 <img src="~/images/school.jpg" alt="photo" class="img-thumbnail" width="150px" height="250px" style="margin-top:40px;" /><br /><br />
-                <input type="file" style="margin-left:10px" />
+                <input type="file" style="margin-left:10px" name="Photo" required/>
             </div>
             <div class="col-md-8 container " style="margin-top:0px;">
 
@@ -27,7 +27,11 @@
                     <table class="table table-bordered col-md-8" style="border:1px solid black">
                         <tr>
                             <th class="col-xs-4" style="font-size:large">Academic Year</th>
-                            <td class="col-xs-4" style="font-size:large"><input type="text" class="form-control" style="border:none" /> </td>
+                            <td class="col-xs-4" style="font-size:large">
+                               <select class="form-control" name="academic_id" id="academic" required>
+
+                               </select>
+                            </td>
                         </tr>
                         <tr>
                             <th class="col-xs-4" style="font-size:large">University NRC Number</th>
@@ -56,9 +60,9 @@
                     <th style="font-size:large">1</th>
                     <th style="font-size:large">Name</th>
 
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Name" /></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_name" /></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_name" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Name" required/></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_name" required/></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_name" required/></td>
                 </tr>
                 <tr style="border:1px solid;">
                     <th style="font-size:large">2</th>
@@ -76,52 +80,52 @@
                 <tr>
                     <th style="font-size:large">3</th>
                     <th style="font-size:large">Nationality</th>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="nationality" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="nationality" required/></td>
                     <td style="font-size:large">
-                        <input type="text" class="form-control" style="border:none" />
+                        <input type="text" class="form-control" style="border:none" name="Father_nationality" required/>
                     </td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Mother_nationality" required/></td>
                 </tr>
                 <tr>
                     <th style="font-size:large">4</th>
                     <th style="font-size:large">Religion</th>
 
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="religion" /></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" /></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="religion" required/></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Father_religion" required/></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Mother_religion" required/></td>
                 </tr>
                 <tr>
                     <th style="font-size:large">5</th>
                     <th style="font-size:large">City</th>
 
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="city" /></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" /></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="city" required/></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Father_city" required/></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Mother_city" required/></td>
                 </tr>
 
                 <tr>
                     <th style="font-size:large">6</th>
                     <th style="font-size:large">Phone Number</th>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="phone" /></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_phone" /></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_phone" /></td>
+                    <td style="font-size:large"><input type="tel" class="form-control" style="border:none" name="phone" required/></td>
+                    <td style="font-size:large"><input type="tel" class="form-control" style="border:none" name="father_phone" required/></td>
+                    <td style="font-size:large"><input type="tel" class="form-control" style="border:none" name="mother_phone" required /></td>
 
                 </tr>
                 <tr>
                     <th style="font-size:large">7</th>
                     <th style="font-size:large">Job</th>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" /></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_job" /></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_job" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" required/></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_job" required/></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_job" required/></td>
 
                 </tr>
 
                 <tr>
                     <th style="font-size:large">8</th>
                     <th style="font-size:large">NRC</th>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Nrc" /></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_nrc" /></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_nrc" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Nrc" required/></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_nrc" required/></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_nrc" required/></td>
 
                 </tr>
 
@@ -135,34 +139,52 @@
                     <th style="font-size:large">9</th>
                     <th style="font-size:large" colspan="2">Birth Date Of Student</th>
 
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="DOB" /></td>
+                    <td style="font-size:large">
+                        <div class="form-group">
+
+                            <div class="input-group date">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" name="DOB" class="form-control pull-right" id="datepicker" required>
+                            </div>
+                            <!-- /.input group -->
+                        </div>
+                    </td>
                 </tr>
 
                 <tr>
-                    <th style="font-size:large" rowspan="2">10</th>
-                    <th style="font-size:large" rowspan="2">Passed Matriculation Exam:</th>
-                    <th style="font-size:large">RollNO:</th>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="reg_no" /></td>
+                    <th style="font-size:large" rowspan="3">10</th>
+                    <th style="font-size:large" rowspan="3">Passed Matriculation Exam:</th>
+                    <th style="font-size:large">Roll No:</th>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="reg_no" required/></td>
                 </tr>
                 <tr>
 
                     <th style="font-size:large">Year</th>
 
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="reg_date" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="reg_date" required/></td>
+
+                </tr>
+                <tr>
+
+                    <th style="font-size:large">Mark</th>
+
+                    <td style="font-size:large"><input type="number" class="form-control" style="border:none" name="Mark" required/></td>
 
                 </tr>
                 <tr>
                     <th style="font-size:large">11</th>
                     <th style="font-size:large" colspan="2">Address</th>
 
-                    <td style="font-size:large"><textarea class="form-control" style="border:none" name="address"></textarea></td>
+                    <td style="font-size:large"><textarea class="form-control" style="border:none" name="address" required></textarea></td>
 
                 </tr>
 
                 <tr>
                     <th style="font-size:large">12</th>
                     <th style="font-size:large" colspan="2">Email Adderss</th>
-                    <td style="font-size:large"><input type="email" class="form-control" style="border:none" name="email" /></td>
+                    <td style="font-size:large"><input type="email" class="form-control" style="border:none" name="email" required/></td>
 
 
                 </tr>
@@ -177,3 +199,23 @@
 
     </form>
 </section>
+@section Scripts{ 
+<script>
+    $(function () {
+         $('#datepicker').datepicker({
+                autoclose: true
+         });
+        ///////////////////////////////////////
+        $.ajax({
+            url: "/Student/GetAcademic",
+            type: "GET",
+            success: function (data) {
+                $.each(data, function (i, item) {
+                    var str = '<option value="' + item.id + '">' + item.name + '</option>';
+                    $('#academic').append(str);
+                });
+            }
+        });
+    });
+</script>
+}
