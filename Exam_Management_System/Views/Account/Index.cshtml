@@ -14,14 +14,14 @@
         <!-- Tabs Titles -->
         <!-- Icon -->
         <div class="fadeIn first">
-            <img src="https://www.b-cube.in/wp-content/uploads/2014/05/aditya-300x177.jpg" id="icon" alt="User Icon" />
+            <img src="~/adminLTE/img/logo.jpg" id="icon" alt="User Icon" /> 
             <h1>Exam Management System</h1>
         </div>
 
         <!-- Login Form -->
-        <form asp-controller="Home" asp-action="Index" method="get">
-            <input type="text" id="name" class="fadeIn second" name="login" placeholder="username">
-            <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+        <form asp-controller="Account" asp-action="Login" method="post">
+            <input type="text" id="name" class="fadeIn second" name="User_Name" placeholder="username">
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
             <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
 
@@ -32,4 +32,5 @@
 
     </div>
 </div>
+
 

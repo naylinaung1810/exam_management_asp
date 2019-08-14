@@ -8,7 +8,7 @@
         <div class="col-sm-4">
             <h2 style="">
                 Class
-                <small>Data</small>
+                <small>Info</small>
             </h2>
         </div>
         <div class="col-sm-8">
@@ -38,6 +38,14 @@
                             <label>Year</label>
                             <select name="Year_id" id="year" class="form-control">
                                 <option>----Select----</option>
+                                @{
+                                    var year = ViewBag.year;
+                                    foreach (var y in year)
+                                    {                                      
+                                            <option value="@y.Id">@y.Name</option>                                       
+
+                                    }
+                                }
                             </select>
                         </div>
                         <div class="form-group text-center">
@@ -63,15 +71,60 @@
                         <tbody id="myTable">
                             @foreach (var c in Model)
                             {
-                            <tr>
-                                <td>@c.Id</td>
-                                <td>@c.Name</td>
-                                <td>@c.Year</td>
-                                <td>
-                                    <a class="btn btn-primary" asp-controller="Major" asp-action="EditMajor" asp-route-id="@c.Id"><i class="fa fa-edit"></i></a>
-                                    <a class="btn btn-danger" asp-controller="Major" asp-action="RemoveMajor" asp-route-id="@c.Id"><i class="fa fa-trash"></i></a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>@c.Id</td>
+                                    <td>@c.Name</td>
+                                    <td>@c.Year</td>
+                                    <td>
+                                        <a class="btn btn-primary" data-toggle="modal" data-target="#@c.Id"><i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-danger" asp-controller="Major" asp-action="RemoveMajor" asp-route-id="@c.Id"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+
+                                <div class="modal fade" tabindex="-1" role="dialog" id="@c.Id">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <form asp-controller="Class" asp-action="EditClass" method="post">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title"><i class="fa fa-edit"></i> Edit</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <input type="hidden" class="form-control" name="Id" value="@c.Id" />
+                                                <div class="form-group">
+                                                    <label>Class Name</label>
+                                                    <input type="text" class="form-control" name="Name" value="@c.Name" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Year</label>
+                                                    <select name="Year_id" id="year" class="form-control">
+                                                        <option>----Select----</option>
+                                                        @{
+                                                            var year1 = ViewBag.year;
+                                                            foreach (var y in year1)
+                                                            {
+                                                                if (y.Id == c.Year_id)
+                                                                {
+                                                                    <option value="@y.Id" selected>@y.Name</option>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <option value="@y.Id">@y.Name</option>
+                                                                }
+
+                                                            }
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                          </form>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
                             }
                         </tbody>
                     </table>
@@ -83,6 +136,10 @@
 @section Scripts{ 
 <script>
     $(function () {
+<<<<<<< HEAD
+        console.log("OK")
+        /*
+=======
         //console.log("OK")
          $("#search").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
@@ -91,6 +148,7 @@
                 });
             });
         ///////////////////////////////////////////////
+>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
         $.ajax({
             url: "/class/getYear",
             type: "GET",
@@ -102,6 +160,7 @@
                 })
             }
         })
+        */
     })
 </script>
 }

@@ -12,6 +12,7 @@ namespace Exam_Management_System.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.year = GetYear();
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
             List<Class> list = new List<Class>();
             using (MySqlConnection conn = context.GetConnection())
@@ -29,14 +30,15 @@ namespace Exam_Management_System.Controllers
                         {
                             Id = id,
                             Name = name,
-                            Year = reader["year_name"].ToString(),                          
+                            Year = reader["year_name"].ToString(),
+                            Year_id = Convert.ToInt32(reader["year_id"]),
                         });
                     }
                 }
             }
             return View(list);
         }
-        public JsonResult GetYear()
+        public List<Year> GetYear()
         {
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
             List<Year> list = new List<Year>();
@@ -60,7 +62,7 @@ namespace Exam_Management_System.Controllers
                     }
                 }
             }
-            return Json(list);
+            return list;
         }
 
         [HttpPost]
@@ -78,6 +80,22 @@ namespace Exam_Management_System.Controllers
                 }
             }
             return "New Class is successfully added!";
+        }
+        [HttpPost]
+        public IActionResult EditClass(Class classes)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                string sql = $"Update class set class_name='{classes.Name}',year_id='{classes.Year_id}' where id={classes.Id}";
+                using (MySqlCommand command = new MySqlCommand(sql, conn))
+                {
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            return Redirect("/class/index");
         }
     }
 }

@@ -96,9 +96,15 @@ using Exam_Management_System.Models;
                 <div class=""panel-body"">
                     ");
             EndContext();
+<<<<<<< HEAD
+            BeginContext(1159, 534, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "752b4a43d4de4f4098a12030f7e0eeee", async() => {
+                BeginContext(1224, 462, true);
+=======
             BeginContext(1091, 534, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a390f43f52b74c60bedec70030dd0b51", async() => {
                 BeginContext(1156, 462, true);
+>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
                 WriteLiteral(@"
                         <div class=""form-group"">
                             <label>Major</label>
@@ -178,9 +184,15 @@ using Exam_Management_System.Models;
             BeginContext(2441, 89, true);
             WriteLiteral("</td>\r\n                                    <td>\r\n                                        ");
             EndContext();
+<<<<<<< HEAD
+            BeginContext(2612, 128, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "591e7159cc8340658043321e1cc41979", async() => {
+                BeginContext(2710, 26, true);
+=======
             BeginContext(2530, 128, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0a1852ebf3d74ad3b30d75ca75b2b9ce", async() => {
                 BeginContext(2628, 26, true);
+>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
                 WriteLiteral("<i class=\"fa fa-edit\"></i>");
                 EndContext();
             }
@@ -216,9 +228,15 @@ using Exam_Management_System.Models;
             BeginContext(2658, 42, true);
             WriteLiteral("\r\n                                        ");
             EndContext();
+<<<<<<< HEAD
+            BeginContext(2782, 130, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c33fb1d3c38b48f5996e2aa01c6408a9", async() => {
+                BeginContext(2881, 27, true);
+=======
             BeginContext(2700, 130, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ae4b54360dcc4e4380dc87c65b6f577a", async() => {
                 BeginContext(2799, 27, true);
+>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
                 WriteLiteral("<i class=\"fa fa-trash\"></i>");
                 EndContext();
             }

@@ -78,6 +78,26 @@ using Microsoft.AspNetCore.Http;
 
 #line default
 #line hidden
+<<<<<<< HEAD
+            BeginContext(48, 397, true);
+            WriteLiteral(@"
+<section class=""content-header bg-gray"" style=""padding-top:10px"">
+    <h1 style=""padding-top:10px;padding-bottom:20px"">
+        Subject
+        <small>Add</small>
+    </h1>
+</section>
+<!-- Main content -->
+<section class=""content container-fluid"">
+    <div class=""container"">
+        <div class=""row"">
+            <div class=""col-xs-12 hidden-sm hidden-lg hidden-md"">
+                ");
+            EndContext();
+            BeginContext(445, 201, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e9be6d7a2e504565bd031765956c2bf6", async() => {
+                BeginContext(595, 47, true);
+=======
             BeginContext(119, 169, true);
             WriteLiteral("<section class=\"content-header bg-gray\" style=\"padding-top:10px\">\r\n    <h1 style=\"padding-top:10px;padding-bottom:20px\">\r\n        Subject\r\n        <small>Add</small> <b>");
             EndContext();
@@ -143,6 +163,7 @@ using Microsoft.AspNetCore.Http;
             BeginContext(999, 201, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0abed469486c4443a3a1fc01764da8ef", async() => {
                 BeginContext(1149, 47, true);
+>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
                 WriteLiteral("<i class=\"fa fa-arrow-circle-left\"></i> Subject");
                 EndContext();
             }
@@ -166,9 +187,15 @@ using Microsoft.AspNetCore.Http;
             BeginContext(1200, 77, true);
             WriteLiteral("\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            ");
             EndContext();
+<<<<<<< HEAD
+            BeginContext(733, 142, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9be47cbae3c3413b850ce98391a6f7d3", async() => {
+                BeginContext(824, 47, true);
+=======
             BeginContext(1277, 142, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2415247def234f8ca1dd2b83a62591bb", async() => {
                 BeginContext(1368, 47, true);
+>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
                 WriteLiteral("<i class=\"fa fa-arrow-circle-left\"></i> Subject");
                 EndContext();
             }
@@ -198,6 +225,16 @@ using Microsoft.AspNetCore.Http;
                     <div class=""panel-body"">
                         ");
             EndContext();
+<<<<<<< HEAD
+            BeginContext(1293, 1239, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c77c8704b37047b6a7f5fa5635a86ac2", async() => {
+                BeginContext(1366, 223, true);
+                WriteLiteral("\r\n                            <div class=\"form-group\">\r\n                                <label>Year</label>\r\n                                <select name=\"Year_id\" class=\"form-control\">\r\n                                    ");
+                EndContext();
+                BeginContext(1589, 30, false);
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d09152ce54b84a5cba86495d5e6e64b9", async() => {
+                    BeginContext(1597, 13, true);
+=======
             BeginContext(1837, 2025, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1ed5f8a74a2e46058fad8377760377c5", async() => {
                 BeginContext(1910, 233, true);
@@ -206,6 +243,7 @@ using Microsoft.AspNetCore.Http;
                 BeginContext(2143, 30, false);
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "13044cb8a4c64610bf8087bcec9393f3", async() => {
                     BeginContext(2151, 13, true);
+>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
                     WriteLiteral("----Select---");
                     EndContext();
                 }
@@ -281,9 +319,15 @@ using Microsoft.AspNetCore.Http;
                                 <select name=""Major_id"" id=""major"" class=""form-control"">
                                     ");
                 EndContext();
+<<<<<<< HEAD
+                BeginContext(1923, 30, false);
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f1389479358f47b6954f819483bf873b", async() => {
+                    BeginContext(1931, 13, true);
+=======
                 BeginContext(2868, 30, false);
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd1782a9cd9844a8b629720c7234cb9f", async() => {
                     BeginContext(2876, 13, true);
+>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
                     WriteLiteral("----Select---");
                     EndContext();
                 }
