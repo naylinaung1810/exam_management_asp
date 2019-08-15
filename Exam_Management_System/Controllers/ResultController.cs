@@ -136,24 +136,10 @@ namespace Exam_Management_System.Controllers
         [HttpPost]
         public string PostAddMark(Mark mark)
         {
-            int student_id = 0;
+            
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
             int academic_id = context.GetAcademic().Id;
-            using (MySqlConnection conn1 = context.GetConnection())
-            {
-                conn1.Open();
-
-                MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM studentrollno where rollno='" + mark.Rollno + "' and academic_id=" + academic_id, conn1);
-
-                using (var reader = cmd1.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        student_id = Convert.ToInt32(reader["id"]);
-                    }
-                }
-                conn1.Close();
-            }
+            int student_id = context.GetStudentId(mark.Rollno,academic_id);
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();

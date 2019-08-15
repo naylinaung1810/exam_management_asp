@@ -91,12 +91,12 @@ using Exam_Management_System.Models;
                     ");
             EndContext();
             BeginContext(887, 2624, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bfd790f866ee411e81951fabf6ca5cbb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2e18358abec40be81fcf2bd3c409690", async() => {
                 BeginContext(966, 202, true);
                 WriteLiteral("\r\n                        <div class=\"form-group\">\r\n                            <label>Year</label>\r\n                            <select id=\"year\" class=\"form-control\">\r\n                                ");
                 EndContext();
                 BeginContext(1168, 31, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "078bc2eb536a48c78741e36455b3f8bd", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "209a3551976441c0b8fe64cb05acc47a", async() => {
                     BeginContext(1176, 14, true);
                     WriteLiteral("----Select----");
                     EndContext();
@@ -127,7 +127,7 @@ using Exam_Management_System.Models;
                 WriteLiteral("                                        ");
                 EndContext();
                 BeginContext(1439, 38, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "41091cab80f145f5a1692932dc5b9cfc", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f0bb84928b88441ea90574e150d4adcf", async() => {
                     BeginContext(1462, 6, false);
 #line 38 "C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\Views\Attendence\AddAttendence.cshtml"
                                                          Write(y.Name);
@@ -187,7 +187,7 @@ using Exam_Management_System.Models;
                 WriteLiteral("                                        ");
                 EndContext();
                 BeginContext(2133, 33, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c5334b9fa6f84fb2b42388026e398219", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0015b5343e6e41de9b62d434594d18e6", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_OptionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.OptionTagHelper>();
@@ -227,7 +227,7 @@ using Exam_Management_System.Models;
                                 ");
                 EndContext();
                 BeginContext(2530, 31, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ffce4f65673e4357b62e3d0bbbe6d6a5", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9cc6b128b4942658b1dbfa9cb924490", async() => {
                     BeginContext(2538, 14, true);
                     WriteLiteral("----Select----");
                     EndContext();
@@ -247,7 +247,7 @@ using Exam_Management_System.Models;
                 WriteLiteral("\r\n                                ");
                 EndContext();
                 BeginContext(2595, 25, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "985ed01836614135bb66bef04e98ff64", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "87dae3b2a86a4860b421405fbce90c7b", async() => {
                     BeginContext(2603, 8, true);
                     WriteLiteral("December");
                     EndContext();
@@ -267,7 +267,7 @@ using Exam_Management_System.Models;
                 WriteLiteral("\r\n                                ");
                 EndContext();
                 BeginContext(2654, 24, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fd0ab394d9e848de9635b976b2ed0a78", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b59372688f2400abafba1ea578658d2", async() => {
                     BeginContext(2662, 7, true);
                     WriteLiteral("January");
                     EndContext();
@@ -287,7 +287,7 @@ using Exam_Management_System.Models;
                 WriteLiteral("\r\n                                ");
                 EndContext();
                 BeginContext(2712, 25, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cf5e45a8275e4a1f866b9b475287f08d", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1c56e2e750cc4842ada19fad13e77a8c", async() => {
                     BeginContext(2720, 8, true);
                     WriteLiteral("February");
                     EndContext();

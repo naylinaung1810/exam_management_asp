@@ -1,0 +1,240 @@
+﻿
+@{
+    ViewData["Title"] = "Assignment";
+}
+
+<style>
+    .row #accordion .panel .panel-body li:hover {
+        background-color: Highlight;
+        color: white;
+    }
+</style>
+
+<section class="content-header bg-gray" style="padding-top:0px">
+    <div class="row">
+        <div class="col-sm-4">
+            <h1 style="">
+                Assignment Info
+                <small>@ViewData["year"]</small>
+            </h1>
+        </div>
+        <div class="col-sm-8">
+            <div class="row" style="padding-top:15px;padding-bottom:5px">
+                <div class="col-md-6 col-md-offset-3">
+                    <input type="text" class="form-control" id="search" placeholder="Search.........." />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+
+    <div class="row" style="margin-top:10px">
+        <div class="col-sm-3 col-md-2">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h3 class="panel-title text-center" style="padding:5px">
+                            <a asp-controller="Assignment" asp-action="AddAssignment">
+                                <i class="fa fa-plus fa-2x"></i> 
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h3 class="panel-title text-center" style="padding:5px">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                First Year
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="collapseOne" class='panel-collapse collapse' role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <ul class="list-unstyled text-center" style="font-size:18px">
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Assignment" asp-action="Index" asp-route-id="1" asp-route-major="1">CST </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h3 class="panel-title text-center" style="padding:5px">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                Second Year
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <ul class="list-unstyled text-center" style="font-size:18px">
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Assignment" asp-action="Index" asp-route-id="2" asp-route-major="2">CS </a></li>
+                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Assignment" asp-action="Index" asp-route-id="2" asp-route-major="3">CT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h3 class="panel-title text-center" style="padding:5px">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                                Third Year
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <ul class="list-unstyled text-center" style="font-size:18px">
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Assignment" asp-action="Index" asp-route-id="3" asp-route-major="2">CS </a></li>
+                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Assignment" asp-action="Index" asp-route-id="3" asp-route-major="3">CT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h3 class="panel-title text-center" style="padding:5px">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                                Fourth Year
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <ul class="list-unstyled text-center" style="font-size:18px">
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Assignment" asp-action="Index" asp-route-id="4" asp-route-major="2">CS</a></li>
+                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Assignment" asp-action="Index" asp-route-id="4" asp-route-major="3">CT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h3 class="panel-title text-center" style="padding:5px">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseOne">
+                                Final Year
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <ul class="list-unstyled text-center" style="font-size:18px">
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Assignment" asp-action="Index" asp-route-id="5" asp-route-major="2">CS </a></li>
+                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Assignment" asp-action="Index" asp-route-id="5" asp-route-major="3">CT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9 col-md-10">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <select id="subject" class="form-control">
+                            @{
+                                var subject = ViewBag.subject;
+                                foreach (var s in subject)
+                                {
+                                    <option value="@s.Id">@s.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                   
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <select id="class" class="form-control">
+                            @{
+                                var classes = ViewBag.classes;
+                                foreach (var s in classes)
+                                {
+                                    <option value="@s.Id">@s.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <input class="hidden" value="@ViewBag.year_id" id="year_id" />
+            <input class="hidden" value="@ViewBag.major_id" id="major_id" />
+            <div class="box box-success ">
+                <div class="box-header">
+                    <div class="box-title text-center"></div>
+                </div>
+                <div class="box-body table-responsive">
+                    <table class="table table-hover text-center">
+                        <thead >
+                            <tr style="font-size:16px">
+                                <th>Roll No</th>
+                                <th>Name</th>                         
+                                <th id="subject_name"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                           
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script>
+        $(function () {
+            $("#search").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+            ///////////////////////////////////////
+              var id = $('#year_id').val();
+            var major = $('#major_id').val();
+            GetData()
+            $('#subject').change(function (e) {
+                //console.log(e.target.value);
+                $('tbody').html(null);
+                GetData();
+            });
+             $('#class').change(function (e) {
+                //console.log(e.target.value);
+                $('tbody').html(null);
+                GetData();
+            });
+
+            function GetData() {
+                var subject = $('#subject').val();
+                var classes=$('#class').val();
+                $.ajax({
+                    url: "/Assignment/GetAssignment/" + id + "?major=" + major + "&classes=" + 1 + "&subject=" + subject,
+                    type: "get",
+                    success: function (data) {
+                        console.log(data);
+                        
+                        $.each(data, function (i, item) {
+                            $('.box-title').html(item.class);
+                            $('#subject_name').html(item.subject);
+                            var str = '<tr>' +
+                                '<td>' + item.rollno + '</td>' +
+                                '<td>' + item.name + '</td>' +
+                                '<td>' + item.mark + '</td>' +
+                                '</tr>';
+                            $('tbody').append(str);
+                        });
+                    }
+                })
+            }
+
+
+            
+        });
+    </script>
+}
+

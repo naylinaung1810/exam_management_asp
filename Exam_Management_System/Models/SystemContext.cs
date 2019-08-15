@@ -186,5 +186,26 @@ namespace Exam_Management_System.Models
             }
             return total;
         }
+
+        public int GetStudentId(string rollno,int academic)
+        {
+            int student_id = 0;
+            using (MySqlConnection conn1 = GetConnection())
+            {
+                conn1.Open();
+
+                MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM studentrollno where rollno='" + rollno + "' and academic_id=" + academic, conn1);
+
+                using (var reader = cmd1.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        student_id = Convert.ToInt32(reader["id"]);
+                    }
+                }
+                conn1.Close();
+            }
+            return student_id;
+        }
     }
 }

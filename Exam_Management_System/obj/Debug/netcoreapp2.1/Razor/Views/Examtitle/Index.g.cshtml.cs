@@ -78,15 +78,7 @@ using Exam_Management_System.Models;
                     ");
             EndContext();
             BeginContext(700, 480, false);
-<<<<<<< HEAD
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f17eba2ca5214103b6b804ad3a1c855d", async() => {
-=======
-<<<<<<< HEAD
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9f70f1eadbda417387d026df8fc54c25", async() => {
-=======
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "58aaddb4b2c342f1a6c33e70d0e3a89b", async() => {
->>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
->>>>>>> 1fa0f8bee1d8676aebcfa8e2d7beb42530027ddd
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "27b28af913db4b7d833ede86c2754a20", async() => {
                 BeginContext(706, 467, true);
                 WriteLiteral(@"
                         <div class=""form-group"">

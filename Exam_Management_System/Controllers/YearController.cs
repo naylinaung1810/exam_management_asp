@@ -51,7 +51,6 @@ namespace Exam_Management_System.Controllers
             }
             return "Year is successfully added!";
         }
-<<<<<<< HEAD
         [HttpPost]
         public IActionResult EditYear(Year years)
         {
@@ -68,9 +67,9 @@ namespace Exam_Management_System.Controllers
             }
             return Redirect("/year/index");
         }
-=======
+//=======
 
        
->>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
+//>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
     }
 }
