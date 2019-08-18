@@ -51,10 +51,10 @@ namespace Exam_Management_System.Controllers
             }
             return "Year is successfully added!";
         }
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 
->>>>>>> f61fa1f6870c883fdd10393b6520140c7f72e7cc
+//>>>>>>> f61fa1f6870c883fdd10393b6520140c7f72e7cc
         [HttpPost]
         public IActionResult EditYear(Year years)
         {
@@ -71,12 +71,12 @@ namespace Exam_Management_System.Controllers
             }
             return Redirect("/year/index");
         }
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //=======
 
        
 //>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
-=======
+//=======
         public IActionResult RemoveYear(int id)
         {
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
@@ -94,6 +94,6 @@ namespace Exam_Management_System.Controllers
             return Redirect("/year/index");
         }
 
->>>>>>> f61fa1f6870c883fdd10393b6520140c7f72e7cc
+//>>>>>>> f61fa1f6870c883fdd10393b6520140c7f72e7cc
     }
 }

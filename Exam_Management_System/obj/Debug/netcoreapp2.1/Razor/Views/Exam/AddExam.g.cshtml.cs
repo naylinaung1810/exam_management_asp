@@ -85,7 +85,7 @@ using Exam_Management_System.Models;
                 ");
             EndContext();
             BeginContext(489, 198, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "98927d5aaced45adbe25427a165edd3f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8615362ddb104273bca714273f0386b2", async() => {
                 BeginContext(639, 44, true);
                 WriteLiteral("<i class=\"fa fa-arrow-circle-left\"></i> Mark");
                 EndContext();
@@ -111,7 +111,7 @@ using Exam_Management_System.Models;
             WriteLiteral("\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            ");
             EndContext();
             BeginContext(764, 141, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4ed708d3b6ff4d6aa1648c398ab136c8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e379c061025c43929b3dc022dfe72890", async() => {
                 BeginContext(852, 49, true);
                 WriteLiteral("<i class=\"fa fa-arrow-circle-left\"></i> Exam Info");
                 EndContext();
@@ -144,12 +144,12 @@ using Exam_Management_System.Models;
                         ");
             EndContext();
             BeginContext(1367, 3678, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ba3bed8d6bd94903adbbc53ed42085e6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "be2260a9a2ce4353a0896a118b72f601", async() => {
                 BeginContext(1373, 239, true);
                 WriteLiteral("\r\n                            <div class=\"form-group\">\r\n                                <label>Exam Title</label>\r\n                                <select name=\"Exam_id\" id=\"exam\" class=\"form-control\">\r\n                                    ");
                 EndContext();
                 BeginContext(1612, 39, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ae9cdf9355cf4dd388e9c2058e78a25b", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b5548441c644aff85348166ed1b2672", async() => {
                     BeginContext(1629, 13, true);
                     WriteLiteral("----Select---");
                     EndContext();
@@ -172,7 +172,7 @@ using Exam_Management_System.Models;
                 WriteLiteral("\r\n                                    ");
                 EndContext();
                 BeginContext(1689, 40, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0165a997e13d4cd0a6790edeb3f1d03a", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bc375aa89afa4683b83dd5407b11e45a", async() => {
                     BeginContext(1707, 13, true);
                     WriteLiteral("Mid_term Exam");
                     EndContext();
@@ -194,7 +194,7 @@ using Exam_Management_System.Models;
                 WriteLiteral("\r\n                                    ");
                 EndContext();
                 BeginContext(1767, 37, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86fd84c4da154f4787eb56cbabb593cb", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "28ff5e308a78447790a03de958e2b605", async() => {
                     BeginContext(1785, 10, true);
                     WriteLiteral("Final Exam");
                     EndContext();
@@ -222,7 +222,7 @@ using Exam_Management_System.Models;
                                     ");
                 EndContext();
                 BeginContext(2116, 30, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0915b41cc11b40d18b81dc93d56c83ad", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "105ddbdb6b3f43369733cb97aaf50ad0", async() => {
                     BeginContext(2124, 13, true);
                     WriteLiteral("----Select---");
                     EndContext();
@@ -249,7 +249,7 @@ using Exam_Management_System.Models;
                                     ");
                 EndContext();
                 BeginContext(2469, 30, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7afb4d058d0c4f4b9665b553d2c45409", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a3c4a3fed470492d8c2e2266b6049573", async() => {
                     BeginContext(2477, 13, true);
                     WriteLiteral("----Select---");
                     EndContext();

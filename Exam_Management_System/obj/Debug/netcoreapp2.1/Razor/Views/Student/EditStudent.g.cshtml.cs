@@ -81,7 +81,7 @@ using Exam_Management_System.Models;
             WriteLiteral("\r\n<section class=\"content-header\" style=\"padding-top:0px\">\r\n</section>\r\n<!-- Main content -->\r\n<section class=\"content container-fluid\">\r\n    <div class=\"row\">\r\n        <h2><i class=\"fa fa-edit\"></i> Edit Student</h2>\r\n    </div>\r\n    <hr />\r\n    ");
             EndContext();
             BeginContext(343, 9067, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9ece142c78564c4a83c2842741f64d28", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4de3eb9cd1b44c19a47b4b24d1e51547", async() => {
                 BeginContext(483, 804, true);
                 WriteLiteral(@"       
 
@@ -140,7 +140,7 @@ WriteAttributeValue("", 1634, student.Mother_name, 1634, 20, false);
                             ");
                 EndContext();
                 BeginContext(2031, 40, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3248ba2269d84d3699ff203edd8169d7", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "462fe54c2adb4d47b42f6d37e7699ce3", async() => {
                     BeginContext(2058, 4, true);
                     WriteLiteral("Male");
                     EndContext();
@@ -165,7 +165,7 @@ WriteAttributeValue("", 1634, student.Mother_name, 1634, 20, false);
                 WriteLiteral("\r\n                            ");
                 EndContext();
                 BeginContext(2101, 42, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "db5fb39cf42b4004b871e7a04b27b33e", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e38ded50d2f54705a40284c9faebdcc1", async() => {
                     BeginContext(2128, 6, true);
                     WriteLiteral("Female");
                     EndContext();

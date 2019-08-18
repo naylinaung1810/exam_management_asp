@@ -13505,12 +13505,6 @@
   },
   "logs": [
     {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\LENOVO\\source\\repos\\Exam_Management_System\\Exam_Management_System\\obj\\Exam_Management_System.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    },
-    {
       "code": "NU1603",
       "level": "Warning",
       "warningLevel": 1,

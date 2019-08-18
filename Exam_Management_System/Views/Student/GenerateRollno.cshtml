@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "GenerateRollno";
 }
-
+@model IEnumerable<Exam_Management_System.Models.Student>
 <section class="content-header bg-gray" style="padding-bottom:5px">
     <div class="row">
         <div class="col-sm-6">
@@ -28,8 +28,9 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>#</th>
+                           
                             <th>Name</th>
+                            <th>Mark</th>
                             <th>Phone</th>
                             <th>Gender</th>
                             <th>Father Name</th>
@@ -38,7 +39,21 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        @{ 
+                            foreach(var student in Model)
+                            {
+                                                <tr>
+                                                   
+                                                    <td>@student.Name</td>
+                                                    <td>@student.Mark</td>
+                                                    <td>@student.Phone</td>
+                                                    <td>@student.Sex</td>
+                                                    <td>@student.Father_name</td>
+                                                    <td>@student.Mother_name</td>
+                                                    <td>@student.Address</td>
+                                                </tr>
+                            }
+                        }
                     </tbody>
                 </table>
             </div>

@@ -183,6 +183,7 @@
            });
            ////////////////////////////////////////////////////////
            GetData();
+           var class_id = 0;
             var id = $('#year_id').val();
             var major = $('#major_id').val();
             $('#class').change(function () {
@@ -191,13 +192,13 @@
             });
 
            $('#print').click(function () {
-                console.log("OK")
+               console.log(class_id)
                 window.location.href = "https://localhost:44382/Attendence/Print/" + id + "?major=" + major + "&class_id=" + class_id;
            });
 
             function GetData()
             {
-              var class_id = $('#class').val();
+               class_id = $('#class').val();
              $.ajax({
             url: "/Attendence/GetAttendence/"+id+"?major="+major+"&class_id=" + class_id,
             type: "GET",

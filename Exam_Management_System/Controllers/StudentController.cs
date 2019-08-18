@@ -36,7 +36,68 @@ namespace Exam_Management_System.Controllers
         }
         public IActionResult GenerateRollno()
         {
-            return View();
+            int academic = 0;
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            List<Student> list = new List<Student>();
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from student,old_student,year where old_student.student_id=student.id and old_student.student_year_id=year.id and old_student.academic_id=" + academic, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int Id = Convert.ToInt32(reader["id"]);
+                        String name = reader["student_name"].ToString();
+                        list.Add(new Student()
+                        {
+                            Id = Id,
+                            Name = name,
+                            Year = reader["year_name"].ToString(),
+                            Sex = reader["gender"].ToString(),
+                            Father_name = reader["father_name"].ToString(),
+                            Mother_name = reader["mother_name"].ToString(),
+                            Phone = reader["phone"].ToString(),
+                            Address = reader["address"].ToString(),
+                            Mark = Convert.ToInt32(reader["mark"])
+                        });
+                    }
+                }
+            }
+            return View(list);
+        }
+
+        public Student GetOneStudent(int id)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            Student student = new Student();
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from student,old_student,studentrollno,attendance where attendance.studentrollno_id=studentrollno.id and old_student.student_id=student.id and studentrollno.student_id=student.id and studentrollno.id=" + id, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ;
+                        int Id = Convert.ToInt32(reader["id"]);
+                        String name = reader["student_name"].ToString();
+
+                        student.Id = Id;
+                        student.Name = name;
+                        student.Rollno= reader["rollno"].ToString();
+                        student.Phone = reader["phone"].ToString();
+                        student.Address = reader["address"].ToString();
+                        student.Email = reader["email"].ToString();
+                        student.Total= Convert.ToInt32(reader["total"]);
+                        student.Current = Convert.ToInt32(reader["current"]);
+
+                    }
+                }
+            }
+            return student;
         }
         public IActionResult EditStudent(int id)
         {
@@ -51,7 +112,7 @@ namespace Exam_Management_System.Controllers
                 {
                     while (reader.Read())
                     {
-                        ;
+                        
                         int Id = Convert.ToInt32(reader["id"]);
                         String name = reader["student_name"].ToString();
 

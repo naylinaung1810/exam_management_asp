@@ -34,6 +34,10 @@ namespace Exam_Management_System.Controllers
             return Redirect("/account/Index");
         }
 
+        public IActionResult Logout()
+        {
+            return Redirect("/account/Index");
+        }
     }
 
 }

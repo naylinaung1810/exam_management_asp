@@ -21,7 +21,10 @@ namespace Exam_Management_System.Models
         public int Academic_id { get; set; }
         public int Mark { get; set; }
         public int Pass { get; set; }
+        public int Total { get; set; }
+        public int Current { get; set; }
         public IFormFile Photo { get; set; }
+
 
         public string Reg_no { get; set; }
         public string Reg_date { get; set; }

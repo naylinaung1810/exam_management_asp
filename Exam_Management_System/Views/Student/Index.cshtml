@@ -78,8 +78,8 @@
                     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
                             <ul class="list-unstyled text-center" style="font-size:18px">
-                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a>CS </a></li>
-                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a>CT</a></li>
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Student" asp-action="Index" asp-route-id="3" asp-route-major="2">CS </a></li>
+                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Student" asp-action="Index" asp-route-id="3" asp-route-major="3">CT</a></li>
                             </ul>
                         </div>
                     </div>
@@ -95,8 +95,8 @@
                     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
                             <ul class="list-unstyled text-center" style="font-size:18px">
-                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a href="#">CS</a></li>
-                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a href="#">CT</a></li>
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Student" asp-action="Index" asp-route-id="4" asp-route-major="2">CS</a></li>
+                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Student" asp-action="Index" asp-route-id="4" asp-route-major="3">CT</a></li>
                             </ul>
                         </div>
                     </div>
@@ -112,8 +112,8 @@
                     <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
                             <ul class="list-unstyled text-center" style="font-size:18px">
-                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a href="#">CS </a></li>
-                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a href="#">CT</a></li>
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Student" asp-action="Index" asp-route-id="5" asp-route-major="2">CS </a></li>
+                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Student" asp-action="Index" asp-route-id="5" asp-route-major="3">CT</a></li>
                             </ul>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
             </div>
         </div>
         <div class="col-sm-9 col-md-10">
-            <div class="row">
+            <div class="row" style="margin-bottom:10px">
                 <div class="col-xs-4 col-xs-offset-4">
                     <select class="form-control" id="class">
                         @{
@@ -149,14 +149,73 @@
                         </tr>
                     </thead>
                     <tbody id="myTable">
-                       <tr>
-                           <td>
-                               <a class="btn btn-success" id=""><i class="fa fa-user" id=""></i></a>
-                               <a class="btn btn-primary" id=""><i class="fa fa-edit" id=""></i></a>
-                           </td>
-                       </tr>
+                       
                     </tbody>
+
                 </table>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <span class="glyphicon glyphicon-user" style="color:cadetblue"></span>
+                                <h3 class="modal-title" id="myModalLabel">Student Information</h3>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <img src="~/adminLTE/img/avatar2.png" class="img-bordered img-responsive" />
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td id="name"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Roll No:</td>
+                                                    <td id="rollno"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Phone</td>
+                                                    <td id="phone"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Email</td>
+                                                    <td id="email"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Address</td>
+                                                    <td id="address"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label>Attendance</label>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                                60%
+                                            </div>
+                                        </div>
+                                        <label>Assignment</label>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+                                                40%
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!--End-->
             </div>
         </div>
     </div>
@@ -188,7 +247,7 @@
             success: function (data) {
                        
                 console.log(data);
-                $('tbody').html(null);
+                $('#myTable').html(null);
                 $.each(data, function (i, item) {
                     var str = ' <tr>' +
                         '<td>' + item.rollno + '</td>' +
@@ -201,7 +260,7 @@
                         '<a class="btn btn-primary" name="' + item.id + '" id="edit"><i class="fa fa-edit" name="' + item.id + '"></i></a>' +
                     '</td > '+
                         ' </tr>';
-                    $('tbody').append(str);
+                    $('#myTable').append(str);
                   
                 });
 
@@ -215,6 +274,25 @@
                 console.log(e.target.name);
                 window.location.href = "https://localhost:44382/Student/EditStudent/" + e.target.name;
             })
+            $('body').delegate('table tbody tr td #profile', 'click', function (e) {
+                console.log(e.target.name);
+                $('#myModal').modal('toggle');
+                $.ajax({
+                    url: "/Student/GetOneStudent/" + e.target.name ,
+                    type: "GET",
+                    success: function (data) {
+
+                        console.log(data);
+
+                        $('#name').html(data.name);
+                        $('#rollno').html(data.rollno);
+                        $('#phone').html(data.phone);
+                        $('#email').html(data.email);
+                         $('#address').html(data.address);
+                    }
+
+                });
+            });
         });
     </script>
 }

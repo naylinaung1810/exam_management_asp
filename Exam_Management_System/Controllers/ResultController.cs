@@ -45,7 +45,7 @@ namespace Exam_Management_System.Controllers
             using (MySqlConnection conn1 = context.GetConnection())
             {
                 conn1.Open();
-                MySqlCommand cmd1 = new MySqlCommand("select * from mark_mid,subject,studentrollno,student_detail,student,year,major,class where student_detail.class_id=class.id and mark_mid.subject_id=subject.id and mark_mid.studentrollno_id=studentrollno.id and student_detail.studentrollno_id=studentrollno.id and studentrollno.student_id=student.id and student_detail.year_id=year.id and student_detail.major_id=major.id and studentrollno.id=" + id + " and mark_mid.academic_id=" + academic_id, conn1);
+                MySqlCommand cmd1 = new MySqlCommand("select * from mark_mid,subject,studentrollno,student_detail,student,year,major,class,old_student where old_student.student_id=student.id and student_detail.class_id=class.id and mark_mid.subject_id=subject.id and mark_mid.studentrollno_id=studentrollno.id and student_detail.studentrollno_id=studentrollno.id and studentrollno.student_id=student.id and student_detail.year_id=year.id and student_detail.major_id=major.id and studentrollno.id=" + id + " and mark_mid.academic_id=" + academic_id, conn1);
 
                 using (var reader = cmd1.ExecuteReader())
                 {
