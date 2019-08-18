@@ -128,7 +128,8 @@
                         <ul class="treeview-menu">
                             <li><a asp-controller="Student" asp-action="AddNewStudent"><i class="fa fa-plus-square"></i> New Student <span class="label label-success">New</span></a></li>
                             <li><a asp-controller="Student" asp-action="AddOldStudent"><i class="fa fa-plus-square"></i> Old Students <span class="label label-danger">Old</span></a></li>
-                            <li><a asp-controller="Student" asp-action="Index" asp-route-id="1" asp-route-major="1"><i class="fa fa-users"></i> Students</a></li>
+                            <li><a asp-controller="Student" asp-action="GenerateRollno"><i class="fa fa-plus-square"></i> Generate Rollno</a></li>
+                            <li><a asp-controller="Student" asp-action="Index" asp-route-id="1" asp-route-major="1" asp-route-class_id="1"><i class="fa fa-users"></i> Students</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -140,7 +141,7 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><a asp-controller="Attendence" asp-action="AddAttendence"><i class="fa fa-plus-square"></i> Add Attendence</a></li>
-                            <li><a asp-controller="Attendence" asp-action="Index" asp-route-id="1" asp-route-major="1"><i class="fa fa-folder-open"></i> Attendence</a></li>
+                            <li><a asp-controller="Attendence" asp-action="Index" asp-route-id="1" asp-route-major="1" asp-route-class_id="1"><i class="fa fa-folder-open"></i> Attendence</a></li>
                         </ul>
                     </li>
                     <li class="treeview">

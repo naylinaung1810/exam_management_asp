@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "GenerateRollno";
+}
+
+<section class="content-header bg-gray" style="padding-bottom:5px">
+    <div class="row">
+        <div class="col-sm-6">
+            <h2 style="">
+                Student Info
+                <small> > Generate Roll No</small>
+            </h2>
+        </div>
+        
+    </div>
+</section>
+<!-- Main content -->
+<section class="content container-fluid" style="padding:20px">
+    <div class="row" style="padding-right:25px">
+        <a class="btn btn-app pull-right" id="generate">
+            <span class="badge bg-green">300</span>
+            <i class="fa fa-barcode"></i> Generate
+        </a>
+    </div>
+    <div class="row">
+        <div class="box">
+            <div class="box-body table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Gender</th>
+                            <th>Father Name</th>
+                            <th>Mother Name</th>
+                            <th>Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts{
+    <script>
+        $(function () {
+            $('#generate').click(function () {
+              
+                $.ajax({
+                    url: "/Student/Generate",
+                    type: "get",
+                    success: function (data) {
+                          console.log("OK");
+                    }
+                });
+            });
+        });
+    </script>
+
+}
+
+
+
+

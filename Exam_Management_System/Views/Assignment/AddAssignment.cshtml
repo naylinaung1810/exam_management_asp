@@ -35,7 +35,15 @@
 
                                 </select>
                             </div>
-                           
+                            <div class="form-group">
+                                <label>Subject</label>
+                                <select name="" id="major" class="form-control">
+                                    <option value="1">CST</option>
+                                    <option value="2">CS</option>
+                                    <option value="3">CT</option>
+
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label>Roll No</label>
                                 <input list="rollno" class="form-control" name="Rollno">
@@ -57,7 +65,7 @@
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-primary">Save <i class="fa fa-arrow-circle-right"></i></button>
                             </div>
-                           
+
                         </form>
                     </div>
                 </div>
@@ -87,7 +95,7 @@
                     }
                 });
                  $.ajax({
-                    url: "/Result/GetSubject/"+$('#year').val(),
+                    url: "/Result/GetSubject/"+$('#year').val()+"?major="+$('#major').val(),
                     type: "GET",
                     success: function (data) {
                         //console.log(data);

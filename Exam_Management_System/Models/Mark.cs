@@ -16,9 +16,15 @@ namespace Exam_Management_System.Models
         public string Subject { get; set; }
         public string Major { get; set; }
         public string Year { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
+        public string Class { get; set; }
         public int S_mark { get; set; }
         public int Subject_id { get; set; }
         public int Rollno_id { get; set; }
-        public List<ResMark> ResMarks { get; set; }
+        public int Pass { get; set; }
+
+        //public List<ResMark> ResMarks { get; set; }
     }
 }

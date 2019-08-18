@@ -9,6 +9,7 @@ namespace Exam_Management_System.Models
     public class Student
     {
         public int Id { get; set; }
+        public int Student_id { get; set; }
         public string Name { get; set; }
         public string Rollno { get; set; }
         public string Year { get; set; }
@@ -19,6 +20,7 @@ namespace Exam_Management_System.Models
         public int Major_id { get; set; }
         public int Academic_id { get; set; }
         public int Mark { get; set; }
+        public int Pass { get; set; }
         public IFormFile Photo { get; set; }
 
         public string Reg_no { get; set; }

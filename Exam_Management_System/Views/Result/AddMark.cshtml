@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <a asp-controller="Subject" asp-action="Index" class="btn btn-success pull-left hidden-xs"><i class="fa fa-arrow-circle-left"></i> Mark</a>
-            <div class="col-md-4 col-sm-6 col-sm-offset-1 col-md-offset-2">
+            <div class="col-md-6 col-sm-6 col-sm-offset-1 col-md-offset-2">
                 <div class="box">
                     <div class="box-header" style="border-bottom:1px solid lightgrey">
                         <i class="fa fa-plus-square fa-2x"></i> <span style="font-size:25px">Add Mark</span>
@@ -38,6 +38,15 @@
                                 <label>Year</label>
                                 <select name="Year_id" id="year" class="form-control">
                                     <option>----Select---</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Subject</label>
+                                <select name="" id="major" class="form-control">
+                                    <option value="1">CST</option>
+                                    <option value="2">CS</option>
+                                    <option value="3">CT</option>
 
                                 </select>
                             </div>
@@ -90,7 +99,7 @@
                     }
                 });
                  $.ajax({
-                    url: "/Result/GetSubject/"+$('#year').val(),
+                    url: "/Result/GetSubject/"+$('#year').val()+"?major="+$('#major').val(),
                     type: "GET",
                     success: function (data) {
                         //console.log(data);

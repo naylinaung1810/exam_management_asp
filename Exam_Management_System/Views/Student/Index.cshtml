@@ -121,7 +121,22 @@
             </div>
         </div>
         <div class="col-sm-9 col-md-10">
-            <div class="panel table-responsive">
+            <div class="row">
+                <div class="col-xs-4 col-xs-offset-4">
+                    <select class="form-control" id="class">
+                        @{
+                            var classes = ViewBag.classes;
+                            foreach (var s in classes)
+                            {
+                                <option value="@s.Id">@s.Name</option>
+                            }
+                        }
+                    </select> 
+                </div>
+            </div>
+            <div class="box table-responsive">
+                <input class="hidden" value="@ViewBag.year_id" id="year_id" />
+                <input class="hidden" value="@ViewBag.major_id" id="major_id" />
                 <table class="table table-hover text-center">
                     <thead class="bg-gray">
                         <tr style="font-size:16px">
@@ -130,19 +145,16 @@
                             <th>Class</th>
                             <th>Year</th>
                             <th>Major</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody id="myTable">
-                        @foreach (var student in Model)
-                        {
-                            <tr>
-                                <td>@student.Rollno</td>
-                                <td>@student.Name</td>
-                                <td>@student.Class</td>
-                                <td>@student.Year</td>
-                                <td>@student.Major</td>
-                            </tr>
-                        }
+                       <tr>
+                           <td>
+                               <a class="btn btn-success" id=""><i class="fa fa-user" id=""></i></a>
+                               <a class="btn btn-primary" id=""><i class="fa fa-edit" id=""></i></a>
+                           </td>
+                       </tr>
                     </tbody>
                 </table>
             </div>
@@ -159,6 +171,50 @@
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
+            //////////////////////////////////////////////////////////////////////////////
+             var id = $('#year_id').val();
+            var major = $('#major_id').val();
+            GetData();
+            $('#class').change(function () {
+                GetData();
+            });
+
+            function GetData()
+            {
+              var class_id = $('#class').val();
+             $.ajax({
+            url: "/Student/GetStudent/"+id+"?major="+major+"&class_id=" + class_id,
+            type: "GET",
+            success: function (data) {
+                       
+                console.log(data);
+                $('tbody').html(null);
+                $.each(data, function (i, item) {
+                    var str = ' <tr>' +
+                        '<td>' + item.rollno + '</td>' +
+                        ' <td>' + item.name + '</td>' +
+                        '<td>' + item.class + '</td>' +
+                        ' <td>' + item.year + '</td>' +
+                        ' <td>' + item.major + '</td>' +
+                        '<td>' +
+                        ' <a class="btn btn-success" name="' + item.id + '" id="profile"><i class="fa fa-user" name="' + item.id + '"></i></a>' +
+                        '<a class="btn btn-primary" name="' + item.id + '" id="edit"><i class="fa fa-edit" name="' + item.id + '"></i></a>' +
+                    '</td > '+
+                        ' </tr>';
+                    $('tbody').append(str);
+                  
+                });
+
+                 }
+
+             });
+
+            }
+            //////////////////////////////////////////////////////////////////
+            $('body').delegate('table tbody tr td #edit', 'click', function (e) {
+                console.log(e.target.name);
+                window.location.href = "https://localhost:44382/Student/EditStudent/" + e.target.name;
+            })
         });
     </script>
 }

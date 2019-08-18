@@ -74,7 +74,7 @@ using Exam_Management_System.Models;
             WriteLiteral("    <link href=\"//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">\r\n");
             EndContext();
             BeginContext(182, 65, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f4a5bcccbbb649c4be4cf7a3b2292d08", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "6e6f2e989a2b4328ba2cef8b3aeeb6fe", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -104,7 +104,7 @@ using Exam_Management_System.Models;
             ");
             EndContext();
             BeginContext(643, 63, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "995b644e8fed479fa836b36cfb817437", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "5f0f2e0a974a4ec7b8a0399370afe0f2", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -124,7 +124,7 @@ using Exam_Management_System.Models;
             WriteLiteral(" \r\n            <h1>Exam Management System</h1>\r\n        </div>\r\n\r\n        <!-- Login Form -->\r\n        ");
             EndContext();
             BeginContext(809, 369, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3410fc80b3034cb38d92d1c51ee3c483", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a008561d0ddb424ba4e78a405cc85152", async() => {
                 BeginContext(873, 298, true);
                 WriteLiteral(@"
             <input type=""text"" id=""name"" class=""fadeIn second"" name=""User_Name"" placeholder=""username"">

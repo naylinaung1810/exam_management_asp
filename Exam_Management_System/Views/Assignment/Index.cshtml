@@ -213,7 +213,7 @@
                 var subject = $('#subject').val();
                 var classes=$('#class').val();
                 $.ajax({
-                    url: "/Assignment/GetAssignment/" + id + "?major=" + major + "&classes=" + 1 + "&subject=" + subject,
+                    url: "/Assignment/GetAssignment/" + id + "?major=" + major + "&classes=" + classes + "&subject=" + subject,
                     type: "get",
                     success: function (data) {
                         console.log(data);

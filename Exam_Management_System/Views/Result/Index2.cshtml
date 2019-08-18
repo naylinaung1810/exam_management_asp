@@ -14,7 +14,7 @@
         <div class="col-sm-4">
             <h2 style="">
                 Final Result
-                <small> > <span id="year"></span></small><small style="font-size:16px"> > <span id="major"></span></small>
+                <small> > <span id="year"></span></small><small style="font-size:16px"> > <span id="major"></span></small>  
             </h2>
         </div>
         <div class="col-sm-8">
@@ -35,7 +35,7 @@
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h3 class="panel-title text-center" style="padding:5px">
                             <a asp-controller="Result" asp-action="AddMark">
-                                <i class="fa fa-plus"></i> F
+                                <i class="fa fa-plus fa-2x"></i> 
                             </a>
                         </h3>
                     </div>
@@ -127,10 +127,28 @@
             </div>
         </div>
         <div class="col-md-10">
+            <div class="row">
+                <div class="col-xs-6">
+                    <select id="class" class="form-control pull-right" style="margin-top:10px;width:200px">
+                        @{
+                            var classes = ViewBag.classes;
+                            foreach (var s in classes)
+                            {
+                                <option value="@s.Id">@s.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-xs-6">
+                    <a class="btn btn-app pull-right" id="print">
+                        <i class="fa fa-save"></i> Save
+                    </a>
+                </div>
+            </div>
            <input class="hidden" value="@ViewBag.year_id" id="year_id" />
             <input class="hidden" value="@ViewBag.major_id" id="major_id" />
-            <div class="panel">
-                <div class="panel-body">
+            <div class="box">
+                <div class="box-body">
                     <table class="table">
                         <thead>
                             <tr>
@@ -143,13 +161,15 @@
                                         <th>@s.Name</th>
                                     }
                                 }
-
+                                <th>Pass</th>
                             </tr>
                         </thead>
+                        
                         <tbody id="myTable">
                                                       
                         </tbody>
                     </table>
+                    
                 </div>
             </div>
         </div>
@@ -158,10 +178,30 @@
 @section Scripts{ 
 <script>
     $(function () {
+        
+          $("#search").on("keyup", function () {
+               var value = $(this).val().toLowerCase();
+               $("#myTable tr").filter(function () {
+                   $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+               });
+           });
+        var class_id = 0;
         var id = $('#year_id').val();
         var major = $('#major_id').val();
-         $.ajax({
-            url: "/Result/ResultMarkFinal/"+id+"?major="+major,
+        GetData();
+         $('#class').change(function () {
+                GetData();
+         });
+
+        $('#print').click(function () {
+            console.log("OK")
+                window.location.href = "https://localhost:44382/Result/PrintFinal/" + id + "?major=" + major + "&class_id=" + class_id;
+            })
+        ////////////////////////////////////////
+        function GetData() {
+              class_id = $('#class').val();
+             $.ajax({
+            url: "/Result/ResultMarkFinal/"+id+"?major="+major+"&class_id=" + class_id,
             type: "GET",
             success: function (data) {
                 var start = 0;         
@@ -170,22 +210,37 @@
                 $.each(data, function (i, item) {
                     $('#year').html(item.year);
                     $('#major').html(item.major);
-                    if (item.Rollno_id == start) {
-                        start = item.Rollno_id;
-                        var td = '<td>' + item.s_mark + '</td>';
-                        $('#t' + item.Rollno_id).append(td);
-                    } else {
-                        start = item.student_id;
-                        var tr = ' <tr id="t' + item.Rollno_id + '">' +
-                            '<td>' + item.rollno + '</td>' +
-                            '<td>' + item.name + '</td>' +
-                            '<td>' + item.grade + '</td>' +
-                        '</tr > ';
-                        $('tbody').append(tr);
-                    }
+                  
+                     if (item.rollno_id == start) {
+                                start = item.rollno_id;
+                                var td = '<td>' + item.s_mark + '</td>';
+                                $('#p' + item.rollno_id).before(td);
+                            } else {
+                         start = item.rollno_id;
+                         var tr = null;
+                         if (item.pass == 1) {
+                             tr = ' <tr id="t' + item.rollno_id + '" class="bg-success">' +
+                                 '<td>' + item.rollno + '</td>' +
+                                 '<td>' + item.name + '</td>' +
+                                 '<td>' + item.s_mark + '</td>' +
+                                 '<td id="p' + item.rollno_id + '"><a id="' + item.rollno_id + '"><i class="fa fa-check-circle" id="' + item.rollno_id + '"></i></a></td>' +
+                                 '</tr > ';
+                         } else {
+                             tr = ' <tr id="t' + item.rollno_id + '" class="bg-danger">' +
+                                 '<td>' + item.rollno + '</td>' +
+                                 '<td>' + item.name + '</td>' +
+                                 '<td>' + item.s_mark + '</td>' +
+                                 '<td id="p' + item.rollno_id + '"><a id="' + item.rollno_id + '"><i class="fa fa-trash" id="' + item.rollno_id + '"></i></a></td>' +
+                                 '</tr > ';
+                         }
+                              
+                                $('#myTable').append(tr);
+                            }
                 });
             },
         });
+        }
+        
     });
 </script>
 

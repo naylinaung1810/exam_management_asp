@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewData["Title"] = "Print";
+    Layout = null;
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<section class=" container-fluid">
+    <div class="row">
+        <div class="panel">
+            <input class="hidden" value="@ViewBag.year_id" id="year_id" />
+            <input class="hidden" value="@ViewBag.major_id" id="major_id" />
+            <input class="hidden" value="@ViewBag.class_id" id="class_id" />
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Roll no</th>
+                            <th>Name</th>
+                            <th>Class</th>
+                            <th>Year</th>
+                            <th>Major</th>
+
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script>
+    $(function () {
+                var id = $('#year_id').val();
+        var major = $('#major_id').val();
+        var class_id = $('#class_id').val();
+         $.ajax({
+            url: "/Attendence/GetAttendence/"+id+"?major="+major+"&class_id=" + class_id,
+            type: "GET",
+            success: function (data) {
+                       
+                    console.log(data);
+                    $('tbody').html(null);
+                $.each(data, function (i, item) {
+                    var percent = item.current * 100 / item.total;
+                        var str = ' <tr>' +
+                            '<td>' + item.rollno + '</td>' +
+                            ' <td>' + item.name + '</td>' +
+                            '<td>' + item.class + '</td>' +
+                            ' <td>' + item.year + '</td>' +
+                            ' <td>' + item.major + '</td>' +
+                            ' <td>' + percent + '%</td>' +
+                            ' </tr>';
+                        $('tbody').append(str);
+                  
+                    });
+                }
+              });
+    })
+</script>

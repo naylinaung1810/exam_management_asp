@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewData["Title"] = "PrintMid";
+    Layout = null;
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<div class="container">
+    <div class="row">
+        <div class="panel">
+            <input class="hidden" value="@ViewBag.year_id" id="year_id" />
+            <input class="hidden" value="@ViewBag.major_id" id="major_id" />
+            <input class="hidden" value="@ViewBag.class_id" id="class_id" />
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            
+                            <th>Roll No</th>
+                            <th>Name</th>
+                            @{
+                                var subject = ViewBag.subject;
+                                foreach (var s in subject)
+                                {
+                                    <th>@s.Name</th>
+                                }
+                            }
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script>
+    $(function () {
+         console.log("OK");
+        var id = $('#year_id').val();
+        var major = $('#major_id').val();
+        var class_id = $('#class_id').val();
+        $.ajax({
+            url: "/Result/ResultMarkMid/" + id + "?major=" + major + "&class_id=" + class_id,
+            type: "GET",
+            success: function (data) {
+                var start = 0;
+                console.log(data);
+                $('tbody').html(null);
+                $.each(data, function (i, item) {
+                    if (item.rollno_id == start) {
+                        start = item.rollno_id;
+                        var td = '<td>' + item.grade + '</td>';
+                        $('#t' + item.rollno_id).append(td);
+                    } else {
+                        start = item.rollno_id;
+                        var tr = ' <tr id="t' + item.rollno_id + '">' +
+                            '<td>' + item.rollno + '</td>' +
+                            '<td>' + item.name + '</td>' +
+                            '<td>' + item.grade + '</td>' +
+
+                            '</tr > ';
+                        $('#myTable').append(tr);
+                    }
+                });
+            },
+        });
+        ///////////////////////////////////////////////////////
+
+    });
+</script>
+

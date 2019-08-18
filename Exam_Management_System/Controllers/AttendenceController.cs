@@ -10,14 +10,30 @@ namespace Exam_Management_System.Controllers
 {
     public class AttendenceController : Controller
     {
-        public IActionResult Index(int id,int major)
+        public IActionResult Index(int id,int major,int class_id)
+        {
+            ViewBag.classes = GetClass(id, major);
+            ViewBag.year_id = id;
+            ViewBag.major_id = major;
+            ViewBag.class_id = class_id;
+           
+            return View();
+        }
+        public IActionResult Print(int id,int major,int class_id)
+        {
+            ViewBag.year_id = id;
+            ViewBag.major_id = major;
+            ViewBag.class_id = class_id;
+            return View();
+        }
+        public JsonResult GetAttendence(int id,int major,int class_id)
         {
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
             List<Attendence> list = new List<Attendence>();
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM student,studentrollno,student_detail,major,class,year,attendance where student.id=studentrollno.student_id and studentrollno.id=student_detail.studentrollno_id and student_detail.year_id=year.id and student_detail.major_id=major.id and student_detail.class_id=class.id and studentrollno.id=attendance.studentrollno_id and student_detail.year_id="+id+" and student_detail.major_id="+major, conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT sum(total),sum(current),rollno,student_name,major_name,year_name,class_name,attendance.id FROM student,studentrollno,student_detail,major,class,year,attendance where student.id=studentrollno.student_id and studentrollno.id=student_detail.studentrollno_id and student_detail.year_id=year.id and student_detail.major_id=major.id and student_detail.class_id=class.id and studentrollno.id=attendance.studentrollno_id and student_detail.year_id=" + id + " and student_detail.major_id=" + major + " and student_detail.class_id=" + class_id+ " group by studentrollno.id", conn);
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -30,9 +46,9 @@ namespace Exam_Management_System.Controllers
                             Id = Convert.ToInt32(reader["id"]),
                             Name = reader["student_name"].ToString(),
                             Rollno = reader["rollno"].ToString(),
-                            Current = Convert.ToInt32(reader["current"]),
-                            Total = Convert.ToInt32(reader["total"]),
-                            Month = reader["month"].ToString(),
+                            Current = Convert.ToInt32(reader["sum(current)"]),
+                            Total = Convert.ToInt32(reader["sum(total)"]),
+                           // Month = reader["month"].ToString(),
                             Major = reader["major_name"].ToString(),
                             Year = reader["year_name"].ToString(),
                             Class = reader["class_name"].ToString(),
@@ -40,7 +56,7 @@ namespace Exam_Management_System.Controllers
                     }
                 }
             }
-            return View(list);
+            return Json(list);
         }
         public IActionResult AddAttendence()
         {
@@ -127,6 +143,30 @@ namespace Exam_Management_System.Controllers
                         {
                             Id = Convert.ToInt32(reader["id"]),
                             Roll = reader["rollno"].ToString(),
+                        });
+                    }
+                }
+            }
+            return list;
+        }
+        public List<Class> GetClass(int id, int major)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            int academic_id = context.GetAcademic().Id;
+            List<Class> list = new List<Class>();
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM class where year_id=" + id + " and major_id=" + major, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new Class()
+                        {
+                            Id = Convert.ToInt32(reader["id"]),
+                            Name = reader["class_name"].ToString(),
                         });
                     }
                 }

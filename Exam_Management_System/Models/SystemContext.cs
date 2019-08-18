@@ -21,6 +21,144 @@ namespace Exam_Management_System.Models
         }
 
         ///////////////////////////////////////////////////////
+        public int GetLastStudentId()
+        {
+            int id = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM student ORDER BY  id DESC LIMIT 1", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        id = Convert.ToInt32(reader["id"]);
+                    }
+                }
+            }
+            return id;
+        }
+        public int GetlastId()
+        {
+            int id = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM studentrollno ORDER BY  id DESC LIMIT 1", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        id = Convert.ToInt32(reader["id"]);
+                    }
+                }
+            }
+            return id;
+        }
+        public int GetMark(int student_id)
+        {
+            int mark = 0;          
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from result,studentrollno where studentrollno.id=result.studentrollno_id and studentrollno.student_id=" + student_id+" ORDER BY  result.academic_id DESC LIMIT 1", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int mid = Convert.ToInt32(reader["mid_mark"]);
+                        int final = Convert.ToInt32(reader["final_mark"]);
+                        int ass = Convert.ToInt32(reader["assigment_mark"]);
+                        mark = (mid + final) * 80 / 200;
+                    }
+                }
+            }
+            return mark;
+        }
+        public int GetClassStudent(int year_id,int major_id,int rollno)
+        {
+            int class_id=0;
+            int academic = GetAcademic().Id;
+            int count = 0;
+            int p = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM old_student where student_year_id="+year_id+" and major_id="+major_id+" and academic_id="+academic, conn);
+                count = Convert.ToInt32(cmd.ExecuteScalar());
+                p = count*100 / 300;
+            }
+            if(count<3)
+            {
+                switch (year_id)
+                {
+                    case 1: class_id = 1; break;
+                    case 2: class_id = 4; break;
+                    case 3: class_id = 7; break;
+                    case 4: class_id = 10; break;
+                    default: class_id = 13; break;
+                }
+            }
+            else
+            {
+                if (major_id == 1)
+                {
+                    if (rollno <= p)
+                    {
+                        class_id = 1;
+                    }
+                    else if (p < rollno && (p * 2) >= rollno)
+                    {
+                        class_id = 2;
+                    }
+                    else if(rollno>(p*2))
+                    {
+                        class_id = 3;
+                    }
+                }
+                else if (major_id == 2)
+                {
+                    if (rollno <= count / 2)
+                    {
+                        switch (year_id)
+                        {
+                            case 1: class_id = 1; break;
+                            case 2: class_id = 4; break;
+                            case 3: class_id = 7; break;
+                            case 4: class_id = 10; break;
+                            default: class_id = 13; break;
+                        }
+                    }
+                    else
+                    {
+                        switch (year_id)
+                        {
+                            case 1: class_id = 2; break;
+                            case 2: class_id = 5; break;
+                            case 3: class_id = 8; break;
+                            case 4: class_id = 11; break;
+                            default: class_id = 14; break;
+                        }
+                    }
+                }
+                else
+                {
+                    switch (year_id)
+                    {
+                        case 1: class_id = 3; break;
+                        case 2: class_id = 5; break;
+                        case 3: class_id = 9; break;
+                        case 4: class_id = 12; break;
+                        default: class_id = 15; break;
+                    }
+                }
+            }
+           
+            return class_id;
+        }
         public AcademicYear GetAcademic()
         {
             //List<AcademicYear> list = new List<AcademicYear>();
@@ -81,11 +219,11 @@ namespace Exam_Management_System.Models
             return total;
         }
       public  int tt = 0;
-        public int GetPass(int id, int academic,int subject)
+        public int GetPass(int id, int academic,int subject,int mark)
         {
-            int total = 0;
+            int total = mark;
             int res = 0;
-            int cu = 0;
+            int cu = 1;
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
@@ -95,11 +233,12 @@ namespace Exam_Management_System.Models
                 {
                     while (reader.Read())
                     {
-                        int mark = Convert.ToInt32(reader["mark"]);
-                        total += (100 / mark) * 80;
+                        int m = Convert.ToInt32(reader["mark"]);
+                        total += m;
                     }
                 }
-
+                total = (total*80)/200;
+                
                 MySqlCommand cmd1 = new MySqlCommand("select * from assignment where studentrollno_id=" + id + " and academic_id=" + academic + " and subject_id=" + subject, conn);
 
                 using (var reader = cmd1.ExecuteReader())
