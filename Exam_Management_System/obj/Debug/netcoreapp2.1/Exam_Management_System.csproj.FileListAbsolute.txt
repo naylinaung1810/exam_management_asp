@@ -92,9 +92,16 @@ C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\D
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Result\Index.g.cshtml.cs
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Result\AddMark.g.cshtml.cs
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Result\Index2.g.cshtml.cs
+<<<<<<< HEAD
+C:\Users\Lenovo\Desktop\Exam_management\exam_management_asp\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Attendence\AddAttendence.g.cshtml.cs
+C:\Users\Lenovo\Desktop\Exam_management\exam_management_asp\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Result\AddMark.g.cshtml.cs
+C:\Users\Lenovo\Desktop\Exam_management\exam_management_asp\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Result\Index.g.cshtml.cs
+C:\Users\Lenovo\Desktop\Exam_management\exam_management_asp\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Result\Index2.g.cshtml.cs
+=======
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Exam\Index.g.cshtml.cs
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Exam\Index2.g.cshtml.cs
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Exam\AddExam.g.cshtml.cs
+<<<<<<< HEAD
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Assignment\Index.g.cshtml.cs
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Assignment\AddAssignment.g.cshtml.cs
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Student\GenerateRollno.g.cshtml.cs
@@ -102,3 +109,6 @@ C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\D
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Attendence\Print.g.cshtml.cs
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Result\PrintFinal.g.cshtml.cs
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Student\EditStudent.g.cshtml.cs
+=======
+>>>>>>> 4bc344637d7b959a108eb8dd4bb3ad761e6c9638
+>>>>>>> f61fa1f6870c883fdd10393b6520140c7f72e7cc

@@ -6,7 +6,7 @@
 <section class="content-header bg-gray" style="padding-top:10px">
     <h1 style="padding-top:10px;padding-bottom:20px">
         Academic Year
-        <small>Data</small>
+        <small>Information</small>
     </h1>
 </section>
 <!-- Main content -->
@@ -55,7 +55,7 @@
                                     <td>@academic.Id</td>
                                     <td>@academic.Name</td>
                                     <td>
-                                        <a class="btn btn-primary"  data-toggle="modal" data-target="#@academic.Id"><i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-primary" data-toggle="modal" data-target="#@academic.Id"><i class="fa fa-edit"></i></a>
                                         <a class="btn btn-danger" asp-controller="AcademicYear" asp-action="RemoveAcademic" asp-route-id="@academic.Id"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
@@ -83,6 +83,7 @@
                                         </div><!-- /.modal-content -->
                                     </div><!-- /.modal-dialog -->
                                 </div><!-- /.modal -->
+                              
                             }
                         </tbody>
                     </table>

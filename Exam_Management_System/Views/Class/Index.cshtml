@@ -8,7 +8,7 @@
         <div class="col-sm-4">
             <h2 style="">
                 Class
-                <small>Info</small>
+                <small>Information</small>
             </h2>
         </div>
         <div class="col-sm-8">
@@ -29,7 +29,7 @@
                     <i class="fa fa-plus-square fa-2x"></i><span style="font-size:25px"> Add Class</span>
                 </div>
                 <div class="panel-body">
-                    <form>
+                    <form asp-controller="Class" asp-action="AddClass" method="post">
                         <div class="form-group">
                             <label>Class Name</label>
                             <input type="text" class="form-control" name="Name" />
@@ -41,8 +41,8 @@
                                 @{
                                     var year = ViewBag.year;
                                     foreach (var y in year)
-                                    {                                      
-                                            <option value="@y.Id">@y.Name</option>                                       
+                                    {
+                                        <option value="@y.Id">@y.Name</option>
 
                                     }
                                 }
@@ -57,7 +57,7 @@
         </div>
         <div class="col-md-8">
             <div class="panel">
-                
+
                 <div class="panel-body table-responsive">
                     <table class="table table-hover">
                         <thead class="bg-gray">
@@ -77,51 +77,53 @@
                                     <td>@c.Year</td>
                                     <td>
                                         <a class="btn btn-primary" data-toggle="modal" data-target="#@c.Id"><i class="fa fa-edit"></i></a>
-                                        <a class="btn btn-danger" asp-controller="Major" asp-action="RemoveMajor" asp-route-id="@c.Id"><i class="fa fa-trash"></i></a>
+                                        <a class="btn btn-danger" asp-controller="Class" asp-action="RemoveClass" asp-route-id="@c.Id"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
 
                                 <div class="modal fade" tabindex="-1" role="dialog" id="@c.Id">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
-                                          <form asp-controller="Class" asp-action="EditClass" method="post">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title"><i class="fa fa-edit"></i> Edit</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <input type="hidden" class="form-control" name="Id" value="@c.Id" />
-                                                <div class="form-group">
-                                                    <label>Class Name</label>
-                                                    <input type="text" class="form-control" name="Name" value="@c.Name" />
+                                            <form asp-controller="Class" asp-action="EditClass" method="post">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title"><i class="fa fa-edit"></i> Edit</h4>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Year</label>
-                                                    <select name="Year_id" id="year" class="form-control">
-                                                        <option>----Select----</option>
-                                                        @{
-                                                            var year1 = ViewBag.year;
-                                                            foreach (var y in year1)
-                                                            {
-                                                                if (y.Id == c.Year_id)
-                                                                {
-                                                                    <option value="@y.Id" selected>@y.Name</option>
-                                                                }
-                                                                else
-                                                                {
-                                                                    <option value="@y.Id">@y.Name</option>
-                                                                }
+                                                <div class="modal-body">
+                                                    
+                                                        <input type="hidden" class="form-control" name="Id" value="@c.Id" />
+                                                        <div class="form-group">
+                                                            <label>Class Name</label>
+                                                            <input type="text" class="form-control" name="Name" value="@c.Name" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Year</label>
+                                                            <select name="Year_id" id="year" class="form-control">
+                                                                <option>----Select----</option>
+                                                                @{
+                                                                    var year1 = ViewBag.year;
+                                                                    foreach (var y in year1)
+                                                                    {
+                                                                        if (y.Id == c.Year_id)
+                                                                        {
+                                                                            <option value="@y.Id" selected>@y.Name</option>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <option value="@y.Id">@y.Name</option>
+                                                                        }
 
-                                                            }
-                                                        }
-                                                    </select>
+                                                                    }
+                                                                }
+                                                            </select>
+                                                        </div>
+                                                        
                                                 </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                          </form>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </form>
                                         </div><!-- /.modal-content -->
                                     </div><!-- /.modal-dialog -->
                                 </div><!-- /.modal -->
@@ -133,34 +135,16 @@
         </div>
     </div>
 </section>
-@section Scripts{ 
-<script>
-    $(function () {
-<<<<<<< HEAD
-        console.log("OK")
-        /*
-=======
-        //console.log("OK")
-         $("#search").on("keyup", function () {
+
+@section Scripts{
+    <script>
+        $(function () {
+            $("#search").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
                 $("#myTable tr").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
-        ///////////////////////////////////////////////
->>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
-        $.ajax({
-            url: "/class/getYear",
-            type: "GET",
-            success: function (data) {
-                console.log(data);
-                $.each(data, function (i, year) {
-                    var str = ' <option value="' + year.id + '">' + year.name + '</option>';
-                    $('#year').append(str);
-                })
-            }
-        })
-        */
-    })
-</script>
+        });
+    </script>
 }

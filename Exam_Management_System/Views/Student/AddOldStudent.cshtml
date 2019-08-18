@@ -3,14 +3,10 @@
     ViewData["Title"] = "AddOldStudent";
 }
 
-<section class="content-header" style="padding-top:10px">
-    <h1>
-        Add Old Student
-        <small>Data</small>
-    </h1>
-</section>
+<section class="content-header" style="padding-top:0px"></section>
 <!-- Main content -->
 <section class="content container-fluid">
+<<<<<<< HEAD
     <div class="row">
         <div class="box">
             <form asp-controller="Student" asp-action="PostOldStudent" method="post">
@@ -143,6 +139,270 @@
 
         </div>
     </div>
+=======
+    <form id="form1" asp-controller="Student" asp-action="PostNewStudent" method="post" style="margin-top:10px;">
+
+        <center>
+            <h2>University of Computer Studies(Thaton)</h2>
+            <h2>2018-2019 Academic Year</h2>
+            <h2><b>Admission Form</b></h2>
+        </center>
+
+        <div class="row">
+            <div class="col-md-4 text-center" style="margin-left:0px;">
+                <img src="~/images/school.jpg" alt="photo" class="img-thumbnail" width="150px" height="250px" style="margin-top:40px;" /><br /><br />
+                <input type="file" style="margin-left:10px" />
+            </div>
+            <div class="col-md-8 container " style="margin-top:0px;">
+
+                <div style="margin-top:30px" class=" table-responsive">
+                    <table class="table table-bordered col-md-8" style="border:1px solid black">
+                        <tr>
+                            <th class="col-xs-4" style="font-size:large">Academic Year</th>
+                            <td class="col-xs-4" style="font-size:large"><input type="text" class="form-control" style="border:none" /> </td>
+                        </tr>
+                        <tr>
+                            <th class="col-xs-4" style="font-size:large">University NRC Number</th>
+                            <td class="col-xs-4" style="font-size:large"><input type="text" class="form-control" style="border:none" /> </td>
+                        </tr>
+                        <tr>
+                            <th class="col-xs-4" style="font-size:large">University Entrance Year</th>
+                            <td class="col-xs-4" style="font-size:large"><input type="text" class="form-control" style="border:none" /> </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid  table-responsive" style="margin-top:30px;">
+            <table class="table table-bordered" style="border:1px solid black">
+                <tr>
+
+                    <th style="border:hidden"></th>
+                    <th style="border:hidden"></th>
+                    <th style="font-size:large">Student</th>
+                    <th style="font-size:large">Father</th>
+                    <th style="font-size:large">Mother</th>
+                </tr>
+                <tr style="border:1px solid;">
+                    <th style="font-size:large">1</th>
+                    <th style="font-size:large">Name</th>
+
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Name" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_name" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_name" /></td>
+                </tr>
+                <tr style="border:1px solid;">
+                    <th style="font-size:large">2</th>
+                    <th style="font-size:large">Gender</th>
+
+                    <td style="font-size:large" colspan="3">
+                        <select name="sex" class="form-control" style="width:100px;">
+                            <option value="m">Male</option>
+                            <option value="f">Female</option>
+                        </select>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <th style="font-size:large">3</th>
+                    <th style="font-size:large">Nationality</th>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="nationality" /></td>
+                    <td style="font-size:large">
+                        <input type="text" class="form-control" style="border:none" />
+                    </td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" /></td>
+                </tr>
+                <tr>
+                    <th style="font-size:large">4</th>
+                    <th style="font-size:large">Religion</th>
+
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="religion" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" /></td>
+                </tr>
+                <tr>
+                    <th style="font-size:large">5</th>
+                    <th style="font-size:large">City</th>
+
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="city" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" /></td>
+                </tr>
+
+                <tr>
+                    <th style="font-size:large">6</th>
+                    <th style="font-size:large">Phone Number</th>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="phone" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_phone" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_phone" /></td>
+
+                </tr>
+                <tr>
+                    <th style="font-size:large">7</th>
+                    <th style="font-size:large">Job</th>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_job" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_job" /></td>
+
+                </tr>
+
+                <tr>
+                    <th style="font-size:large">8</th>
+                    <th style="font-size:large">NRC</th>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Nrc" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_nrc" /></td>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_nrc" /></td>
+
+                </tr>
+
+            </table>
+        </div>
+
+
+        <div class="container-fluid  table-responsive" style="margin-top:30px;margin-right:5px">
+            <table class="table table-bordered">
+                <tr style="border:1px solid;">
+                    <th style="font-size:large">9</th>
+                    <th style="font-size:large" colspan="2">Birth Date Of Student</th>
+
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="DOB" /></td>
+                </tr>
+
+                <tr>
+                    <th style="font-size:large" rowspan="2">10</th>
+                    <th style="font-size:large" rowspan="2">Passed Matriculation Exam:</th>
+                    <th style="font-size:large">RollNO:</th>
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="reg_no" /></td>
+                </tr>
+                <tr>
+
+                    <th style="font-size:large">Year</th>
+
+                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="reg_date" /></td>
+
+                </tr>
+                <tr>
+                    <th style="font-size:large">11</th>
+                    <th style="font-size:large" colspan="2">Address</th>
+
+                    <td style="font-size:large"><textarea class="form-control" style="border:none" name="address"></textarea></td>
+
+                </tr>
+
+                <tr>
+                    <th style="font-size:large">12</th>
+                    <th style="font-size:large" colspan="2">Email Adderss</th>
+                    <td style="font-size:large"><input type="email" class="form-control" style="border:none" name="email" /></td>
+
+
+                </tr>
+
+
+
+            </table>
+        </div>
+
+
+       
+
+   
+        <div class="container-fluid table-responsive" style="margin-top:10px">
+            <table class="table table-bordered">
+                <tr>
+                    <th class="col-xs-2" style="font-size:large" rowspan="6">10</th>
+                    <th class="col-xs-2" style="font-size:large;"><center>All answered exams</center></th>
+                    <th class="col-xs-2" style="font-size:large"><center>Major</center></th>
+                    <th class="col-xs-2" style="font-size:large"><center>Roll No</center></th>
+                    <th class="col-xs-2" style="font-size:large"><center>Year</center></th>
+                    <th class="col-xs-2" style="font-size:large"><center>Pass/Fail</center></th>
+                </tr>
+                <tr>
+
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                </tr>
+                <tr>
+
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                </tr>
+                <tr>
+
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                </tr>
+                <tr>
+
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                </tr>
+                <tr>
+
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="container-fluid table-responsive" style="margin-top:10px">
+            <table class="table table-bordered">
+                <tr>
+                    <th style="font-size:large" rowspan="4">11</th>
+                    <td style="font-size:large" rowspan="4">Supporter</td>
+                    <td style="font-size:large">(a)</td>
+                    <td style="font-size:large">Name</td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                </tr>
+                <tr>
+
+
+                    <td style="font-size:large">(b)</td>
+                    <td style="font-size:large">Relationship</td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                </tr>
+                <tr>
+
+
+                    <td style="font-size:large">(c)</td>
+                    <td style="font-size:large">Job</td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                </tr>
+                <tr>
+
+
+                    <td style="font-size:large">(d)</td>
+                    <td style="font-size:large">Address and Phone Number</td>
+                    <td style="font-size:large">
+                        <textarea class="form-control" rows="4" style="border:none"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="font-size:large">12</th>
+                    <td colspan="3" style="font-size:large">Accept allowance or not</td>
+                    <td style="font-size:large"><input type="text" style="border:none" /></td>
+                </tr>
+            </table>
+        </div>
+        <center style="margin-bottom:30px;"> <input type="submit" value="Save" style="margin-top:280px;font-weight:bolder;font-size:18px;background-color:cadetblue;color:black;width:100px;height:50px;margin-right:100px;margin-top:50px;border-radius:10px" class="form-control"></center>
+    </form>
+>>>>>>> f61fa1f6870c883fdd10393b6520140c7f72e7cc
 </section>
 
 @section Scripts{

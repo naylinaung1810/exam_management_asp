@@ -6,7 +6,7 @@
 <section class="content-header bg-gray" style="padding-top:10px">
     <h1 style="padding-top:10px;padding-bottom:20px">
         Exam Title
-        <small>Data</small>
+        <small>Information</small>
     </h1>
 </section>
 <!-- Main content -->
@@ -18,7 +18,7 @@
                     <i class="fa fa-plus-square fa-2x"></i><span style="font-size:25px"> Add Exam Title</span>
                 </div>
                 <div class="panel-body">
-                    <form>
+                    <form asp-controller="Examtitle" asp-action="AddExamTitle" method="post">
                         <div class="form-group">
                             <label>Exam Title</label>
                             <input type="text" class="form-control" name="Name" />
@@ -40,27 +40,56 @@
                     </div>
                 </div>
                 <div class="panel-body table-responsive">
-                    <table class="table table-hover">
-                        <thead class="bg-gray">
-                            <tr>
-                                <th>Id</th>
-                                <th>Title</th>
-                                <th>Edit</th>
-                            </tr>
-                        </thead>
-                        <tbody id="myTable">
-                            @foreach (var exam in Model)
-                            {
+                  
+                        <table class="table table-hover">
+                            <thead class="bg-gray">
                                 <tr>
-                                    <td>@exam.Id</td>
-                                    <td>@exam.Name</td>
-                                    <td>
-                                        Edit
-                                    </td>
+                                    <th>Id</th>
+                                    <th>Title</th>
+                                    <th>Edit</th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody id="myTable">
+                                @foreach (var exam in Model)
+                                {
+                                    <tr>
+                                        <td>@exam.Id</td>
+                                        <td>@exam.Name</td>
+                                        <td>
+                                            <a class="btn btn-primary" data-toggle="modal" data-target="#@exam.Id"><i class="fa fa-edit"></i></a>
+                                            <a class="btn btn-danger" asp-controller="Examtitle" asp-action="RemoveExamtitle" asp-route-id="@exam.Id"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <div class="modal fade" tabindex="-1" role="dialog" id="@exam.Id">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <form asp-controller="Examtitle" asp-action="EditExamtitle" method="post">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title"><i class="fa fa-edit"></i> Edit</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                        <input type="hidden" class="form-control" name="Id" value="@exam.Id" />
+                                                        <div class="form-group">
+                                                            <label>Class Name</label>
+                                                            <input type="text" class="form-control" name="Name" value="@exam.Name" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </form>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
+                                }
+
+                            </tbody>
+                        </table>
+                        
                 </div>
             </div>
         </div>

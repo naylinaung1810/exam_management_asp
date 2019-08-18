@@ -51,6 +51,10 @@ namespace Exam_Management_System.Controllers
             }
             return "Year is successfully added!";
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> f61fa1f6870c883fdd10393b6520140c7f72e7cc
         [HttpPost]
         public IActionResult EditYear(Year years)
         {
@@ -67,9 +71,29 @@ namespace Exam_Management_System.Controllers
             }
             return Redirect("/year/index");
         }
+<<<<<<< HEAD
 //=======
 
        
 //>>>>>>> fbdfd7e4dfb6e8a842ae9b8b815c127f179d4b3d
+=======
+        public IActionResult RemoveYear(int id)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                string sql = $"Delete from year where id={id}";
+
+                using (MySqlCommand command = new MySqlCommand(sql, conn))
+                {
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            return Redirect("/year/index");
+        }
+
+>>>>>>> f61fa1f6870c883fdd10393b6520140c7f72e7cc
     }
 }
