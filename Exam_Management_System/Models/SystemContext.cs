@@ -179,6 +179,27 @@ namespace Exam_Management_System.Models
             }
             return academicYear;
         }
+
+        public AcademicYear GetAcademicSecond()
+        {
+            //List<AcademicYear> list = new List<AcademicYear>();
+            AcademicYear academicYear = new AcademicYear();
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM (SELECT * FROM academicyear  ORDER BY  id DESC LIMIT 2) tbl ORDER BY  id LIMIT 1", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        academicYear.Id = Convert.ToInt32(reader["id"]);
+                        academicYear.Name = reader["academic_name"].ToString();
+                    }
+                }
+            }
+            return academicYear;
+        }
         public String Grade(int mark)
         {
             string grade = null;

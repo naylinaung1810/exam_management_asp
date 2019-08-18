@@ -36,8 +36,9 @@ namespace Exam_Management_System.Controllers
         }
         public IActionResult GenerateRollno()
         {
-            int academic = 0;
+           
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            int academic = context.GetAcademic().Id;
             List<Student> list = new List<Student>();
             using (MySqlConnection conn = context.GetConnection())
             {
@@ -54,13 +55,14 @@ namespace Exam_Management_System.Controllers
                         {
                             Id = Id,
                             Name = name,
+                            
                             Year = reader["year_name"].ToString(),
                             Sex = reader["gender"].ToString(),
                             Father_name = reader["father_name"].ToString(),
                             Mother_name = reader["mother_name"].ToString(),
                             Phone = reader["phone"].ToString(),
-                            Address = reader["address"].ToString(),
-                            Mark = Convert.ToInt32(reader["mark"])
+                           Address = reader["address"].ToString(),
+                           Mark = Convert.ToInt32(reader["mark"])
                         });
                     }
                 }
@@ -312,10 +314,11 @@ namespace Exam_Management_System.Controllers
         {
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
             List<Student> list = new List<Student>();
+            int academic = context.GetAcademic().Id;
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM studentrollno,student,student_detail,class,year,major WHERE student.id=studentrollno.student_id and studentrollno.id=student_detail.studentrollno_id and student_detail.year_id=year.id and student_detail.class_id=class.id and student_detail.year_id="+id+" and student_detail.major_id=major.id and student_detail.major_id=" + major+" and student_detail.class_id="+class_id, conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM studentrollno,student,student_detail,class,year,major WHERE student.id=studentrollno.student_id and studentrollno.id=student_detail.studentrollno_id and student_detail.year_id=year.id and student_detail.class_id=class.id and student_detail.year_id="+id+" and student_detail.major_id=major.id and student_detail.major_id=" + major+" and student_detail.class_id="+class_id+" and student_detail.academic_id="+academic, conn);
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -359,7 +362,7 @@ namespace Exam_Management_System.Controllers
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                string sql = $"Insert Into student (student_name,reg_no,reg_date,father_name,father_job,mother_name,mother_job,father_religion,mother_religion,religion,father_nrc,mother_nrc,nrc,gender,city,father_city,mother_city,nationality,father_nationality,mother_nationality,dob,academicyear_id,mark,img) Values ('{student.Name}','{student.Reg_no}','{student.Reg_date}','{student.Father_name}','{student.Father_job}','{student.Mother_name}','{student.Mother_job}','{student.Father_religion}','{student.Mother_religion}','{student.Religion}','{student.Father_nrc}','{student.Mother_nrc}','{student.Nrc}','{student.Sex}','{student.City}','{student.Father_city}','{student.Mother_city}','{student.Nationality}','{student.Father_nationality}','{student.Mother_nationality}','{student.DOB}','{student.Academic_id}','{student.Mark}','{img_name}')";
+                string sql = $"Insert Into student (student_name,reg_no,reg_date,father_name,father_job,mother_name,mother_job,father_religion,mother_religion,religion,father_nrc,mother_nrc,nrc,gender,city,father_city,mother_city,nationality,father_nationality,mother_nationality,dob,academicyear_id,img) Values ('{student.Name}','{student.Reg_no}','{student.Reg_date}','{student.Father_name}','{student.Father_job}','{student.Mother_name}','{student.Mother_job}','{student.Father_religion}','{student.Mother_religion}','{student.Religion}','{student.Father_nrc}','{student.Mother_nrc}','{student.Nrc}','{student.Sex}','{student.City}','{student.Father_city}','{student.Mother_city}','{student.Nationality}','{student.Father_nationality}','{student.Mother_nationality}','{student.DOB}','{student.Academic_id}','{img_name}')";
                 using (MySqlCommand command = new MySqlCommand(sql, conn))
                 {
                     command.ExecuteNonQuery();
@@ -475,6 +478,32 @@ namespace Exam_Management_System.Controllers
         {
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
             int academic_id = context.GetAcademic().Id;
+            List<Rollno> list = new List<Rollno>();
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM student,studentrollno,student_detail where student.id=studentrollno.student_id and studentrollno.id=student_detail.studentrollno_id and studentrollno.academic_id=" + academic_id, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new Rollno()
+                        {
+                            Id = Convert.ToInt32(reader["id"]),
+                            Roll = reader["rollno"].ToString(),
+                            Name = reader["student_name"].ToString(),
+                        });
+                    }
+                }
+            }
+            return list;
+        }
+
+        public List<Rollno> GetOldRollNo()
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            int academic_id = context.GetAcademicSecond().Id;
             List<Rollno> list = new List<Rollno>();
             using (MySqlConnection conn = context.GetConnection())
             {
