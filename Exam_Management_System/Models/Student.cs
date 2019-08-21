@@ -52,5 +52,6 @@ namespace Exam_Management_System.Models
         public string Father_religion { get; set; }
         public string Mother_religion { get; set; }
         public string Email { get; set; }
+        public string Img { get; set; }
     }
 }

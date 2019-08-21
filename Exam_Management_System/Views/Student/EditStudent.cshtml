@@ -12,166 +12,170 @@
 </section>
 <!-- Main content -->
 <section class="content container-fluid">
-    <div class="row">
-        <h2><i class="fa fa-edit"></i> Edit Student</h2>
-    </div>
-    <hr />
-    <form id="form1" asp-controller="Student" asp-action="PostEditStudent" method="post" style="margin-top:10px;" enctype="multipart/form-data">       
-
-        <div class="container-fluid  table-responsive" style="margin-top:30px;">
-            <table class="table table-bordered" style="border:1px solid black">
-                <tr>
-
-                    <th style="border:hidden"></th>
-                    <th style="border:hidden"></th>
-                    <th style="font-size:large">Student</th>
-                    <th style="font-size:large">Father</th>
-                    <th style="font-size:large">Mother</th>
-                </tr>
-                <tr style="border:1px solid;">
-                    <th style="font-size:large">1</th>
-                    <th style="font-size:large">Name</th>
-
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Name" required value="@student.Name"/></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_name" required value="@student.Father_name"/></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_name" required value="@student.Mother_name"/></td>
-                </tr>
-                <tr style="border:1px solid;">
-                    <th style="font-size:large">2</th>
-                    <th style="font-size:large">Gender</th>
-
-                    <td style="font-size:large" colspan="3">
-                        <select name="sex" class="form-control" style="width:100px;">
-                            <option value="m" selected>Male</option>
-                            <option value="f" selected>Female</option>
-                          
-
-
-
-                        </select>
-                    </td>
-
-                </tr>
-
-                <tr>
-                    <th style="font-size:large">3</th>
-                    <th style="font-size:large">Nationality</th>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="nationality" required value="@student.Nationality"/></td>
-                    <td style="font-size:large">
-                        <input type="text" class="form-control" style="border:none" name="Father_nationality" required value="@student.Father_nationality"/>
-                    </td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Mother_nationality" required value="@student.Mother_nationality"/></td>
-                </tr>
-                <tr>
-                    <th style="font-size:large">4</th>
-                    <th style="font-size:large">Religion</th>
-
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="religion" required value="@student.Religion"/></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Father_religion" required value="@student.Father_religion"/></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Mother_religion" required value="@student.Mother_religion"/></td>
-                </tr>
-                <tr>
-                    <th style="font-size:large">5</th>
-                    <th style="font-size:large">City</th>
-
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="city" required value="@student.City"/></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Father_city" required value="@student.Father_city"/></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Mother_city" required value="@student.Mother_city"/></td>
-                </tr>
-
-                <tr>
-                    <th style="font-size:large">6</th>
-                    <th style="font-size:large">Phone Number</th>
-                    <td style="font-size:large"><input type="tel" class="form-control" style="border:none" name="phone" required value="@student.Phone"/></td>
-                    <td style="font-size:large"><input type="tel" class="form-control" style="border:none" name="father_phone" required value="@student.Father_phone"/></td>
-                    <td style="font-size:large"><input type="tel" class="form-control" style="border:none" name="mother_phone" required value="@student.Mother_phone"/></td>
-
-                </tr>
-                <tr>
-                    <th style="font-size:large">7</th>
-                    <th style="font-size:large">Job</th>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" required /></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_job" required value="@student.Father_job"/></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_job" required value="@student.Mother_job"/></td>
-
-                </tr>
-
-                <tr>
-                    <th style="font-size:large">8</th>
-                    <th style="font-size:large">NRC</th>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Nrc" required value="@student.Nrc"/></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_nrc" required value="@student.Father_nrc"/></td>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_nrc" required value="@student.Mother_nrc"/></td>
-
-                </tr>
-
-            </table>
+    <div class="box">
+        <div class="box-header">
+            <h2><i class="fa fa-edit"></i> Edit Student</h2>
         </div>
+        <div class="box-body">
+            <form id="form1" asp-controller="Student" asp-action="PostEditStudent" method="post" style="margin-top:10px;" enctype="multipart/form-data">
+                <input type="hidden" class="form-control" style="border:none" name="Id" required value="@student.Id" />
+                <div class="container-fluid  table-responsive" style="margin-top:30px;">
+                    <table class="table table-bordered" style="border:1px solid black">
+                        <tr>
+
+                            <th style="border:hidden"></th>
+                            <th style="border:hidden"></th>
+                            <th style="font-size:large">Student</th>
+                            <th style="font-size:large">Father</th>
+                            <th style="font-size:large">Mother</th>
+                        </tr>
+                        <tr style="border:1px solid;">
+                            <th style="font-size:large">1</th>
+                            <th style="font-size:large">Name</th>
+
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Name" required value="@student.Name" /></td>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_name" required value="@student.Father_name" /></td>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_name" required value="@student.Mother_name" /></td>
+                        </tr>
+                        <tr style="border:1px solid;">
+                            <th style="font-size:large">2</th>
+                            <th style="font-size:large">Gender</th>
+
+                            <td style="font-size:large" colspan="3">
+                                <select name="sex" class="form-control" style="width:100px;">
+                                    <option value="m" selected>Male</option>
+                                    <option value="f" selected>Female</option>
 
 
-        <div class="container-fluid  table-responsive" style="margin-top:30px;margin-right:5px">
-            <table class="table table-bordered">
-                <tr style="border:1px solid;">
-                    <th style="font-size:large">9</th>
-                    <th style="font-size:large" colspan="2">Birth Date Of Student</th>
 
-                    <td style="font-size:large">
-                        <div class="form-group">
 
-                            <div class="input-group date">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
+                                </select>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <th style="font-size:large">3</th>
+                            <th style="font-size:large">Nationality</th>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="nationality" required value="@student.Nationality" /></td>
+                            <td style="font-size:large">
+                                <input type="text" class="form-control" style="border:none" name="Father_nationality" required value="@student.Father_nationality" />
+                            </td>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Mother_nationality" required value="@student.Mother_nationality" /></td>
+                        </tr>
+                        <tr>
+                            <th style="font-size:large">4</th>
+                            <th style="font-size:large">Religion</th>
+
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="religion" required value="@student.Religion" /></td>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Father_religion" required value="@student.Father_religion" /></td>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Mother_religion" required value="@student.Mother_religion" /></td>
+                        </tr>
+                        <tr>
+                            <th style="font-size:large">5</th>
+                            <th style="font-size:large">City</th>
+
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="city" required value="@student.City" /></td>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Father_city" required value="@student.Father_city" /></td>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Mother_city" required value="@student.Mother_city" /></td>
+                        </tr>
+
+                        <tr>
+                            <th style="font-size:large">6</th>
+                            <th style="font-size:large">Phone Number</th>
+                            <td style="font-size:large"><input type="tel" class="form-control" style="border:none" name="phone" required value="@student.Phone" /></td>
+                            <td style="font-size:large"><input type="tel" class="form-control" style="border:none" name="father_phone" required value="@student.Father_phone" /></td>
+                            <td style="font-size:large"><input type="tel" class="form-control" style="border:none" name="mother_phone" required value="@student.Mother_phone" /></td>
+
+                        </tr>
+                        <tr>
+                            <th style="font-size:large">7</th>
+                            <th style="font-size:large">Job</th>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" required /></td>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_job" required value="@student.Father_job" /></td>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_job" required value="@student.Mother_job" /></td>
+
+                        </tr>
+
+                        <tr>
+                            <th style="font-size:large">8</th>
+                            <th style="font-size:large">NRC</th>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Nrc" required value="@student.Nrc" /></td>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_nrc" required value="@student.Father_nrc" /></td>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_nrc" required value="@student.Mother_nrc" /></td>
+
+                        </tr>
+
+                    </table>
+                </div>
+
+
+                <div class="container-fluid  table-responsive" style="margin-top:30px;margin-right:5px">
+                    <table class="table table-bordered">
+                        <tr style="border:1px solid;">
+                            <th style="font-size:large">9</th>
+                            <th style="font-size:large" colspan="2">Birth Date Of Student</th>
+
+                            <td style="font-size:large">
+                                <div class="form-group">
+
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" name="DOB" class="form-control pull-right" id="datepicker" required value="@student.DOB">
+                                    </div>
+                                    <!-- /.input group -->
                                 </div>
-                                <input type="text" name="DOB" class="form-control pull-right" id="datepicker" required value="@student.DOB">
-                            </div>
-                            <!-- /.input group -->
-                        </div>
-                    </td>
-                </tr>
+                            </td>
+                        </tr>
 
-                <tr>
-                    <th style="font-size:large" rowspan="3">10</th>
-                    <th style="font-size:large" rowspan="3">Passed Matriculation Exam:</th>
-                    <th style="font-size:large">Roll No:</th>
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="reg_no" required value="@student.Reg_no"/></td>
-                </tr>
-                <tr>
+                        <tr>
+                            <th style="font-size:large" rowspan="3">10</th>
+                            <th style="font-size:large" rowspan="3">Passed Matriculation Exam:</th>
+                            <th style="font-size:large">Roll No:</th>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="reg_no" required value="@student.Reg_no" /></td>
+                        </tr>
+                        <tr>
 
-                    <th style="font-size:large">Year</th>
+                            <th style="font-size:large">Year</th>
 
-                    <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="reg_date" required value="@student.Reg_date"/></td>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="reg_date" required value="@student.Reg_date" /></td>
 
-                </tr>
-                <tr>
+                        </tr>
+                        <tr>
 
-                    <th style="font-size:large">Mark</th>
+                            <th style="font-size:large">Mark</th>
 
-                    <td style="font-size:large"><input type="number" class="form-control" style="border:none" name="Mark" required value="@student.Mark"/></td>
+                            <td style="font-size:large"><input type="number" class="form-control" style="border:none" name="Mark" required value="@student.Mark" /></td>
 
-                </tr>
-                <tr>
-                    <th style="font-size:large">11</th>
-                    <th style="font-size:large" colspan="2">Address</th>
+                        </tr>
+                        <tr>
+                            <th style="font-size:large">11</th>
+                            <th style="font-size:large" colspan="2">Address</th>
 
-                    <td style="font-size:large"><textarea class="form-control" style="border:none" name="address" required>@student.Address</textarea></td>
+                            <td style="font-size:large"><textarea class="form-control" style="border:none" name="address" required>@student.Address</textarea></td>
 
-                </tr>
+                        </tr>
 
-                <tr>
-                    <th style="font-size:large">12</th>
-                    <th style="font-size:large" colspan="2">Email Adderss</th>
-                    <td style="font-size:large"><input type="email" class="form-control" style="border:none" name="email" required value="@student.Email"/></td>
+                        <tr>
+                            <th style="font-size:large">12</th>
+                            <th style="font-size:large" colspan="2">Email Adderss</th>
+                            <td style="font-size:large"><input type="email" class="form-control" style="border:none" name="email" required value="@student.Email" /></td>
 
 
-                </tr>
+                        </tr>
 
-            </table>
+                    </table>
+                </div>
+
+
+                <center style="margin-bottom:30px;"> <input type="submit" value="Edit" style="margin-top:280px;font-weight:bolder;font-size:18px;background-color:cadetblue;color:black;width:100px;height:50px;margin-right:100px;margin-top:50px;border-radius:10px" class="form-control"></center>
+
+            </form>
         </div>
-
-
-        <center style="margin-bottom:30px;"> <input type="submit" value="Edit" style="margin-top:280px;font-weight:bolder;font-size:18px;background-color:cadetblue;color:black;width:100px;height:50px;margin-right:100px;margin-top:50px;border-radius:10px" class="form-control"></center>
-
-    </form>
+    </div>
+    
 </section>
 @section Scripts{
     <script>

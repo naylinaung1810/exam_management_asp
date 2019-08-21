@@ -87,6 +87,7 @@ namespace Exam_Management_System.Controllers
 
                         student.Id = Id;
                         student.Name = name;
+                        student.Img= reader["img"].ToString();
                         student.Rollno= reader["rollno"].ToString();
                         student.Phone = reader["phone"].ToString();
                         student.Address = reader["address"].ToString();
@@ -159,7 +160,7 @@ namespace Exam_Management_System.Controllers
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                string sql = $"UPDATE student SET student_name={student.Name},gender={student.Sex},reg_date={student.Reg_date},father_name={student.Father_name},father_job={student.Father_job},father_nrc={student.Father_nrc},father_city={student.Father_city},father_phone={student.Father_phone},father_religion={student.Father_religion},father_nationality={student.Father_nationality},mother_name={student.Mother_name},mother_job={student.Mother_job},mother_nrc={student.Mother_nrc},mother_city={student.Mother_city},mother_phone={student.Mother_phone},mother_religion={student.Mother_religion},mother_nationality={student.Mother_nationality},religion={student.Religion},nationality={student.Nationality} where student.id={student.Id}";
+                string sql = $"UPDATE student SET student_name='{student.Name}',gender='{student.Sex}',reg_date='{student.Reg_date}',father_name='{student.Father_name}',father_job='{student.Father_job}',father_nrc='{student.Father_nrc}',father_city='{student.Father_city}',father_religion='{student.Father_religion}',father_nationality='{student.Father_nationality}',mother_name='{student.Mother_name}',mother_job='{student.Mother_job}',mother_nrc='{student.Mother_nrc}',mother_city='{student.Mother_city}',mother_religion='{student.Mother_religion}',mother_nationality='{student.Mother_nationality}',religion='{student.Religion}',nationality='{student.Nationality}' where id={student.Id}";
                 using (MySqlCommand command1 = new MySqlCommand(sql, conn))
                 {
                     command1.ExecuteNonQuery();
