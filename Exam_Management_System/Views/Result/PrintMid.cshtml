@@ -12,7 +12,7 @@
             <input class="hidden" value="@ViewBag.year_id" id="year_id" />
             <input class="hidden" value="@ViewBag.major_id" id="major_id" />
             <input class="hidden" value="@ViewBag.class_id" id="class_id" />
-            <div class="panel-heading"></div>
+            <div class="panel-heading" id="title"></div>
             <div class="panel-body">
                 <table class="table table-bordered">
                     <thead>
@@ -51,6 +51,8 @@
             success: function (data) {
                 var start = 0;
                 console.log(data);
+                var class_name = data[0].class_name;
+                $('#title').html(class_name);
                 $('tbody').html(null);
                 $.each(data, function (i, item) {
                     if (item.rollno_id == start) {

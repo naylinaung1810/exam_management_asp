@@ -117,6 +117,11 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">HEADER</li>
                     <!-- Optionally, you can add icons to the links -->
+                    <li>
+                        <a asp-controller="AcademicYear" asp-action="Index">
+                            <i class="fa fa-plus-square"></i> <span>Academic Year</span>
+                        </a>
+                    </li>
 
                     <li class="treeview">
                         <a href="#">
@@ -202,7 +207,7 @@
 
                     <li>
                         <a asp-controller="Year" asp-action="Index">
-                            <i class="fa fa-user-circle"></i> <span>Year</span>
+                            <i class="fa fa-plus-square"></i> <span>Year</span>
                         </a>
                     </li>
                     <li>
@@ -210,14 +215,10 @@
                             <i class="fa fa-user-circle"></i> <span>Major</span>
                         </a>
                     </li>
-                    <li>
-                        <a asp-controller="AcademicYear" asp-action="Index">
-                            <i class="fa fa-user-circle"></i> <span>Academic Year</span>
-                        </a>
-                    </li>
+
                     <li>
                         <a asp-controller="Examtitle" asp-action="Index">
-                            <i class="fa fa-user-circle"></i> <span>Exam Title</span>
+                            <i class="fa fa-plus-square"></i> <span>Exam Title</span>
                         </a>
                     </li>
                 </ul>
