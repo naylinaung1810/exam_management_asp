@@ -12,6 +12,7 @@
             <input class="hidden" value="@ViewBag.year_id" id="year_id" />
             <input class="hidden" value="@ViewBag.major_id" id="major_id" />
             <input class="hidden" value="@ViewBag.class_id" id="class_id" />
+<<<<<<< HEAD
             <div class="panel-heading">
                 <center>
                     <h1>Computer University (Thaton)</h1>
@@ -20,6 +21,9 @@
                     <h4>1CST-A</h4>
                 </center>
             </div>
+=======
+            <div class="panel-heading" id="title"></div>
+>>>>>>> d15ad7f3534bb7fef89625aa4e18de688973c700
             <div class="panel-body">
                 <table class="table table-bordered">
                     <thead>
@@ -59,6 +63,8 @@
             success: function (data) {
                 var start = 0;
                 console.log(data);
+                var class_name = data[0].class_name;
+                $('#title').html(class_name);
                 $('tbody').html(null);
                 $.each(data, function (i, item) {
                     if (item.rollno_id == start) {
