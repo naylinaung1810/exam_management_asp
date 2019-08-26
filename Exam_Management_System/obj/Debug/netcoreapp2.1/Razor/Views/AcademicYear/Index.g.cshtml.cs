@@ -85,7 +85,7 @@ using Exam_Management_System.Models;
                     ");
             EndContext();
             BeginContext(715, 552, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2a9b0496b466440a8233336207f6eccd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "714c6c936b6f46249037debe500419d2", async() => {
                 BeginContext(790, 470, true);
                 WriteLiteral(@"
                         <div class=""form-group"">
@@ -183,7 +183,7 @@ using Exam_Management_System.Models;
             WriteLiteral("\"><i class=\"fa fa-edit\"></i></a>\r\n                                        ");
             EndContext();
             BeginContext(2681, 143, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21dcf3861a0a4cbe8dbf00f52ed882da", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9029a28e9e0c4c9da41a937e26c2beda", async() => {
                 BeginContext(2793, 27, true);
                 WriteLiteral("<i class=\"fa fa-trash\"></i>");
                 EndContext();
@@ -231,7 +231,7 @@ WriteAttributeValue("", 2996, academic.Id, 2996, 12, false);
             WriteLiteral(">\r\n                                    <div class=\"modal-dialog\" role=\"document\">\r\n                                        <div class=\"modal-content\">\r\n                                            ");
             EndContext();
             BeginContext(3205, 1565, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e510bc60382d4d41be9b14f51b5b0d7d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9f44cad2cf2448e7a10c43fdf7f8484f", async() => {
                 BeginContext(3285, 603, true);
                 WriteLiteral(@"
                                                 <div class=""modal-header"">

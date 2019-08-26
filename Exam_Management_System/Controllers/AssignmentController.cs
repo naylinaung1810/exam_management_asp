@@ -56,13 +56,37 @@ namespace Exam_Management_System.Controllers
         [HttpPost]
         public void PostAddAssignment(Assignment assignment)
         {
+            int c = 0;
+            string sql = null;
+            int? mark = 0;
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
             int academic_id = context.GetAcademic().Id;
             int student_id = context.GetStudentId(assignment.Rollno, academic_id);
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                string sql = $"Insert Into assignment (studentrollno_id,subject_id,mark,academic_id) Values ('{student_id}','{assignment.Subject_id}','{assignment.Mark}','{academic_id}')";
+                string check = $"Select count(*),mark from assignment where studentrollno_id={student_id} and subject_id={assignment.Subject_id}";
+                using (MySqlCommand command = new MySqlCommand(check, conn))
+                {
+                    c=Convert.ToInt32(command.ExecuteScalar());
+                }
+                if(c==0)
+                {
+                    sql = $"Insert Into assignment (studentrollno_id,subject_id,mark,academic_id) Values ('{student_id}','{assignment.Subject_id}','{assignment.Mark}','{academic_id}')";
+                }else
+                {
+                    string aa = $"Select mark from assignment where studentrollno_id={student_id} and subject_id={assignment.Subject_id}";
+                    using (MySqlCommand command = new MySqlCommand(aa, conn))
+                    {
+                        var reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            mark = Convert.ToInt32(reader["mark"]);
+                        }
+                    }
+                    sql = $"Update assignment set mark={mark + assignment.Mark} where studentrollno_id={student_id} and subject_id={assignment.Subject_id}";
+                }
+                
                 using (MySqlCommand command = new MySqlCommand(sql, conn))
                 {
                     command.ExecuteNonQuery();

@@ -66,6 +66,7 @@ namespace Exam_Management_System.Controllers
                              Email= reader["email"].ToString(),
                              Address= reader["address"].ToString(),
                             Class = reader["class_name"].ToString(),
+                            Img= reader["img"].ToString(),
                         });
                     }
                 }
@@ -82,7 +83,7 @@ namespace Exam_Management_System.Controllers
             using (MySqlConnection conn1 = context.GetConnection())
             {
                 conn1.Open();
-                MySqlCommand cmd1 = new MySqlCommand("select * from mark_mid,subject,studentrollno,student_detail,student,year,major where mark_mid.subject_id=subject.id and mark_mid.studentrollno_id=studentrollno.id and student_detail.studentrollno_id=studentrollno.id and studentrollno.student_id=student.id and student_detail.year_id=year.id and student_detail.major_id=major.id and student_detail.major_id=" + major+" and student_detail.year_id="+id+" and mark_mid.academic_id=" + academic_id+" and student_detail.class_id="+class_id, conn1);
+                MySqlCommand cmd1 = new MySqlCommand("select * from mark_mid,subject,studentrollno,student_detail,student,year,major,class where student_detail.class_id=class.id and mark_mid.subject_id=subject.id and mark_mid.studentrollno_id=studentrollno.id and student_detail.studentrollno_id=studentrollno.id and studentrollno.student_id=student.id and student_detail.year_id=year.id and student_detail.major_id=major.id and student_detail.major_id=" + major+" and student_detail.year_id="+id+" and mark_mid.academic_id=" + academic_id+" and student_detail.class_id="+class_id, conn1);
 
                 using (var reader = cmd1.ExecuteReader())
                 {
@@ -99,7 +100,9 @@ namespace Exam_Management_System.Controllers
                             Grade=context.Grade(Convert.ToInt32(reader["mark"])),
                             Rollno_id = Convert.ToInt32(reader["studentrollno_id"]),
                             Subject = reader["subject_name"].ToString(),
-                            Pass=context.GetPass(Convert.ToInt32(reader["studentrollno_id"]),academic_id,Convert.ToInt32(reader["subject_id"]),Convert.ToInt32(reader["mark"])),
+                            Class= reader["class_name"].ToString(),
+                             
+                            Pass =context.GetPass(Convert.ToInt32(reader["studentrollno_id"]),academic_id,Convert.ToInt32(reader["subject_id"]),Convert.ToInt32(reader["mark"])),
                         });
                     }
                 }

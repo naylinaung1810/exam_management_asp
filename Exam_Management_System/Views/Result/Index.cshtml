@@ -142,13 +142,14 @@
                 </div>
                 <div class="col-xs-6">
                     <a class="btn btn-app pull-right" id="print">
-                        <i class="fa fa-save"></i> Print
+                        <i class="fa fa-print"></i> Print
                     </a>
                 </div>
             </div>
             <input class="hidden" value="@ViewBag.year_id" id="year_id" />
             <input class="hidden" value="@ViewBag.major_id" id="major_id" />
             <div class="box">
+                <div class="box-header" id="tit" style="font-size:20px;margin-left:20px"></div>
                 <div class="box-body">
                     <table class="table text-center table-hover" style="margin-right:10px">
                         <thead>
@@ -170,68 +171,72 @@
                         </tbody>
                     </table>
                     <!--////////////////////////////////////////////////////////////////-->
-                    <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title"><i class="fa fa-user-circle fa-2x"></i> <span id="title" style="font-size:25px"></span> <span style="font-size:25px"> Info</span></h4>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h3 class="modal-title" id="myModalLabel"><i class="fa fa-user"></i> Student Info</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <img class="img-rounded img-responsive" id="image" />
                                 </div>
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-xs-3">
-                                                <img src="~/adminLTE/img/avatar04.png" class="image img-circle img-responsive" />
-                                            </div>
-                                            <div class="col-xs-8" style="border-left:1px solid gray">
-                                                <div>
-                                                    <div class="row" style="margin-top:5px">
-                                                        <div class="col-xs-4 text-center">Roll No :</div>
-                                                        <div class="col-xs-8" id="stu_roll"></div>
-                                                    </div>
-                                                    <div class="row" style="margin-top:7px">
-                                                        <div class="col-xs-4 text-center" style="font-size:16px;">Name :</div>
-                                                        <div class="col-xs-8" id="stu_name"></div>
-                                                    </div>
-                                                    <div class="row" style="margin-top:7px">
-                                                        <div class="col-xs-4 text-center" style="font-size:16px;">Class :</div>
-                                                        <div class="col-xs-8" id="stu_class"></div>
-                                                    </div>
-                                                    <div class="row" style="margin-top:7px">
-                                                        <div class="col-xs-4 text-center" style="font-size:16px;">Year :</div>
-                                                        <div class="col-xs-8" id="stu_year"></div>
-                                                    </div>
-                                                    <div class="row" style="margin-top:7px">
-                                                        <div class="col-xs-4 text-center" style="font-size:16px;">Phone :</div>
-                                                        <div class="col-xs-8" id="stu_phone"></div>
-                                                    </div>
-                                                    <div class="row" style="margin-top:7px">
-                                                        <div class="col-xs-4 text-center" style="font-size:16px;">Email :</div>
-                                                        <div class="col-xs-8" id="stu_email"></div>
-                                                    </div>
-                                                    <div class="row" style="margin-top:7px">
-                                                        <div class="col-xs-4 text-center" style="font-size:16px;">Address :</div>
-                                                        <div class="col-xs-8" id="stu_address"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                                <div class="col-xs-7">
+                                    <div class="panel">
+                                        <div class="row" style="margin-top:5px">
+                                            <div class="col-xs-4 text-center">Roll No :</div>
+                                            <div class="col-xs-8" id="stu_roll"></div>
                                         </div>
-                                        <div class="row" style="margin-top:10px">
-                                            <div class="container" id="showMark" style="border:1px solid gray;padding:15px;border-radius:10px">
-
-                                            </div>
+                                        <div class="row" style="margin-top:7px">
+                                            <div class="col-xs-4 text-center" style="font-size:16px;">Name :</div>
+                                            <div class="col-xs-8" id="stu_name"></div>
                                         </div>
+                                        <div class="row" style="margin-top:7px">
+                                            <div class="col-xs-4 text-center" style="font-size:16px;">Class :</div>
+                                            <div class="col-xs-8" id="stu_class"></div>
+                                        </div>
+                                        <div class="row" style="margin-top:7px">
+                                            <div class="col-xs-4 text-center" style="font-size:16px;">Year :</div>
+                                            <div class="col-xs-8" id="stu_year"></div>
+                                        </div>
+                                        <div class="row" style="margin-top:7px">
+                                            <div class="col-xs-4 text-center" style="font-size:16px;">Phone :</div>
+                                            <div class="col-xs-8" id="stu_phone"></div>
+                                        </div>
+                                        <div class="row" style="margin-top:7px">
+                                            <div class="col-xs-4 text-center" style="font-size:16px;">Email :</div>
+                                            <div class="col-xs-8" id="stu_email"></div>
+                                        </div>
+                                        <div class="row" style="margin-top:7px">
+                                            <div class="col-xs-4 text-center" style="font-size:16px;">Address :</div>
+                                            <div class="col-xs-8" id="stu_address"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row" style="padding:20px;">
+                                <div class="col-sm-12" id="" style="border:1px solid gray;border-radius:10px;padding-top:20px">
+                                    <div class="row text-center">
+                                        <div class="col-xs-4 "><h4>Subject</h4></div>
+                                        <div class="col-xs-4 "><h4>Mark</h4></div>
+                                        <div class="col-xs-4 "><h4>Grade</h4></div>
+                                    </div>
+                                    <hr />
+                                    <div id="showMark">
 
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                </div>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
-                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!--End-->
             </div>
         </div>
     </div>
@@ -266,9 +271,12 @@
                     type: "GET",
                     success: function (data) {
                         var start = 0;
+                      
                         console.log(data);
                         $('tbody').html(null);
                         $.each(data, function (i, item) {
+                            var tit = item.year + ' (' + item.class + ')';
+                            $('#tit').html(tit);
                             $('#year').html(item.year);
                             $('#major').html(item.major);
                             if (item.rollno_id == start) {
@@ -298,6 +306,8 @@
                 url: "/Result/GetStudentResult/" + e.target.id,
                 type: "GET",
                 success: function (data) {
+                    console.log(data);
+                     $('#image').attr("src", "/student_img/" + data[0].img);
                     $('#title').html(data[0].name);
                     $('#stu_roll').html(data[0].rollno);
                     $('#stu_name').html(data[0].name);
@@ -306,12 +316,23 @@
                     $('#stu_phone').html(data[0].phone);
                     $('#stu_email').html(data[0].email);
                     $('#stu_address').html(data[0].address);
+                     $('#showMark').html(null);
                     $.each(data, function (i, item) {
-                        var str = '<div class="row text-center">' +
-                            '<div class="col-xs-4 " >' + item.subject + '</div>' +
-                            '<div class="col-xs-4">' + item.s_mark + '</div>' +
-                            '<div class="col-xs-4">' + item.grade + '</div>' +
-                            '</div><hr/>';
+                        var str = null;
+                        if (item.s_mark < 40) {
+                            str = '<div class="row text-center text-danger text-bold" >' +
+                                '<div class="col-xs-4 " >' + item.subject + '</div>' +
+                                '<div class="col-xs-4">' + item.s_mark + '</div>' +
+                                '<div class="col-xs-4">' + item.grade + '</div>' +
+                                '</div><hr/>';
+                        } else {
+                             str = '<div class="row text-center text-success text-bold"">' +
+                                '<div class="col-xs-4 " >' + item.subject + '</div>' +
+                                '<div class="col-xs-4">' + item.s_mark + '</div>' +
+                                '<div class="col-xs-4">' + item.grade + '</div>' +
+                                '</div><hr/>';
+                        }
+                       
                         $('#showMark').append(str);
                     });
                      

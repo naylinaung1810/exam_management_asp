@@ -10,6 +10,7 @@
     </h1>
 </section>
 <!-- Main content -->
+<div id="alert"></div>
 <section class="content container-fluid">
     <div class="container">
         <div class="row">
@@ -121,11 +122,16 @@
                     data: $('form').serialize(),
                     success: function (data) {
                        // console.log(data);
+                         var str = ' <div class="alert alert-success navbar-fixed-bottom text-center" style="padding:25px" role="alert">' +
+                            '<strong><i class="fa fa-check-circle"></i> Successfully!</strong> Mark addition is successfully finished.' +
+                            '</div>';
+                        $('#alert').html(str);
                         $('#mark').val(null);
                     }
                 });
+                 setTimeout(function () { $(".alert").alert('close') }, 3000);
             });
-
+            
             
             $.ajax({
                 url: "/Result/getYear",
@@ -138,6 +144,7 @@
                     })
                 }
             });
+
         });
     </script>
 }

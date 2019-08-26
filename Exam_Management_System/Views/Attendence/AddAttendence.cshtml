@@ -21,12 +21,14 @@
     </div>
 </section>
 <!-- Main content -->
+<div id="alert"></div>
 <section class="content container-fluid">
     <div class="row">
         <div class="col-md-6 col-md-offset-2">
-            <div class="panel">
-                <div class="panel-body">
-                    <form asp-controller="attendence" asp-action="PostAddAttendence" method="post">
+            <div class="box box-info">
+                <div class="box-header" style="font-size:25px"><i class="fa fa-plus-square"></i> Add Attendence</div>
+                <div class="box-body">
+                    <form id="form1">
                         <div class="form-group">
                             <label>Year</label>
                             <select id="year" class="form-control">
@@ -42,7 +44,7 @@
                         </div>
                         <div class="form-group">
                             <label>Roll No</label>
-                            <input list="rollno" class="form-control" name="Rollno">
+                            <input list="rollno" class="form-control" name="Rollno" id="roll">
                            
                             <datalist id="rollno">
                                 @{
@@ -69,7 +71,7 @@
                         </div>
                         <div class="form-group">
                             <label>Current (Monthly)</label>
-                            <input type="number" class="form-control" name="current" />
+                            <input type="number" class="form-control" name="current" id="current" />
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Save <i class="fa fa-arrow-circle-right"></i></button>
@@ -80,4 +82,28 @@
         </div>
     </div>
 </section>
+@section Scripts{ 
+<script>
+    $(function () {
+        $("form").submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: "/Attendence/PostAddAttendence",
+                type: "POST",
+                data: $('form').serialize(),
+                success: function (data) {
+                    // console.log(data);
+                    var str = ' <div class="alert alert-success navbar-fixed-bottom text-center" style="padding:25px" role="alert">' +
+                        '<strong><i class="fa fa-check-circle"></i> Successfully!</strong> Mark addition is successfully finished.' +
+                        '</div>';
+                    $('#alert').html(str);
+                    $('#roll').val(null);
+                    $('#current').val(null);
+                }
+            });
+             setTimeout(function () { $(".alert").alert('close') }, 3000);
+        });
+    });
+</script>
+}
 

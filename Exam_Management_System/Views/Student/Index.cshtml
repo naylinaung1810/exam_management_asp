@@ -31,7 +31,7 @@
 <!-- Main content -->
 <section class="content container-fluid">
 
-    <div class="row" style="margin-top:10px">
+    <div class="row" style="margin-top:0px">
         <div class="col-sm-3 col-md-2">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
@@ -134,33 +134,37 @@
                     </select> 
                 </div>
             </div>
-            <div class="box table-responsive">
+            <div class="box box-info">
                 <input class="hidden" value="@ViewBag.year_id" id="year_id" />
                 <input class="hidden" value="@ViewBag.major_id" id="major_id" />
-                <table class="table table-hover text-center">
-                    <thead class="bg-gray">
-                        <tr style="font-size:16px">
-                            <th>Roll No</th>
-                            <th>Name</th>
-                            <th>Class</th>
-                            <th>Year</th>
-                            <th>Major</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="myTable">
-                       
-                    </tbody>
+                <div class="box-header">
+                    <span id="title" style="font-size:20px;margin-left:20px"></span>
+                </div>
+                <div class="box-body table-responsive">
+                    <table class="table table-hover text-center">
+                        <thead class="bg-gray">
+                            <tr style="font-size:16px">
+                                <th>Roll No</th>
+                                <th>Name</th>
+                                <th>Class</th>
+                                <th>Year</th>
+                                <th>Major</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                        </tbody>
 
-                </table>
+                    </table>
+                </div>
+               
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <span class="glyphicon glyphicon-user" style="color:cadetblue"></span>
-                                <h3 class="modal-title" id="myModalLabel">Student Information</h3>
+                                <h3 class="modal-title" id="myModalLabel"><i class="fa fa-user"></i> Student Info</h3>
                             </div>
                             <div class="modal-body">
                                 <div class="row">
@@ -168,6 +172,7 @@
                                         <img class="img-bordered img-responsive" id="image"/>
                                     </div>
                                     <div class="col-sm-8">
+
                                         <div class="table-responsive">
                                             <table class="table">
                                                 <tr>
@@ -201,7 +206,7 @@
                                            
                                         </div>
                                         <label>Assignment</label>
-                                        <div class="progress" id="mod_assignment">
+                                        <div class="progress " id="mod_assignment">
                                            
                                         </div>
 
@@ -242,8 +247,9 @@
              $.ajax({
             url: "/Student/GetStudent/"+id+"?major="+major+"&class_id=" + class_id,
             type: "GET",
-            success: function (data) {
-                       
+                 success: function (data) {
+                     var tit = data[0].year + '(' + data[0].class + ')';
+                     $('#title').html(tit);
                 console.log(data);
                 $('#myTable').html(null);
                 $.each(data, function (i, item) {
@@ -281,7 +287,7 @@
                     type: "GET",
                     success: function (data) {
                         var percent = data.current * 100 / data.total;
-                        var att = '<div class="progress-bar" role="progressbar" aria-valuenow="' + percent + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + percent + '%;">' +
+                        var att = '<div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="' + percent + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + percent + '%;">' +
                             percent + '%' +
                                             '</div>';
                         console.log(data);

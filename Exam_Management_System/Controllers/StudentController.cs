@@ -27,17 +27,21 @@ namespace Exam_Management_System.Controllers
 
         public IActionResult AddNewStudent()
         {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            ViewBag.academic = context.GetAcademic().Name;
             return View();
         }
         public IActionResult AddOldStudent()
         {
-
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            ViewBag.academic = context.GetAcademic().Name;
             return View();
         }
         public IActionResult GenerateRollno()
         {
-            int academic = 0;
+           
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            int academic = context.GetAcademic().Id;
             List<Student> list = new List<Student>();
             using (MySqlConnection conn = context.GetConnection())
             {
@@ -54,13 +58,14 @@ namespace Exam_Management_System.Controllers
                         {
                             Id = Id,
                             Name = name,
+                            
                             Year = reader["year_name"].ToString(),
                             Sex = reader["gender"].ToString(),
                             Father_name = reader["father_name"].ToString(),
                             Mother_name = reader["mother_name"].ToString(),
                             Phone = reader["phone"].ToString(),
-                            Address = reader["address"].ToString(),
-                            Mark = Convert.ToInt32(reader["mark"])
+                           Address = reader["address"].ToString(),
+                           Mark = Convert.ToInt32(reader["mark"])
                         });
                     }
                 }
@@ -313,10 +318,11 @@ namespace Exam_Management_System.Controllers
         {
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
             List<Student> list = new List<Student>();
+            int academic = context.GetAcademic().Id;
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM studentrollno,student,student_detail,class,year,major WHERE student.id=studentrollno.student_id and studentrollno.id=student_detail.studentrollno_id and student_detail.year_id=year.id and student_detail.class_id=class.id and student_detail.year_id="+id+" and student_detail.major_id=major.id and student_detail.major_id=" + major+" and student_detail.class_id="+class_id, conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM studentrollno,student,student_detail,class,year,major WHERE student.id=studentrollno.student_id and studentrollno.id=student_detail.studentrollno_id and student_detail.year_id=year.id and student_detail.class_id=class.id and student_detail.year_id="+id+" and student_detail.major_id=major.id and student_detail.major_id=" + major+" and student_detail.class_id="+class_id+" and student_detail.academic_id="+academic, conn);
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -344,7 +350,7 @@ namespace Exam_Management_System.Controllers
             }
             return Json(list);
         }
-        [HttpPost("newstudent")]
+        [HttpPost]
         public IActionResult PostNewStudent(Student student)
         {
             int student_id = 0;
@@ -360,7 +366,7 @@ namespace Exam_Management_System.Controllers
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                string sql = $"Insert Into student (student_name,reg_no,reg_date,father_name,father_job,mother_name,mother_job,father_religion,mother_religion,religion,father_nrc,mother_nrc,nrc,gender,city,father_city,mother_city,nationality,father_nationality,mother_nationality,dob,academicyear_id,mark,img) Values ('{student.Name}','{student.Reg_no}','{student.Reg_date}','{student.Father_name}','{student.Father_job}','{student.Mother_name}','{student.Mother_job}','{student.Father_religion}','{student.Mother_religion}','{student.Religion}','{student.Father_nrc}','{student.Mother_nrc}','{student.Nrc}','{student.Sex}','{student.City}','{student.Father_city}','{student.Mother_city}','{student.Nationality}','{student.Father_nationality}','{student.Mother_nationality}','{student.DOB}','{student.Academic_id}','{student.Mark}','{img_name}')";
+                string sql = $"Insert Into student (student_name,reg_no,reg_date,father_name,father_job,mother_name,mother_job,father_religion,mother_religion,religion,father_nrc,mother_nrc,nrc,gender,city,father_city,mother_city,nationality,father_nationality,mother_nationality,dob,academicyear_id,img) Values ('{student.Name}','{student.Reg_no}','{student.Reg_date}','{student.Father_name}','{student.Father_job}','{student.Mother_name}','{student.Mother_job}','{student.Father_religion}','{student.Mother_religion}','{student.Religion}','{student.Father_nrc}','{student.Mother_nrc}','{student.Nrc}','{student.Sex}','{student.City}','{student.Father_city}','{student.Mother_city}','{student.Nationality}','{student.Father_nationality}','{student.Mother_nationality}','{student.DOB}','{student.Academic_id}','{img_name}')";
                 using (MySqlCommand command = new MySqlCommand(sql, conn))
                 {
                     command.ExecuteNonQuery();
@@ -372,11 +378,11 @@ namespace Exam_Management_System.Controllers
                     command1.ExecuteNonQuery();
                 }
             }
-            return Redirect("/Student/AddNewStudent");
+           return Redirect("/Student/AddNewStudent");
         }
 
         [HttpPost]
-        public IActionResult PostOldStudent(Student student)
+        public void PostOldStudent(Student student)
         {
             int student_id = student.Student_id;
             
@@ -391,7 +397,7 @@ namespace Exam_Management_System.Controllers
                     command1.ExecuteNonQuery();
                 }
             }
-            return Redirect("/Student/AddOldStudent");
+           // return Redirect("/Student/AddOldStudent");
         }
         public JsonResult GetAcademic()
         {
@@ -448,7 +454,7 @@ namespace Exam_Management_System.Controllers
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from studentrollno,student,old_student,result,major,year where result.studentrollno_id=studentrollno.id and studentrollno.student_id=student.id and old_student.student_id=student.id and studentrollno.id='"+id+"' and old_student.major_id=major.id and old_student.student_year_id=year.id order by result.academic_id", conn);
+                MySqlCommand cmd = new MySqlCommand("select * from studentrollno,student,old_student,result,major,year where result.studentrollno_id=studentrollno.id and studentrollno.student_id=student.id and old_student.student_id=student.id and studentrollno.student_id='"+id+"' and old_student.major_id=major.id and old_student.student_year_id=year.id order by result.academic_id", conn);
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -466,6 +472,12 @@ namespace Exam_Management_System.Controllers
                            Pass= Convert.ToInt32(reader["pass"]),
                            Father_name= reader["father_name"].ToString(),
                            Mother_name= reader["mother_name"].ToString(),
+                           Img= reader["img"].ToString(),
+                           Phone= reader["phone"].ToString(),
+                           Father_phone= reader["father_phone"].ToString(),
+                           Mother_phone= reader["mother_phone"].ToString(),
+                           Email= reader["email"].ToString(),
+                           Address= reader["address"].ToString(),
                         });
                     }
                 }
@@ -476,6 +488,32 @@ namespace Exam_Management_System.Controllers
         {
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
             int academic_id = context.GetAcademic().Id;
+            List<Rollno> list = new List<Rollno>();
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM student,studentrollno,student_detail where student.id=studentrollno.student_id and studentrollno.id=student_detail.studentrollno_id and studentrollno.academic_id=" + academic_id, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new Rollno()
+                        {
+                            Id = Convert.ToInt32(reader["id"]),
+                            Roll = reader["rollno"].ToString(),
+                            Name = reader["student_name"].ToString(),
+                        });
+                    }
+                }
+            }
+            return list;
+        }
+
+        public List<Rollno> GetOldRollNo()
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            int academic_id = context.GetAcademicSecond().Id;
             List<Rollno> list = new List<Rollno>();
             using (MySqlConnection conn = context.GetConnection())
             {

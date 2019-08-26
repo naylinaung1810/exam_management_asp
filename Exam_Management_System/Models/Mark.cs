@@ -9,6 +9,7 @@ namespace Exam_Management_System.Models
     {
         public int Id { get; set; }
         public string Rollno { get; set; }
+        public string Img { get; set; }
         public int Exam_id { get; set; }
         public string Examtile { get; set; }
         public string Name { get; set; }

@@ -127,6 +127,8 @@
             </div>
         </div>
         <div class="col-md-10">
+            <input class="hidden" value="@ViewBag.year_id" id="year_id" />
+            <input class="hidden" value="@ViewBag.major_id" id="major_id" />
             <div class="row">
                 <div class="col-xs-6">
                     <select id="class" class="form-control pull-right" style="margin-top:10px;width:200px">
@@ -141,30 +143,28 @@
                 </div>
                 <div class="col-xs-6">
                     <a class="btn btn-app pull-right" id="print">
-                        <i class="fa fa-save"></i> Print
+                        <i class="fa fa-print"></i> Print
                     </a>
                 </div>
             </div>
             <div class="box">
-                <input class="hidden" value="@ViewBag.year_id" id="year_id" />
-                <input class="hidden" value="@ViewBag.major_id" id="major_id" />
+                <div class="box-header" id="title" style="font-size:20px;margin-left:20px"></div>
                 <div class="box-body">
                     <table class="table">
-                        <thead>
-                            <tr>
+                        <thead class="bg-gray">
+                            <tr ">
                                 <th>Roll no</th>
                                 <th>Name</th>
                                 <th>Class</th>
                                 <th>Year</th>
                                 <th>Major</th>
-                               
+
                                 <th>Total</th>
                                 <th>Current</th>
                                 <th>Percentage</th>
                             </tr>
                         </thead>
                         <tbody id="myTable">
-                          
                         </tbody>
                     </table>
                 </div>
@@ -182,10 +182,11 @@
                });
            });
            ////////////////////////////////////////////////////////
-           GetData();
+          
            var class_id = 0;
             var id = $('#year_id').val();
-            var major = $('#major_id').val();
+           var major = $('#major_id').val();
+            GetData();
             $('#class').change(function () {
 
                 GetData();
@@ -198,17 +199,21 @@
 
             function GetData()
             {
-               class_id = $('#class').val();
+                class_id = $('#class').val();
+                
              $.ajax({
             url: "/Attendence/GetAttendence/"+id+"?major="+major+"&class_id=" + class_id,
             type: "GET",
-            success: function (data) {
-                       
+                 success: function (data) {
+                     var tit = data[0].year + ' (' + data[0].class + ')';
+                     $('#title').html(tit);
                     console.log(data);
                     $('tbody').html(null);
                 $.each(data, function (i, item) {
                     var percent = item.current * 100 / item.total;
-                        var str = ' <tr>' +
+                    var str = null;
+                    if (percent >= 75) {
+                         str = ' <tr style="border-left:2px solid green">' +
                             '<td>' + item.rollno + '</td>' +
                             ' <td>' + item.name + '</td>' +
                             '<td>' + item.class + '</td>' +
@@ -219,6 +224,20 @@
                             ' <td>' + item.current + '</td>' +
                             ' <td>' + percent + '%</td>' +
                             ' </tr>';
+                    } else {
+                         str = ' <tr class="bg-danger" style="border-left:2px solid red">' +
+                            '<td>' + item.rollno + '</td>' +
+                            ' <td>' + item.name + '</td>' +
+                            '<td>' + item.class + '</td>' +
+                            ' <td>' + item.year + '</td>' +
+                            ' <td>' + item.major + '</td>' +
+                            
+                            ' <td>' + item.total + '</td>' +
+                            ' <td>' + item.current + '</td>' +
+                            ' <td>' + percent + '%</td>' +
+                            ' </tr>';
+                    }
+                       
                         $('tbody').append(str);
                   
                     });

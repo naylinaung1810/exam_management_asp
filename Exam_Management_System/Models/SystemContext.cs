@@ -72,7 +72,8 @@ namespace Exam_Management_System.Models
                         int mid = Convert.ToInt32(reader["mid_mark"]);
                         int final = Convert.ToInt32(reader["final_mark"]);
                         int ass = Convert.ToInt32(reader["assigment_mark"]);
-                        mark = (mid + final) * 80 / 200;
+                        mark = (mid + final) * 60 / 200;
+                        mark += ass;
                     }
                 }
             }
@@ -179,6 +180,27 @@ namespace Exam_Management_System.Models
             }
             return academicYear;
         }
+
+        public AcademicYear GetAcademicSecond()
+        {
+            //List<AcademicYear> list = new List<AcademicYear>();
+            AcademicYear academicYear = new AcademicYear();
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM (SELECT * FROM academicyear  ORDER BY  id DESC LIMIT 2) tbl ORDER BY  id LIMIT 1", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        academicYear.Id = Convert.ToInt32(reader["id"]);
+                        academicYear.Name = reader["academic_name"].ToString();
+                    }
+                }
+            }
+            return academicYear;
+        }
         public String Grade(int mark)
         {
             string grade = null;
@@ -237,7 +259,7 @@ namespace Exam_Management_System.Models
                         total += m;
                     }
                 }
-                total = (total*80)/200;
+                total = (total*60)/200;
                 
                 MySqlCommand cmd1 = new MySqlCommand("select * from assignment where studentrollno_id=" + id + " and academic_id=" + academic + " and subject_id=" + subject, conn);
 
@@ -258,7 +280,7 @@ namespace Exam_Management_System.Models
                     }
                 }
                 tt = total;
-                if (total<40)
+                if (total<50)
                 {
                     res = 0;
                    

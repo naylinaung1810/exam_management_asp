@@ -14,8 +14,15 @@
         
     </div>
 </section>
+<div id="alert">
+   
+</div>
 <!-- Main content -->
 <section class="content container-fluid" style="padding:20px">
+    @{ 
+        int count = 1;
+        
+    }
     <div class="row" style="padding-right:25px">
         <a class="btn btn-app pull-right" id="generate">
             <span class="badge bg-green">300</span>
@@ -26,32 +33,36 @@
         <div class="box">
             <div class="box-body table-responsive">
                 <table class="table">
-                    <thead>
+                    <thead class="">
                         <tr>
-                           
+                            <th>#</th>
                             <th>Name</th>
-                            <th>Mark</th>
+                            <th>Year</th>
                             <th>Phone</th>
                             <th>Gender</th>
                             <th>Father Name</th>
                             <th>Mother Name</th>
                             <th>Address</th>
+                            <th>Mark</th>
                         </tr>
                     </thead>
                     <tbody>
                         @{ 
                             foreach(var student in Model)
                             {
+                               
                                                 <tr>
-                                                   
+                                                    <td>@count</td>
                                                     <td>@student.Name</td>
-                                                    <td>@student.Mark</td>
+                                                    <td>@student.Year</td>
                                                     <td>@student.Phone</td>
                                                     <td>@student.Sex</td>
                                                     <td>@student.Father_name</td>
                                                     <td>@student.Mother_name</td>
                                                     <td>@student.Address</td>
-                                                </tr>
+                                                    <td>@student.Mark</td>
+                                                </tr>                                                
+                                count++;
                             }
                         }
                     </tbody>
@@ -69,10 +80,16 @@
                     url: "/Student/Generate",
                     type: "get",
                     success: function (data) {
-                          console.log("OK");
+                        var str = ' <div class="alert alert-success navbar-fixed-bottom text-center" style="padding:25px" role="alert">' +
+                            '<strong><i class="fa fa-check-circle"></i> Successfully!</strong> Roll no generation is successfully.' +
+                            '</div>';
+                        $('#alert').html(str);
                     }
                 });
+                 setTimeout(function () { $(".alert").alert('close') }, 3000);
             });
+
+           
         });
     </script>
 

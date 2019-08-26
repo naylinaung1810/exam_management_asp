@@ -11,6 +11,7 @@
     </h1>
 </section>
 <!-- Main content -->
+<span id="alert"></span>
 <section class="content container-fluid">
     <div class="container">
         <div class="row">
@@ -21,7 +22,7 @@
         <div class="row">
             <a asp-controller="Exam" asp-action="Index" class="btn btn-success pull-left hidden-xs"><i class="fa fa-arrow-circle-left"></i> Exam Info</a>
             <div class="col-md-6 col-sm-6 col-sm-offset-1 col-md-offset-2">
-                <span id="alert"></span>
+
                 <div class="box box-success">
                     <div class="box-header" style="border-bottom:1px solid lightgrey">
                         <i class="fa fa-plus-square fa-2x"></i> <span style="font-size:25px">Add Assignment</span>
@@ -76,14 +77,14 @@
 @section Scripts{
     <script>
         $(function () {
-          
+
 
             ////////////////////////////////////////
-           $('#year').change(function () {
+            $('#year').change(function () {
                 console.log($('#year').val());
 
                 $.ajax({
-                    url: "/Result/GetRollNo/"+$('#year').val(),
+                    url: "/Result/GetRollNo/" + $('#year').val(),
                     type: "GET",
                     success: function (data) {
                         //console.log(data);
@@ -94,8 +95,8 @@
                         });
                     }
                 });
-                 $.ajax({
-                    url: "/Result/GetSubject/"+$('#year').val()+"?major="+$('#major').val(),
+                $.ajax({
+                    url: "/Result/GetSubject/" + $('#year').val() + "?major=" + $('#major').val(),
                     type: "GET",
                     success: function (data) {
                         //console.log(data);
@@ -107,19 +108,34 @@
                     }
                 });
 
-            });
 
-             $.ajax({
+            });
+            $('#major').change(function () {
+                $.ajax({
+                    url: "/Result/GetSubject/" + $('#year').val() + "?major=" + $('#major').val(),
+                    type: "GET",
+                    success: function (data) {
+                        //console.log(data);
+                        $("#subject").html(null);
+                        $.each(data, function (i, subject) {
+                            var str = ' <option value="' + subject.id + '">' + subject.name + '</option>';
+                            $('#subject').append(str);
+                        });
+                    }
+                });
+            })
+
+            $.ajax({
                 url: "/Result/getYear",
                 type: "GET",
                 success: function (data) {
                     //console.log(data);
                     $.each(data, function (i, year) {
                         var str = ' <option value="' + year.id + '">' + year.name + '</option>';
-                       $('#year').append(str);
+                        $('#year').append(str);
                     })
                 }
-             });
+            });
             ////////////////////////////////////////////
 
             $('form').submit(function (e) {
@@ -129,16 +145,16 @@
                     type: "POST",
                     data: $('form').serialize(),
                     success: function (data) {
-                        var str = '<div class="alert alert-success alert-dismissible">' +
-                            ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
-                            '<h4><i class="icon fa fa-check"></i> Alert!</h4>' +
-                            'Success alert preview. This alert is dismissable.' +
+                        var str = ' <div class="alert alert-success navbar-fixed-bottom text-center" style="padding:25px" role="alert">' +
+                            '<strong><i class="fa fa-check-circle"></i> Successfully!</strong> Assignment addition is successfully finished.' +
                             '</div>';
                         $('#alert').html(str);
                         $('#mark').val(null);
+
                     }
-                })
-            })
+                });
+                setTimeout(function () { $(".alert").alert('close') }, 3000);
+            });
         });
     </script>
 

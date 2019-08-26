@@ -66,7 +66,7 @@ namespace Exam_Management_System.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostAddAttendence(Attendence attendence)
+        public void PostAddAttendence(Attendence attendence)
         {
             int student_id = 0;
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
@@ -95,7 +95,7 @@ namespace Exam_Management_System.Controllers
                     conn.Close();
                 }
             }
-            return Redirect("/attendence/addAttendence");
+            //return Redirect("/attendence/addAttendence");
         }
 
       

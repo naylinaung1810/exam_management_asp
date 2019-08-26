@@ -12,12 +12,19 @@
             <input class="hidden" value="@ViewBag.year_id" id="year_id" />
             <input class="hidden" value="@ViewBag.major_id" id="major_id" />
             <input class="hidden" value="@ViewBag.class_id" id="class_id" />
-            <div class="panel-heading"></div>
+            <div class="panel-heading">
+                <center>
+                    <h1>Computer University (Thaton)</h1>
+                    <h2>Mid_Term Result</h2>
+                    <h3>First Year</h3>
+                    <h4>1CST-A</h4>
+                </center>
+            </div>
             <div class="panel-body">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            
+                          <th>#</th>
                             <th>Roll No</th>
                             <th>Name</th>
                             @{
@@ -41,7 +48,8 @@
 <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 <script>
     $(function () {
-         console.log("OK");
+         //console.log("OK");
+        var c = 1;
         var id = $('#year_id').val();
         var major = $('#major_id').val();
         var class_id = $('#class_id').val();
@@ -60,6 +68,7 @@
                     } else {
                         start = item.rollno_id;
                         var tr = ' <tr id="t' + item.rollno_id + '">' +
+                            '<td>' + c++ + '</td>' +
                             '<td>' + item.rollno + '</td>' +
                             '<td>' + item.name + '</td>' +
                             '<td>' + item.grade + '</td>' +

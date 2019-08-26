@@ -97,7 +97,7 @@ using Exam_Management_System.Models;
                     ");
             EndContext();
             BeginContext(1098, 1212, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "79ae7ac78a38453aa3636397fa039431", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9370a8d15d74415cb9b47f625d600c92", async() => {
                 BeginContext(1163, 438, true);
                 WriteLiteral(@"
                         <div class=""form-group"">
@@ -110,7 +110,7 @@ using Exam_Management_System.Models;
                                 ");
                 EndContext();
                 BeginContext(1601, 31, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "61c5d9d10a294749ac2b558cb365eee4", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f1285d3b4d634883bfb8e3a96bba477d", async() => {
                     BeginContext(1609, 14, true);
                     WriteLiteral("----Select----");
                     EndContext();
@@ -141,7 +141,7 @@ using Exam_Management_System.Models;
                 WriteLiteral("                                        ");
                 EndContext();
                 BeginContext(1872, 38, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a5805066ff56417ca9c7c035f421337b", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ed741a1be6d3476b872f0ec0b8aeaf1c", async() => {
                     BeginContext(1895, 6, false);
 #line 45 "C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\Views\Class\Index.cshtml"
                                                          Write(y.Name);
@@ -279,7 +279,7 @@ using Exam_Management_System.Models;
             WriteLiteral("\"><i class=\"fa fa-edit\"></i></a>\r\n                                        ");
             EndContext();
             BeginContext(3443, 126, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "934a7488746d403eb239bb8e86e60edb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "59f0812b24fa409b94fda0bd74544d7d", async() => {
                 BeginContext(3538, 27, true);
                 WriteLiteral("<i class=\"fa fa-trash\"></i>");
                 EndContext();
@@ -330,7 +330,7 @@ WriteAttributeValue("", 3743, c.Id, 3743, 5, false);
             WriteLiteral(">\r\n                                    <div class=\"modal-dialog\" role=\"document\">\r\n                                        <div class=\"modal-content\">\r\n                                            ");
             EndContext();
             BeginContext(3945, 3358, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f93986b2ec24489a9d0b421820cc1c3a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "10a45a405bd84532a2f308a3c5038b8b", async() => {
                 BeginContext(4011, 661, true);
                 WriteLiteral(@"
                                                 <div class=""modal-header"">
@@ -370,7 +370,7 @@ WriteAttributeValue("", 4979, c.Name, 4979, 7, false);
                                                                 ");
                 EndContext();
                 BeginContext(5399, 31, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5968b14144a47d6a9b88b9422ee3acb", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "199a16cc08a84fb78b5d81ef4a24b515", async() => {
                     BeginContext(5407, 14, true);
                     WriteLiteral("----Select----");
                     EndContext();
@@ -403,7 +403,7 @@ WriteAttributeValue("", 4979, c.Name, 4979, 7, false);
                 WriteLiteral("                                                                            ");
                 EndContext();
                 BeginContext(6007, 47, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "945abbccd28e464590dc47b45d6a8deb", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3d963256271d490b94de9b6d60f771cc", async() => {
                     BeginContext(6039, 6, false);
 #line 109 "C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\Views\Class\Index.cshtml"
                                                                                                       Write(y.Name);
@@ -449,7 +449,7 @@ WriteAttributeValue("", 4979, c.Name, 4979, 7, false);
                 WriteLiteral("                                                                            ");
                 EndContext();
                 BeginContext(6360, 38, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de0a0add3a0242e1b5ba8999518b439b", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d7d2a6bc24d14172a68c1a43bb24f330", async() => {
                     BeginContext(6383, 6, false);
 #line 113 "C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\Views\Class\Index.cshtml"
                                                                                              Write(y.Name);
