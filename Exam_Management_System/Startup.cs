@@ -61,7 +61,7 @@ namespace Exam_Management_System
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Account}/{action=Index}/{id?}");
+                    template: "{controller=User}/{action=Home}/{id?}");
             });
         }
     }

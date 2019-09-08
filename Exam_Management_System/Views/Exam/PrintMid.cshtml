@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "Print";
+    Layout = null;
+}
+@model IEnumerable<Exam_Management_System.Models.Exam>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<section class=" container">
+    <div class="row">
+        <div class="panel">
+            <input class="hidden" value="@ViewBag.year_id" id="year_id" />
+            <input class="hidden" value="@ViewBag.major_id" id="major_id" />
+            <input class="hidden" value="@ViewBag.class_id" id="class_id" />
+            <div class="panel-heading">
+                <center>
+                    <h1>Computer University (Thaton)</h1>
+                    <h2>First-term Exam Timetable</h2>
+                    <h3>@ViewBag.year</h3>
+                    <h4>@ViewBag.major</h4>
+                </center>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-striped text-center">
+                    <tr class="bg-gray text-center">
+                        <th class="text-center" style="width: 10px">No</th>
+                        <th class="text-center">Subject</th>
+                        <th class="text-center">Date</th>
+                    </tr>
+                    @{
+                        var count = 1;
+                        foreach (var data in Model)
+                        {
+                            <tr>
+                                <td>@count</td>
+                                <td>@data.Subject</td>
+                                <td>
+                                    <p>@data.Start_time<span> - </span>@data.End_time</p>
+                                    <p>(@data.Date)</p>
+                                </td>
+                            </tr>
+                            count++;
+                        }
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>

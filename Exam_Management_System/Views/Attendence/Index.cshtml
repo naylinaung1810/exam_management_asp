@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = "Attendence";
+    ViewData["Title"] = "Attendance";
 }
 
     <style>
@@ -9,25 +9,29 @@
             color: white;
         }
     </style>
-<section class="content-header bg-gray" style="padding-top:10px">
+<section class="content-header bg-gray-active" style="padding-top:5px">
     <div class="row">
         <div class="col-sm-4">
             <h2 style="">
-                Attendence
-                <small> > @ViewBag.year</small><small style="font-size:16px"> > @ViewBag.major</small>
+                <i class="fa fa-pie-chart text-purple"></i>
+                Attendance
+                <!--small> > @ViewBag.year</!--small><small style="font-size:16px"> > @ViewBag.major</small-->
             </h2>
         </div>
         <div class="col-sm-8">
-            <div class="row" style="padding-top:15px;padding-bottom:5px">
+            <div class="row" style="padding-top:10px;padding-bottom:5px">
                 <div class="col-md-6 col-md-offset-3">
-                    <input type="text" class="form-control" id="search" placeholder="Search.........." />
+                    <div class="input-group">
+                        <span class="input-group-addon bg-gray"><i class="fa fa-search"></i></span>
+                        <input type="text" class="form-control" id="search" placeholder="Search.........." />
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- Main content -->
-<section class="content container-fluid">
+<section class="content container-fluid bg-info">
     <div class="row">
         <div class="col-md-2">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -130,24 +134,27 @@
             <input class="hidden" value="@ViewBag.year_id" id="year_id" />
             <input class="hidden" value="@ViewBag.major_id" id="major_id" />
             <div class="row">
-                <div class="col-xs-6">
-                    <select id="class" class="form-control pull-right" style="margin-top:10px;width:200px">
-                        @{
-                            var classes = ViewBag.classes;
-                            foreach (var s in classes)
-                            {
-                                <option value="@s.Id">@s.Name</option>
+                <div class="col-xs-6" style="margin-top:5px">
+                    <div class="col-xs-4"><label style="font-size:16px;margin-top:5px" class="pull-right">Class Name : </label></div>
+                    <div class="col-xs-8">
+                        <select class="form-control" id="class">
+                            @{
+                                var classes = ViewBag.classes;
+                                foreach (var s in classes)
+                                {
+                                    <option value="@s.Id">@s.Name</option>
+                                }
                             }
-                        }
-                    </select>
+                        </select>
+                    </div>
                 </div>
                 <div class="col-xs-6">
-                    <a class="btn btn-app pull-right" id="print">
+                    <a class="btn btn-app pull-right" style="background-color:forestgreen;color:white" id="print">
                         <i class="fa fa-print"></i> Print
                     </a>
                 </div>
             </div>
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header" id="title" style="font-size:20px;margin-left:20px"></div>
                 <div class="box-body">
                     <table class="table">
@@ -221,8 +228,8 @@
                             ' <td>' + item.major + '</td>' +
                             
                             ' <td>' + item.total + '</td>' +
-                            ' <td>' + item.current + '</td>' +
-                            ' <td>' + percent + '%</td>' +
+                             ' <td>' + item.current + '</td>' +
+                             ' <td>' + (percent).toFixed(2) + '%</td>' +
                             ' </tr>';
                     } else {
                          str = ' <tr class="bg-danger" style="border-left:2px solid red">' +
@@ -234,7 +241,7 @@
                             
                             ' <td>' + item.total + '</td>' +
                             ' <td>' + item.current + '</td>' +
-                            ' <td>' + percent + '%</td>' +
+                            ' <td>' + (percent).toFixed(2) + '%</td>' +
                             ' </tr>';
                     }
                        

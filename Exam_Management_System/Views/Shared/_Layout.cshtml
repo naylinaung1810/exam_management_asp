@@ -44,6 +44,13 @@
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a>Register</a>
+                        </li>
+                        <li class="dropdown user user-menu">
+                            
+                            <a>About</a>
+                        </li>
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->
@@ -58,8 +65,8 @@
                                 <li class="user-header">
                                     <img src="~/adminLTE/img/avatar5.png" class="img-circle" alt="User Image">
                                     <p>
-                                        Admin 
-                                    
+                                        Admin
+
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
@@ -117,9 +124,9 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">HEADER</li>
                     <!-- Optionally, you can add icons to the links -->
-                    <li>
+                    <li class="bg-maroon-active" style="border-radius:15px;margin-bottom:7px">
                         <a asp-controller="AcademicYear" asp-action="Index">
-                            <i class="fa fa-plus-square"></i> <span>Academic Year</span>
+                            <i class="fa fa-calendar"></i> <span>Academic Year</span>
                         </a>
                     </li>
 
@@ -139,14 +146,14 @@
                     </li>
                     <li class="treeview bg-purple" style="border-radius:15px;margin-bottom:7px">
                         <a href="#">
-                            <i class="fa fa-pie-chart"></i> <span>Attendence</span>
+                            <i class="fa fa-pie-chart"></i> <span>Attendance</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a asp-controller="Attendence" asp-action="AddAttendence"><i class="fa fa-plus-square"></i> Add Attendence</a></li>
-                            <li><a asp-controller="Attendence" asp-action="Index" asp-route-id="1" asp-route-major="1" asp-route-class_id="1"><i class="fa fa-folder-open"></i> Attendence</a></li>
+                            <li><a asp-controller="Attendence" asp-action="AddAttendence"><i class="fa fa-plus-square"></i> Add Attendance</a></li>
+                            <li><a asp-controller="Attendence" asp-action="Index" asp-route-id="1" asp-route-major="1" asp-route-class_id="1"><i class="fa fa-folder-open"></i> Attendance Info</a></li>
                         </ul>
                     </li>
                     <li class="treeview bg-primary" style="border-radius:15px;margin-bottom:7px">
@@ -174,7 +181,7 @@
                             <li><a asp-controller="Exam" asp-action="Index2" asp-route-id="1" asp-route-major="1"><i class="fa fa-folder-open"></i> Final Exam</a></li>
                         </ul>
                     </li>
-                    <li class="treeview bg-light-blue" style="border-radius:15px;margin-bottom:7px">
+                    <li class="treeview bg-maroon-gradient" style="border-radius:15px;margin-bottom:7px">
                         <a href="#">
                             <i class="fa fa-life-buoy"></i> <span>Result</span>
                             <span class="pull-right-container">
@@ -187,7 +194,7 @@
                             <li><a asp-controller="Result" asp-action="Index2" asp-route-id="1" asp-route-major="1"><i class="fa fa-folder-open"></i> Final Result</a></li>
                         </ul>
                     </li>
-                    <li class="treeview">
+                    <li class="treeview bg-green-gradient" style="border-radius:15px;margin-bottom:7px">
                         <a href="#">
                             <i class="fa fa-pie-chart"></i> <span>Subject</span>
                             <span class="pull-right-container">
@@ -199,24 +206,24 @@
                             <li><a asp-controller="Subject" asp-action="Index"><i class="fa fa-folder-open"></i> Subjects</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="bg-blue-gradient" style="border-radius:15px;margin-bottom:7px">
                         <a asp-controller="Class" asp-action="Index">
                             <i class="fa fa-user-circle"></i> <span>Class</span>
                         </a>
                     </li>
 
-                    <li>
+                    <li class="bg-purple-gradient" style="border-radius:15px;margin-bottom:7px">
                         <a asp-controller="Year" asp-action="Index">
                             <i class="fa fa-plus-square"></i> <span>Year</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="bg-orange-active" style="border-radius:15px;margin-bottom:7px">
                         <a asp-controller="Major" asp-action="Index">
                             <i class="fa fa-user-circle"></i> <span>Major</span>
                         </a>
                     </li>
 
-                    <li>
+                    <li class="bg-fuchsia" style="border-radius:15px;margin-bottom:7px">
                         <a asp-controller="Examtitle" asp-action="Index">
                             <i class="fa fa-plus-square"></i> <span>Exam Title</span>
                         </a>

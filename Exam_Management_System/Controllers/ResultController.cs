@@ -26,6 +26,7 @@ namespace Exam_Management_System.Controllers
             ViewBag.classes = GetClass(id, major);
             ViewBag.year_id = id;
             ViewBag.major_id = major;
+            
             //ViewBag.class_id = class_id;
             return View();
         }
@@ -114,16 +115,20 @@ namespace Exam_Management_System.Controllers
         public IActionResult PrintMid(int id,int major,int class_id)
         {
             ViewBag.subject = GetSubject(id,major);
-            ViewBag.classes = GetClass(id,major);
+            ViewBag.c =GetClassOne(class_id);
+            ViewBag.year = GetYearOne(id);
             ViewBag.year_id = id;
             ViewBag.major_id = major;
             ViewBag.class_id = class_id;
+            
             return View();
         }
         public IActionResult PrintFinal(int id, int major, int class_id)
         {
             ViewBag.subject = GetSubject(id, major);
             ViewBag.classes = GetClass(id, major);
+            ViewBag.c = GetClassOne(class_id);
+            ViewBag.year = GetYearOne(id);
             ViewBag.year_id = id;
             ViewBag.major_id = major;
             ViewBag.class_id = class_id;
@@ -137,7 +142,7 @@ namespace Exam_Management_System.Controllers
             using (MySqlConnection conn1 = context.GetConnection())
             {
                 conn1.Open();
-                MySqlCommand cmd1 = new MySqlCommand("select * from mark_final,result,subject,studentrollno,student_detail,student,year,major where mark_final.subject_id=subject.id and studentrollno.id=result.studentrollno_id and mark_final.studentrollno_id=studentrollno.id and student_detail.studentrollno_id=studentrollno.id and studentrollno.student_id=student.id and student_detail.year_id=year.id and student_detail.major_id=major.id and student_detail.major_id="+major+" and student_detail.year_id="+id+" and mark_final.academic_id="+academic_id+" and student_detail.class_id=" + class_id, conn1);
+                MySqlCommand cmd1 = new MySqlCommand("select * from mark_final,result,subject,studentrollno,student_detail,student,year,major,class where student_detail.class_id=class.id and mark_final.subject_id=subject.id and studentrollno.id=result.studentrollno_id and mark_final.studentrollno_id=studentrollno.id and student_detail.studentrollno_id=studentrollno.id and studentrollno.student_id=student.id and student_detail.year_id=year.id and student_detail.major_id=major.id and student_detail.major_id=" + major+" and student_detail.year_id="+id+" and mark_final.academic_id="+academic_id+" and student_detail.class_id=" + class_id, conn1);
 
                 using (var reader = cmd1.ExecuteReader())
                 {
@@ -155,6 +160,7 @@ namespace Exam_Management_System.Controllers
                             Rollno_id = Convert.ToInt32(reader["studentrollno_id"]),
                             Subject = reader["subject_name"].ToString(),
                             Pass=Convert.ToInt32(reader["pass"]),
+                            Class = reader["class_name"].ToString(),
                         });
                     }
                 }
@@ -313,6 +319,46 @@ namespace Exam_Management_System.Controllers
                 }
             }
             return list;
+        }
+        public string GetClassOne(int id)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            int academic_id = context.GetAcademic().Id;
+            string class_name = null;
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM class where id=" + id , conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        class_name = reader["class_name"].ToString();
+                    }
+                }
+            }
+            return class_name;
+        }
+        public string GetYearOne(int id)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            int academic_id = context.GetAcademic().Id;
+            string year_name = null;
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM year where id=" + id, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        year_name = reader["year_name"].ToString();
+                    }
+                }
+            }
+            return year_name;
         }
     }
 }

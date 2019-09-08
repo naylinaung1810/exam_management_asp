@@ -17,11 +17,12 @@ namespace Exam_Management_System.Controllers
         {
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
             List<Subject> list = new List<Subject>();
-
+            ViewBag.major = GetMajor();
+            ViewBag.year = GetYear();
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM subject,year,major where subject.year_id=year.id and subject.major_id=major.id", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM subject,year,subject_major,major where subject.year_id=year.id and subject_major.subject_id=subject.id and major.id=subject_major.major_id", conn);
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -35,6 +36,8 @@ namespace Exam_Management_System.Controllers
                             Name = name,
                             Year = reader["year_name"].ToString(),
                             Major= reader["major_name"].ToString(),
+                            Major_id=Convert.ToInt32(reader["major_id"]),
+                            Year_id = Convert.ToInt32(reader["year_id"]),
                         });
                     }
                 }
@@ -56,8 +59,14 @@ namespace Exam_Management_System.Controllers
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                string sql = $"Insert Into subject (subject_name,year_id,major_id) Values ('{subject.Name}','{subject.Year_id}','{subject.Major_id}')";
+                string sql = $"Insert Into subject (subject_name,year_id) Values ('{subject.Name}','{subject.Year_id}')";
                 using (MySqlCommand command = new MySqlCommand(sql, conn))
+                {
+                    command.ExecuteNonQuery();
+                    
+                }
+                string sql1 = $"Insert Into subject_major (subject_id,major_id) Values ('{subject.Name}','{subject.Major_id}')";
+                using (MySqlCommand command = new MySqlCommand(sql1, conn))
                 {
                     command.ExecuteNonQuery();
                     conn.Close();
@@ -67,6 +76,47 @@ namespace Exam_Management_System.Controllers
            
             ViewBag.data = "haaha";
             return Redirect("/subject/addSubject");
+        }
+
+        [HttpPost]
+        public IActionResult EditSubject(Subject subject)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                string sql = $"Update subject set subject_name='{subject.Name}',year_id='{subject.Year_id}' where id={subject.Id}";
+                using (MySqlCommand command = new MySqlCommand(sql, conn))
+                {
+                    command.ExecuteNonQuery();
+                    //conn.Close();
+                }
+                string sql1 = $"Update subject_major set major_id='{subject.Major_id}' where subject_id={subject.Id}";
+                using (MySqlCommand command = new MySqlCommand(sql1, conn))
+                {
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                }
+
+            }
+            return Redirect("/year/index");
+        }
+
+        public IActionResult RemoveSubject(int id)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                string sql = $"Delete from subject where id={id}";
+
+                using (MySqlCommand command = new MySqlCommand(sql, conn))
+                {
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            return Redirect("/subject/index");
         }
         public List<Year> GetYear()
         {

@@ -1,0 +1,284 @@
+﻿
+@{
+    ViewData["Title"] = "OldForm";
+    Layout = null;
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/css/bootstrap-timepicker.css" />
+<link rel="stylesheet" href="~/css/bootstrap-datepicker.css" />
+
+<link rel="stylesheet" href="~/css/adminLTE/font-awesome/css/font-awesome.css" />
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<div class="container bg-info">
+    <div class="row" style="padding:20px">
+        <div class="panel">
+
+            <div class="panel-heading">
+                <center>
+                    <h2>University of Computer Studies(Thaton)</h2>
+                    <h2><span>@ViewBag.academic</span> Academic Year</h2>
+                    <h2><b>Admission Form</b></h2>
+                </center>
+            </div>
+            <div class="panel-body">
+                <form id="form1">
+
+                    <div class="col-xs-12 container " style="margin-top:0px;">
+                        <div class="col-xs-3" style="margin-top:10px;">
+                            <img src="~/student_img/9023d2aa-2838-40c5-8882-d2144f8c4f48_Screenshot_20170923_213240.png" id="image" class="image img-rounded img-responsive" />
+                        </div>
+                        <div style="margin-top:10px" class="col-xs-9 table-responsive">
+                            <table class="table table-bordered  col-xs-8">
+                                <tr>
+                                    <th class="col-xs-4" style="font-size:large">Course Year</th>
+                                    <td class="col-xs-4" style="font-size:large"><select class="form-control" id="academic" name="Academic_id"></select> </td>
+                                </tr>
+                                <tr>
+                                    <th class="col-xs-4" style="font-size:large">Specialized Subject</th>
+                                    <td class="col-xs-4" style="font-size:large">
+                                        <select class="form-control" id="academic" name="Major_id">
+                                            <option value="2">CS</option>
+                                            <option value="3">CT</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="col-xs-4" style="font-size:large">Old RollNo</th>
+                                    <td class="col-xs-4" style="font-size:large">
+                                        <input list="rollno" class="form-control" id="roll" name="Rollno">
+
+                                        <datalist id="rollno">
+                                        </datalist>
+                                    </td>
+                                </tr>
+                                <tr>
+                                <tr>
+                                    <th class="col-xs-4" style="font-size:large">Year</th>
+                                    <td class="col-xs-4" style="font-size:large">
+                                        <select class="form-control" id="year" name="Year_id">
+                                        </select>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <input type="hidden" id="check_year" />
+                            <input type="hidden" id="old_year" />
+                        </div>
+                    </div>
+                    <div class="container-fluid  table-responsive" style="margin-top:30px;">
+                        <table class="table table-bordered" style="border:1px solid black">
+                            <tr>
+
+                                <th style="border:hidden"></th>
+                                <th style="border:hidden"></th>
+                                <th style="font-size:large">Student</th>
+                                <th style="font-size:large">Father</th>
+                                <th style="font-size:large">Mother</th>
+                            </tr>
+                            <!--
+                            <tr style="border:1px solid;">
+                            <th style="font-size:large"></th>
+                            <th style="font-size:large">Name</th>
+
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" id="name" name="Name" required /></td>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" id="father_name" name="father_name" required /></td>
+                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" id="mother_name" name="mother_name" required /></td>
+                        </tr>
+                        -->
+
+                            <tr>
+                                <th style="font-size:large"></th>
+                                <th style="font-size:large">Phone Number</th>
+                                <td style="font-size:large"><input type="tel" class="form-control" style="" name="phone" required id="phone" /></td>
+                                <td style="font-size:large"><input type="tel" class="form-control" style="" name="father_phone" required id="father_phone" /></td>
+                                <td style="font-size:large"><input type="tel" class="form-control" style="" name="mother_phone" required id="mother_phone" /></td>
+
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="container-fluid table-responsive" style="margin-top:10px">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th class="col-xs-2" style="font-size:large;">All answered exams</th>
+                                <th class="col-xs-2" style="font-size:large">Major</th>
+                                <th class="col-xs-2" style="font-size:large">RollNo</th>
+                                <th class="col-xs-2" style="font-size:large">Year</th>
+                                <th class="col-xs-2" style="font-size:large">Pass/Fail</th>
+                            </tr>
+                            <tbody id="data">
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <div class="container-fluid  table-responsive" style="margin-top:30px;margin-right:5px">
+                        <table class="table table-bordered">
+
+                            <tr>
+                                <th style="font-size:large"></th>
+                                <th style="font-size:large" colspan="2">Address</th>
+
+                                <td style="font-size:large"><textarea class="form-control" style="" name="address" required id="address"></textarea></td>
+
+                            </tr>
+
+                            <tr>
+                                <th style="font-size:large"></th>
+                                <th style="font-size:large" colspan="2">Email Adderss</th>
+                                <td style="font-size:large"><input type="email" class="form-control" style="" name="email" required id="email" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="row text-center">
+                        <button type="submit" class="btn btn-success">Register</button>
+                    </div>
+                </form>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<script src="~/js/bootstrap-timepicker.js"></script>
+<script src="~/js/bootstrap-datepicker.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+<script>
+    $(function () {
+        $('#datepicker').datepicker({
+            autoclose: true
+        });
+        ///////////////////////////////////////
+        $.ajax({
+            url: "/Student/GetAcademic",
+            type: "GET",
+            success: function (data) {
+                $.each(data, function (i, item) {
+                    var str = '<option value="' + item.id + '">' + item.name + '</option>';
+                    $('#academic').append(str);
+                });
+            }
+        });
+        $.ajax({
+            url: "/Result/getYear",
+            type: "GET",
+            success: function (data) {
+                //console.log(data);
+                $.each(data, function (i, year) {
+                    var str = ' <option value="' + year.id + '">' + year.name + '</option>';
+                    $('#year').append(str);
+                })
+            }
+        });
+        $.ajax({
+            url: "/Student/GetOldRollNo",
+            type: "GET",
+            success: function (data) {
+                //console.log(data);
+                $("#rollno").html(null);
+                $.each(data, function (i, rollno) {
+                    var str = ' <option value="' + rollno.roll + '"></option>';
+                    $('#rollno').append(str);
+                });
+            }
+        });
+        var flag = 0;
+        $('form').submit(function (e) {
+            e.preventDefault();
+            if ($('#check_year').val() == 1) {
+                if ($('#old_year').val() < $('#year').val()) {
+                    flag = 1;
+                } else {
+                    flag = 0;
+                }
+            } else {
+                if ($('#old_year').val() == $('#year').val()) {
+                    flag = 1;
+                } else {
+                    flag = 0;
+                }
+            }
+            if (flag == 1) {
+                $.ajax({
+                    url: "/Student/PostOldStudent",
+                    type: "POST",
+                    data: $('form').serialize(),
+                    success: function (data) {
+                        var str = ' <div class="alert alert-success navbar-fixed-bottom text-center" style="padding:25px" role="alert">' +
+                            '<strong><i class="fa fa-check-circle"></i> Successfully!</strong> Student addition is successfully finished.' +
+                            '</div>';
+                        $('#alert').html(str);
+                        $('#form1')[0].reset();
+                    }
+                });
+            } else {
+                var str = ' <div class="alert alert-warning navbar-fixed-bottom text-center" style="padding:25px" role="alert">' +
+                    '<strong><i class="fa fa-warning"></i> Warning!</strong> Select year is something worng.' +
+                    '</div>';
+                $('#alert').html(str);
+            }
+
+            setTimeout(function () { $(".alert").alert('close') }, 5000);
+        });
+        /////////////////////////////////////
+        /* $('#roll').focusout(function (e) {
+             console.log("OK")
+             console.log($(this).val())
+         })*/
+        $('#roll').focusout(function (e) {
+            console.log($('#year').val());
+
+
+            $.ajax({
+                url: "/Student/GetStudentYear/" + $(this).val(),
+                type: "GET",
+                success: function (data) {
+                    console.log(data);
+                    $('#name').val(data[0].name);
+                    $('#father_name').val(data[0].father_name);
+                    $('#mother_name').val(data[0].mother_name);
+                    $('#phone').val(data[0].phone);
+                    $('#mother_phone').val(data[0].mother_phone);
+                    $('#father_phone').val(data[0].father_phone);
+                    $('#email').val(data[0].email);
+                    $('#address').val(data[0].address);
+                    $('#image').attr("src", "/student_img/" + data[0].img);
+                    $("#data").html(null);
+                    $.each(data, function (i, item) {
+                        var str = null;
+                        $('#check_year').val(item.pass);
+                        $('#old_year').val(item.year_id);
+                        if (item.pass == 1) {
+                            str = '  <tr>' +
+                                ' <td style="font-size:large"><input type="text" style="border:none" class="form-control" value="Final"/></td>' +
+                                '<td style="font-size:large"><input type="text" style="border:none" class="form-control" value="' + item.major + '"/></td>' +
+                                '<td style="font-size:large"><input type="text" style="border:none" class="form-control" value="' + item.rollno + '"/></td>' +
+                                '<td style="font-size:large"><input type="text" style="border:none" class="form-control" value="' + item.year + '"/></td>' +
+                                '<td style="font-size:large"><input type="text" style="border:none" class="form-control" value="Pass"/></td>' +
+                                '</tr>';
+                        } else {
+                            str = '  <tr>' +
+                                ' <td style="font-size:large"><input type="text" style="border:none" class="form-control" value="Final"/></td>' +
+                                '<td style="font-size:large"><input type="text" style="border:none" class="form-control" value="' + item.major + '"/></td>' +
+                                '<td style="font-size:large"><input type="text" style="border:none" class="form-control" value="' + item.rollno + '"/></td>' +
+                                '<td style="font-size:large"><input type="text" style="border:none" class="form-control" value="' + item.year + '"/></td>' +
+                                '<td style="font-size:large"><input type="text" style="border:none" class="form-control" value="Fail"/></td>' +
+                                '</tr>';
+                        }
+
+                        $('#data').append(str);
+                    });
+                }
+            });
+
+        });
+    });
+</script>
+

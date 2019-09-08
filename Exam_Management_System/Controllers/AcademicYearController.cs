@@ -37,7 +37,7 @@ namespace Exam_Management_System.Controllers
             return View(list);
         }
         [HttpPost]
-        public string AddAcademic(AcademicYear academic)
+        public IActionResult AddAcademic(AcademicYear academic)
         {
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
             using (MySqlConnection conn = context.GetConnection())
@@ -50,7 +50,7 @@ namespace Exam_Management_System.Controllers
                     conn.Close();
                 }
             }
-            return "Acadmic Year is Added successful!";
+            return Redirect("/academicYear/index");
             // return "OK";
         }
         [HttpPost]

@@ -4,30 +4,32 @@
 }
 
 
-<section class="content-header bg-gray" style="padding-top:10px">
+<section class="content-header bg-gray-active" style="padding-top:10px">
     <h1 style="padding-top:10px;padding-bottom:20px">
+        <i class="fa fa-paperclip text-blue"></i>
         Assignment
         <small> > Mark</small><small style="font-size:16px"> > Add</small>
     </h1>
 </section>
 <!-- Main content -->
 <span id="alert"></span>
-<section class="content container-fluid">
+<section class="content container-fluid bg-info" style="height:650px">
     <div class="container">
+        <!--
         <div class="row">
             <div class="col-xs-12 hidden-sm hidden-lg hidden-md">
                 <a asp-controller="Subject" asp-action="Index" class="btn btn-success text-center btn-block hidden-sm hidden-lg hidden-md" style="margin-bottom:10px"><i class="fa fa-arrow-circle-left"></i> Mark</a>
             </div>
-        </div>
+        </div>-->
         <div class="row">
-            <a asp-controller="Exam" asp-action="Index" class="btn btn-success pull-left hidden-xs"><i class="fa fa-arrow-circle-left"></i> Exam Info</a>
+           <!-- <a asp-controller="Exam" asp-action="Index" class="btn btn-success pull-left hidden-xs"><i class="fa fa-arrow-circle-left"></i> Exam Info</a>-->
             <div class="col-md-6 col-sm-6 col-sm-offset-1 col-md-offset-2">
 
-                <div class="box box-success">
+                <div class="box box-success" style="box-shadow:gainsboro 5px 5px">
                     <div class="box-header" style="border-bottom:1px solid lightgrey">
                         <i class="fa fa-plus-square fa-2x"></i> <span style="font-size:25px">Add Assignment</span>
                     </div>
-                    <div class="box-body">
+                    <div class="box-body" style="padding:20px">
                         <form>
                             <div class="form-group">
                                 <label>Year</label>
@@ -37,7 +39,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Subject</label>
+                                <label>Major</label>
                                 <select name="" id="major" class="form-control">
                                     <option value="1">CST</option>
                                     <option value="2">CS</option>
@@ -61,7 +63,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Mark</label>
-                                <input type="number" class="form-control" id="mark" name="Mark" />
+                                <input type="number" min="0" max="20" class="form-control" id="mark" name="Mark" />
                             </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-primary">Save <i class="fa fa-arrow-circle-right"></i></button>

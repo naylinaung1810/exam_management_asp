@@ -12,12 +12,29 @@ namespace Exam_Management_System.Controllers
     {
         public IActionResult Index(int id,int major)
         {
-
+            ViewBag.year = GetYearOne(id);
+            ViewBag.year_id = id;
+            ViewBag.major_id = major;
             return View(GetExamDetail(1,id,major));
         }
         public IActionResult Index2(int id,int major)
         {
+            ViewBag.year = GetYearOne(id);
+            ViewBag.year_id = id;
+            ViewBag.major_id = major;
             return View(GetExamDetail(2,id,major));
+        }
+        public IActionResult PrintMid(int id,int major)
+        {
+            ViewBag.year = GetYearOne(id);
+            ViewBag.major = GetMajorOne(major);
+            return View(GetExamDetail(1,id,major));
+        }
+        public IActionResult PrintFinal(int id, int major)
+        {
+            ViewBag.year = GetYearOne(id);
+            ViewBag.major = GetMajorOne(major);
+            return View(GetExamDetail(2, id, major));
         }
         public IActionResult AddExam()
         {
@@ -96,6 +113,46 @@ namespace Exam_Management_System.Controllers
                 }
             }
             return list;
+        }
+        public string GetYearOne(int id)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            int academic_id = context.GetAcademic().Id;
+            string year_name = null;
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM year where id=" + id, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        year_name = reader["year_name"].ToString();
+                    }
+                }
+            }
+            return year_name;
+        }
+        public string GetMajorOne(int id)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            int academic_id = context.GetAcademic().Id;
+            string year_name = null;
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM major where id=" + id, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        year_name = reader["major_name"].ToString();
+                    }
+                }
+            }
+            return year_name;
         }
     }
 }

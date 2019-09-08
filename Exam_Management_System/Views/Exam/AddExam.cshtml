@@ -3,29 +3,35 @@
     ViewData["Title"] = "AddExam";
 }
 
-<section class="content-header bg-gray" style="padding-top:10px">
+<section class="content-header bg-gray-active" style="padding-top:10px">
     <h1 style="padding-top:10px;padding-bottom:20px">
-        Result
-        <small> > Mark</small><small style="font-size:16px"> > Add</small>
+        <i class="fa fa-folder text-orange"></i>
+        Exam
+        <small> > Add</small>
     </h1>
 </section>
 <!-- Main content -->
-<section class="content container-fluid">
+<span id="alert" class=""></span>
+<section class="content container-fluid bg-info" style="height:650px">
     <div class="container">
+        <!--
+
+                 <div class="row">
+                    <div class="col-xs-12 hidden-sm hidden-lg hidden-md">
+                        <a asp-controller="Subject" asp-action="Index" class="btn btn-success text-center btn-block hidden-sm hidden-lg hidden-md" style="margin-bottom:10px"><i class="fa fa-arrow-circle-left"></i> Mark</a>
+                    </div>
+                </div>
+        -->
+
         <div class="row">
-            <div class="col-xs-12 hidden-sm hidden-lg hidden-md">
-                <a asp-controller="Subject" asp-action="Index" class="btn btn-success text-center btn-block hidden-sm hidden-lg hidden-md" style="margin-bottom:10px"><i class="fa fa-arrow-circle-left"></i> Mark</a>
-            </div>
-        </div>
-        <div class="row">
-            <a asp-controller="Exam" asp-action="Index" class="btn btn-success pull-left hidden-xs"><i class="fa fa-arrow-circle-left"></i> Exam Info</a>
+            <!--<a asp-controller="Exam" asp-action="Index" class="btn btn-success pull-left hidden-xs"><i class="fa fa-arrow-circle-left"></i> Exam Info</a>-->
             <div class="col-md-6 col-sm-6 col-sm-offset-1 col-md-offset-2">
-                <span id="alert"></span>
-                <div class="box box-success">
+
+                <div class="box box-success" style="box-shadow:gainsboro 5px 5px">
                     <div class="box-header" style="border-bottom:1px solid lightgrey">
                         <i class="fa fa-plus-square fa-2x"></i> <span style="font-size:25px">Add Exam</span>
                     </div>
-                    <div class="box-body">
+                    <div class="box-body" style="padding:20px">
                         <form>
                             <div class="form-group">
                                 <label>Exam Title</label>
@@ -130,17 +136,17 @@
 
             });
 
-             $.ajax({
+            $.ajax({
                 url: "/Result/getYear",
                 type: "GET",
                 success: function (data) {
                     //console.log(data);
                     $.each(data, function (i, year) {
                         var str = ' <option value="' + year.id + '">' + year.name + '</option>';
-                       $('#year').append(str);
+                        $('#year').append(str);
                     })
                 }
-             });
+            });
             ////////////////////////////////////////////
 
             $('form').submit(function (e) {
@@ -150,15 +156,14 @@
                     type: "POST",
                     data: $('form').serialize(),
                     success: function (data) {
-                        var str = '<div class="alert alert-success alert-dismissible">' +
-                            ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
-                            '<h4><i class="icon fa fa-check"></i> Alert!</h4>' +
-                            'Success alert preview. This alert is dismissable.' +
+                        var str = ' <div class="alert alert-success navbar-fixed-bottom text-center" style="padding:25px" role="alert">' +
+                            '<strong><i class="fa fa-check-circle"></i> Successfully!</strong> Exam addition is successfully finished.' +
                             '</div>';
                         $('#alert').html(str);
 
                     }
-                })
+                });
+                 setTimeout(function () { $(".alert").alert('close') }, 3000);
             })
         });
     </script>

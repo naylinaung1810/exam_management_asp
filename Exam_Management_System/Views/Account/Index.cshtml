@@ -10,27 +10,52 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="wrapper fadeInDown">
+    <span id="alert"></span>
     <div id="formContent">
         <!-- Tabs Titles -->
         <!-- Icon -->
         <div class="fadeIn first">
-            <img src="~/adminLTE/img/logo.jpg" id="icon" alt="User Icon" style="margin-top:10px" /> 
+            <img src="~/adminLTE/img/logo.jpg" id="icon" alt="User Icon" style="margin-top:10px" />
             <h4 style="margin-bottom:10px">Exam Management System</h4>
         </div>
 
         <!-- Login Form -->
-        <form asp-controller="Account" asp-action="Login" method="post">
-            <input type="text" id="name" class="fadeIn second" name="User_Name" placeholder="username">
-            <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+        <form>
+            <input type="text" id="name" class="fadeIn second" name="User_Name" placeholder="Username">
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
             <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
 
         <!-- Remind Passowrd -->
         <div id="formFooter">
-            <a class="underlineHover" href="#">Go to the Site</a>
+            <a class="underlineHover" href="http://ucsthn.moe.edu.mm">Go to UCS Thaton Site</a>
         </div>
 
     </div>
 </div>
 
-
+<script>
+    $(function () {
+        $('form').submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: "/Account/Login",
+                type: "POST",
+                data: $('form').serialize(),
+                success: function (data) {
+                    console.log(data);
+                    if (data == 'OK') {
+                        window.location.href="https://localhost:44382/home/index";
+                    } else {
+                         var str = ' <div class="alert alert-danger fixed-bottom text-center" style="padding:25px" role="alert">' +
+                            '<strong><i class="fa fa-times"></i> Error!</strong> Username or Password is incorrect.' +
+                            '</div>';
+                        $('#alert').html(str);
+                    }
+                    setTimeout(function () { $(".alert").alert('close') }, 3000);
+                }
+            });
+             
+        });
+    })
+</script>

@@ -16,21 +16,21 @@
                 <center>
                     <h1>Computer University (Thaton)</h1>
                     <h2>Roll Call Info</h2>
-                    <h3>First Year</h3>
-                    <h4>1CST-A</h4>
+                    <h3>@ViewBag.year</h3>
+                    <h4>@ViewBag.classes</h4>
                 </center>
             </div>
             <div class="panel-body">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Roll no</th>
-                            <th>Name</th>
-                            <th>Class</th>
-                            <th>Year</th>
-                            <th>Major</th>
+                <table class="table text-center table-bordered">
+                    <thead >
+                        <tr class="text-center">
+                            <th class="text-center">Roll no</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Class</th>
+                            <th class="text-center">Year</th>
+                            <th class="text-center">Major</th>
 
-                            <th>Percentage</th>
+                            <th class="text-center">Percentage</th>
                         </tr>
                     </thead>
                     <tbody id="myTable">
@@ -63,7 +63,7 @@
                             '<td>' + item.class + '</td>' +
                             ' <td>' + item.year + '</td>' +
                             ' <td>' + item.major + '</td>' +
-                            ' <td>' + percent + '%</td>' +
+                            ' <td>' + (percent).toFixed(2) + '%</td>' +
                             ' </tr>';
                         $('tbody').append(str);
                   

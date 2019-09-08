@@ -7,8 +7,9 @@
     
 </section>
 <!-- Main content -->
-<<<<<<< HEAD
+
 <div id="alert"></div>
+<!--
 <section class="content container-fluid">
     <form id="form1" asp-controller="Student" asp-action="PostNewStudent" method="post" enctype="multipart/form-data">
 
@@ -44,8 +45,7 @@
                             <td class="col-xs-4" style="font-size:large"><input type="text" class="form-control" style="border:none" /> </td>
                         </tr>
                     </table>
-=======
-
+    -->
 <section class="content container-fluid">
     <div class="box box-body">
         <form id="form1" asp-controller="Student" asp-action="PostNewStudent" method="post" style="margin-top:10px;" enctype="multipart/form-data">
@@ -58,13 +58,13 @@
 
             <div class="row">
                 <div class="col-md-4 text-center" style="margin-left:0px;">
-                    <img src="~/adminLTE/img/avatar.png" class="img-thumbnail" style="margin-top:40px;margin-right:50px;height:150px;width:150px;" /><br /><br />
-                    <input type="file" style="margin-left:10px" name="Photo" required />
+                    <img src="~/adminLTE/img/avatar.png" id="img" class="img-thumbnail" style="margin-top:40px;margin-right:50px;height:150px;width:150px;" /><br /><br />
+                    <input type="file" style="margin-left:10px" name="Photo" id="imgInp" required />
                 </div>
                 <div class="col-md-8 container " style="margin-top:0px;">
 
                     <div style="margin-top:30px" class=" table-responsive">
-                        <table class="table table-bordered col-md-8" style="border:1px solid black;border-color:black;">
+                        <table class="table table-bordered col-md-8" style="border-color:forestgreen;">
                             <tr>
                                 <th class="col-xs-4" style="font-size:large">Academic Year</th>
                                 <td class="col-xs-4" style="font-size:large">
@@ -73,37 +73,37 @@
                             </tr>
                             <tr>
                                 <th class="col-xs-4" style="font-size:large">University NRC Number</th>
-                                <td class="col-xs-4" style="font-size:large"><input type="text" class="form-control" style="border:none" /> </td>
+                                <td class="col-xs-4" style="font-size:large"><input type="text" class="form-control" style="" /> </td>
                             </tr>
                             <tr>
                                 <th class="col-xs-4" style="font-size:large">University Entrance Year</th>
-                                <td class="col-xs-4" style="font-size:large"><input type="text" class="form-control" style="border:none" /> </td>
+                                <td class="col-xs-4" style="font-size:large"><input type="text" class="form-control" style="" /> </td>
                             </tr>
                         </table>
                     </div>
->>>>>>> d15ad7f3534bb7fef89625aa4e18de688973c700
+
                 </div>
             </div>
 
             <div class="container-fluid  table-responsive" style="margin-top:30px;">
-                <table class="table table-bordered" style="border:2px solid black;border-color:black">
+                <table class="table table-bordered" style="border:1px solid forestgreen;border-top:1px solid forestgreen">
                     <tr>
 
-                        <th style="border:hidden"></th>
-                        <th style="border:hidden"></th>
+                        <th style=""></th>
+                        <th style=""></th>
                         <th style="font-size:large">Student</th>
                         <th style="font-size:large">Father</th>
                         <th style="font-size:large">Mother</th>
                     </tr>
-                    <tr style="border:1px solid;">
+                    <tr style=";">
                         <th style="font-size:large">1</th>
                         <th style="font-size:large">Name</th>
 
-                        <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="Name" required /></td>
-                        <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_name" required /></td>
-                        <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_name" required /></td>
+                        <td style="font-size:large"><input type="text" class="form-control" style="" name="Name" required /></td>
+                        <td style="font-size:large"><input type="text" class="form-control" style="" name="father_name" required /></td>
+                        <td style="font-size:large"><input type="text" class="form-control" style="" name="mother_name" required /></td>
                     </tr>
-                    <tr style="border:1px solid;">
+                    <tr style=";">
                         <th style="font-size:large">2</th>
                         <th style="font-size:large">Gender</th>
 
@@ -133,7 +133,7 @@
                         </td>
 
                         <td style="font-size:large" id="father_nationality">
-                            <select name="nationality" class="form-control" id="fath_nationality">
+                            <select name="father_nationality" class="form-control" id="fath_nationality">
                                 <option>Enter Nationality....</option>
                                 <option>Burma</option>
                                 <option>Mon</option>
@@ -145,7 +145,7 @@
                         </td>
 
                         <td style="font-size:large" id="mother_nationality">
-                            <select name="nationality" class="form-control" id="moth_nationality">
+                            <select name="mother_nationality" class="form-control" id="moth_nationality">
                                 <option>Enter Nationality....</option>
                                 <option>Burma</option>
                                 <option>Mon</option>
@@ -172,7 +172,7 @@
                             </select>
                         </td>
                         <td style="font-size:large" id="father_religion">
-                            <select class="form-control" id="fath_religion" name="religion">
+                            <select class="form-control" id="fath_religion" name="father_religion">
                                 <option>Enter Religion....</option>
                                 <option>Buddhism</option>
                                 <option>Christianity</option>
@@ -182,7 +182,7 @@
                             </select>
                         </td>
                         <td style="font-size:large" id="mother_religion">
-                            <select class="form-control" id="moth_religion" name="religion">
+                            <select class="form-control" id="moth_religion" name="mother_religion">
                                 <option>Enter Religion....</option>
                                 <option>Buddhism</option>
                                 <option>Christianity</option>
@@ -215,7 +215,7 @@
                             </select>
                         </td>
                         <td style="font-size:large" id="father_city">
-                            <select class="form-control" id="fath_city" name="city">
+                            <select class="form-control" id="fath_city" name="father_city">
                                 <option>Enter City....</option>
                                 <option>Mawlamyine</option>
                                 <option>Kyaikmayaw</option>
@@ -231,7 +231,7 @@
                             </select>
                         </td>
                         <td style="font-size:large" id="mother_city">
-                            <select class="form-control" id="moth_city" name="city">
+                            <select class="form-control" id="moth_city" name="mother_city">
                                 <option>Enter City....</option>
                                 <option>Mawlamyine</option>
                                 <option>Kyaikmayaw</option>
@@ -251,26 +251,26 @@
                     <tr>
                         <th style="font-size:large">6</th>
                         <th style="font-size:large">Phone Number</th>
-                        <td style="font-size:large"><input type="tel" class="form-control" pattern="[0-9]{11}" placeholder="09----------" style="border:none" name="phone" required /></td>
-                        <td style="font-size:large"><input type="tel" class="form-control" pattern="[0-9]{11}" placeholder="09----------" style="border:none" name="father_phone" required /></td>
-                        <td style="font-size:large"><input type="tel" class="form-control" pattern="[0-9]{11}" placeholder="09----------" style="border:none" name="mother_phone" required /></td>
+                        <td style="font-size:large"><input type="tel" class="form-control" pattern="[0-9]{11}" placeholder="09----------" style="" name="phone" required /></td>
+                        <td style="font-size:large"><input type="tel" class="form-control" pattern="[0-9]{11}" placeholder="09----------" style="" name="father_phone" required /></td>
+                        <td style="font-size:large"><input type="tel" class="form-control" pattern="[0-9]{11}" placeholder="09----------" style="" name="mother_phone" required /></td>
 
                     </tr>
                     <tr>
                         <th style="font-size:large">7</th>
                         <th style="font-size:large">Job</th>
-                        <td style="font-size:large"><input type="text" class="form-control" style="border:none" required /></td>
-                        <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_job" required /></td>
-                        <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_job" required /></td>
+                        <td style="font-size:large"><input type="text" class="form-control" style="" required /></td>
+                        <td style="font-size:large"><input type="text" class="form-control" style="" name="father_job" required /></td>
+                        <td style="font-size:large"><input type="text" class="form-control" style="" name="mother_job" required /></td>
 
                     </tr>
 
                     <tr>
                         <th style="font-size:large">8</th>
                         <th style="font-size:large">NRC</th>
-                        <td style="font-size:large"><input type="text" class="form-control" pattern="[0-9]{2}/[A-Z]{3}\([A-Z]{1}\)[0-9]{6}" style="border:none" name="Nrc" placeholder="**/***(*)******" /></td>
-                        <td style="font-size:large"><input type="text" class="form-control" pattern="[0-9]{2}/[A-Z]{3}\([A-Z]{1}\)[0-9]{6}" style="border:none" name="father_nrc"  placeholder="**/***(*)******" required /></td>
-                        <td style="font-size:large"><input type="text" class="form-control" pattern="[0-9]{2}/[A-Z]{3}\([A-Z]{1}\)[0-9]{6}" style="border:none" name="mother_nrc"  placeholder="**/***(*)******" required /></td>
+                        <td style="font-size:large"><input type="text" class="form-control" pattern="[0-9]{2}/[A-Z]{3}\([A-Z]{1}\)[0-9]{6}" style="" name="Nrc" placeholder="**/***(*)******" /></td>
+                        <td style="font-size:large"><input type="text" class="form-control" pattern="[0-9]{2}/[A-Z]{3}\([A-Z]{1}\)[0-9]{6}" style="" name="father_nrc"  placeholder="**/***(*)******" required /></td>
+                        <td style="font-size:large"><input type="text" class="form-control" pattern="[0-9]{2}/[A-Z]{3}\([A-Z]{1}\)[0-9]{6}" style="" name="mother_nrc"  placeholder="**/***(*)******" required /></td>
 
                     </tr>
 
@@ -303,34 +303,34 @@
                         <th style="font-size:large" rowspan="3">10</th>
                         <th style="font-size:large" rowspan="3">Passed Matriculation Exam:</th>
                         <th style="font-size:large">Roll No:</th>
-                        <td style="font-size:large"><input type="text" class="form-control" style="border:none" pattern="[A-Z]-{ }"name="reg_no" placeholder="**_****" /></td>
+                        <td style="font-size:large"><input type="text" class="form-control" style="" pattern="[A-Z]-{ }" name="reg_no" placeholder="**_****" /></td>
                     </tr>
                     <tr>
 
                         <th style="font-size:large">Year</th>
 
-                        <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="reg_date" required /></td>
+                        <td style="font-size:large"><input type="text" class="form-control" style="" name="reg_date" required /></td>
 
                     </tr>
                     <tr>
 
                         <th style="font-size:large">Mark</th>
 
-                        <td style="font-size:large"><input type="number" class="form-control" style="border:none" name="Mark" required /></td>
+                        <td style="font-size:large"><input type="number" class="form-control" style="" name="Mark" required /></td>
 
                     </tr>
                     <tr>
                         <th style="font-size:large">11</th>
                         <th style="font-size:large" colspan="2">Address</th>
 
-                        <td style="font-size:large"><textarea class="form-control" style="border:none" name="address" required></textarea></td>
+                        <td style="font-size:large"><textarea class="form-control" style="" name="address" required></textarea></td>
 
                     </tr>
 
                     <tr>
                         <th style="font-size:large">12</th>
                         <th style="font-size:large" colspan="2">Email Adderss</th>
-                        <td style="font-size:large"><input type="email" class="form-control" style="border:none" name="email" required /></td>
+                        <td style="font-size:large"><input type="email" class="form-control" style="" name="email" required /></td>
 
 
                     </tr>
@@ -400,7 +400,7 @@
             }
         })
         ///////////////////////////////////////
-        /*
+        
         $.ajax({
             url: "/Student/GetAcademic",
             type: "GET",
@@ -410,8 +410,22 @@
                     $('#academic').append(str);
                 });
             }
-<<<<<<< HEAD
         });
+        function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#img').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imgInp").change(function(){
+    readURL(this);
+});
     /*
          $('form').submit(function (e) {
                 e.preventDefault();
@@ -430,10 +444,9 @@
                 });
                 setTimeout(function () { $(".alert").alert('close') }, 5000);
             });
-            */
-=======
+            
         });*/
->>>>>>> d15ad7f3534bb7fef89625aa4e18de688973c700
+
     });
 </script>
 }

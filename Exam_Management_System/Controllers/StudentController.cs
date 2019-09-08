@@ -384,9 +384,11 @@ namespace Exam_Management_System.Controllers
         [HttpPost]
         public void PostOldStudent(Student student)
         {
-            int student_id = student.Student_id;
+           
             
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            int academic = context.GetAcademicSecond().Id;
+            int student_id = context.GetStudentId(student.Rollno,academic);
             int mark = context.GetMark(student_id);
             using (MySqlConnection conn = context.GetConnection())
             {

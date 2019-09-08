@@ -10,25 +10,29 @@
         color: white;
     }
 </style>
-<section class="content-header bg-gray" style="padding-bottom:5px">
+<section class="content-header bg-gray-active" style="padding-bottom:5px;margin-top:-10px">
     <div class="row">
         <div class="col-sm-6">
-            <h2 style="">
+            <h2 style="font-size:25px">
+                <i class="fa fa-magic text-primary"></i>
                 Mid_term Result
                 <small> > <span id="year"></span></small><small style="font-size:16px"> > <span id="major"></span></small>
             </h2>
         </div>
         <div class="col-sm-6">
             <div class="row" style="padding-top:15px;padding-bottom:5px">
-                <div class="col-md-6 ">
-                    <input type="text" class="form-control" id="search" placeholder="Search.........." />
+                <div class="col-md-8 ">
+                    <div class="input-group">
+                        <span class="input-group-addon bg-gray"><i class="fa fa-search"></i></span>
+                        <input type="text" class="form-control" id="search" placeholder="Search.........." />
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- Main content -->
-<section class="content container-fluid">
+<section class="content container-fluid bg-info">
     <div class="row">
         <div class="col-md-2">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -129,32 +133,35 @@
         </div>
         <div class="col-md-10">
             <div class="row">
-                <div class="col-xs-6">
-                    <select id="class" class="form-control pull-right" style="margin-top:10px;width:200px">
-                        @{
-                            var classes = ViewBag.classes;
-                            foreach (var s in classes)
-                            {
-                                <option value="@s.Id">@s.Name</option>
+                <div class="col-xs-6" style="margin-top:5px">
+                    <div class="col-xs-4"><label style="font-size:16px;margin-top:5px" class="pull-right">Class Name : </label></div>
+                    <div class="col-xs-8">
+                        <select class="form-control" id="class">
+                            @{
+                                var classes = ViewBag.classes;
+                                foreach (var s in classes)
+                                {
+                                    <option value="@s.Id">@s.Name</option>
+                                }
                             }
-                        }
-                    </select>
+                        </select>
+                    </div>
                 </div>
                 <div class="col-xs-6">
-                    <a class="btn btn-app pull-right" id="print">
+                    <a class="btn btn-app pull-right" style="background-color:forestgreen;color:white" id="print">
                         <i class="fa fa-print"></i> Print
                     </a>
                 </div>
             </div>
             <input class="hidden" value="@ViewBag.year_id" id="year_id" />
             <input class="hidden" value="@ViewBag.major_id" id="major_id" />
-            <div class="box">
-                <div class="box-header" id="tit" style="font-size:20px;margin-left:20px"></div>
+            <div class="box box-info">
+                <div class="box-header text-center" id="tit" style="font-size:20px;margin-left:20px"></div>
                 <div class="box-body">
-                    <table class="table text-center table-hover" style="margin-right:10px">
-                        <thead>
+                    <table class="table text-center table-bordered table-hover" style="margin-right:10px">
+                        <thead class="bg-gray">
                             <tr>
-
+                                <th>No</th>
                                 <th>Roll no</th>
                                 <th>Name</th>
                                 @{
@@ -271,7 +278,7 @@
                     type: "GET",
                     success: function (data) {
                         var start = 0;
-                      
+                        var count = 1;
                         console.log(data);
                         $('tbody').html(null);
                         $.each(data, function (i, item) {
@@ -285,14 +292,17 @@
                                 $('#p' + item.rollno_id).before(td);
                             } else {
                                 start = item.rollno_id;
-                                var tr = ' <tr id="t' + item.rollno_id + '">' +                          
+                                var tr = ' <tr id="t' + item.rollno_id + '">' +
+                                    '<td>' + count + '</td>' +
                                     '<td>' + item.rollno + '</td>' +
                                     '<td>' + item.name + '</td>' +
                                     '<td>' + item.grade + '</td>' +
                                     '<td id="p' + item.rollno_id + '"><a id="' + item.rollno_id + '"><i class="fa fa-user" id="' + item.rollno_id + '"></i></a></td>' +
                                 '</tr > ';
                                 $('#myTable').append(tr);
+                                  count++;
                             }
+                          
                         });
                     },
                  });

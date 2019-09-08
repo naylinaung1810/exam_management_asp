@@ -1,16 +1,18 @@
 ﻿
 @{
-    ViewData["Title"] = "AddAttendence";
+    ViewData["Title"] = "AddAttendance";
 }
 
-<section class="content-header bg-gray" style="padding-top:10px">
+<section class="content-header bg-gray-active" style="padding-top:5px">
     <div class="row">
         <div class="col-sm-4">
-            <h2 style="">
-                Attendence
+            <h2 style="font-size:30px">
+                <i class="fa fa-pie-chart text-purple"></i>
+                Attendance
                 <small>Add</small>
             </h2>
-        </div>
+</div>
+        <!--
         <div class="col-sm-8">
             <div class="row" style="padding-top:15px;padding-bottom:5px">
                 <div class="col-md-6 col-md-offset-3">
@@ -18,16 +20,17 @@
                 </div>
             </div>
         </div>
+            -->
     </div>
 </section>
 <!-- Main content -->
 <div id="alert"></div>
-<section class="content container-fluid">
+<section class="content container-fluid bg-info">
     <div class="row">
         <div class="col-md-6 col-md-offset-2">
-            <div class="box box-info">
-                <div class="box-header" style="font-size:25px"><i class="fa fa-plus-square"></i> Add Attendence</div>
-                <div class="box-body">
+            <div class="box box-info " style="box-shadow:gainsboro 5px 5px">
+                <div class="box-header" style="font-size:25px"><i class="fa fa-plus-square"></i> Add Attendance</div>
+                <div class="box-body" style="padding:20px">
                     <form id="form1">
                         <div class="form-group">
                             <label>Year</label>
@@ -67,13 +70,13 @@
                         </div>
                         <div class="form-group">
                             <label>Total (Monthly)</label>
-                            <input type="number" class="form-control" name="total" />
+                            <input type="number" min="0" max="120" class="form-control" name="total" />
                         </div>
                         <div class="form-group">
                             <label>Current (Monthly)</label>
-                            <input type="number" class="form-control" name="current" id="current" />
+                            <input type="number" min="0" max="120" class="form-control" name="current" id="current" />
                         </div>
-                        <div class="form-group">
+                        <div class="form-group text-center">
                             <button type="submit" class="btn btn-primary">Save <i class="fa fa-arrow-circle-right"></i></button>
                         </div>
                     </form>

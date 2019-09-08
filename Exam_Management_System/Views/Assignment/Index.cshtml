@@ -10,18 +10,22 @@
     }
 </style>
 
-<section class="content-header bg-gray" style="padding-top:0px">
+<section class="content-header bg-gray-active" style="padding-top:0px">
     <div class="row">
         <div class="col-sm-4">
-            <h1 style="">
-                Assignment Info
+            <h1 style="font-size:30px">
+                <i class="fa fa-paperclip text-blue"></i>
+                Assignment
                 <small>@ViewData["year"]</small>
-            </h1>
+            </h1>    
         </div>
         <div class="col-sm-8">
             <div class="row" style="padding-top:15px;padding-bottom:5px">
                 <div class="col-md-6 col-md-offset-3">
-                    <input type="text" class="form-control" id="search" placeholder="Search.........." />
+                    <div class="input-group">
+                        <span class="input-group-addon bg-gray"><i class="fa fa-search"></i></span>
+                        <input type="text" class="form-control" id="search" placeholder="Search.........." />
+                    </div>
                 </div>
             </div>
         </div>
@@ -29,9 +33,9 @@
 
 </section>
 <!-- Main content -->
-<section class="content container-fluid">
+<section class="content container-fluid bg-info">
 
-    <div class="row" style="margin-top:10px">
+    <div class="row" style="margin-top:5px">
         <div class="col-sm-3 col-md-2">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-success">
@@ -132,42 +136,52 @@
         <div class="col-sm-9 col-md-10">
             <div class="row">
                 <div class="col-xs-4">
-                    <div class="form-group">
-                        <select id="subject" class="form-control">
-                            @{
-                                var subject = ViewBag.subject;
-                                foreach (var s in subject)
-                                {
-                                    <option value="@s.Id">@s.Name</option>
-                                }
-                            }
-                        </select>
+                    <div class="row">
+                        <div class="col-xs-4"><label style="margin-top:5px;font-size:16px;">Subject:</label></div>
+                        <div class="col-xs-8">
+                            <div class="form-group">
+                                <select id="subject" class="form-control">
+                                    @{
+                                        var subject = ViewBag.subject;
+                                        foreach (var s in subject)
+                                        {
+                                            <option value="@s.Id">@s.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>           
+                </div>
+                <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-4"><label style="margin-top:5px;font-size:16px;">Class Name:</label></div>
+                        <div class="col-xs-8">
+                            <div class="form-group">
+                                <select id="class" class="form-control">
+                                    @{
+                                        var classes = ViewBag.classes;
+                                        foreach (var s in classes)
+                                        {
+                                            <option value="@s.Id">@s.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
                     </div>
                    
-                </div>
-                <div class="col-xs-4">
-                    <div class="form-group">
-                        <select id="class" class="form-control">
-                            @{
-                                var classes = ViewBag.classes;
-                                foreach (var s in classes)
-                                {
-                                    <option value="@s.Id">@s.Name</option>
-                                }
-                            }
-                        </select>
-                    </div>
                 </div>
             </div>
             <input class="hidden" value="@ViewBag.year_id" id="year_id" />
             <input class="hidden" value="@ViewBag.major_id" id="major_id" />
             <div class="box box-success ">
-                <div class="box-header">
-                    <div class="box-title text-center"></div>
-                </div>
+                <div class="box-header text-center">
+                    <span class="title text-center" style="font-size:25px"></span>
+                </div>               
                 <div class="box-body table-responsive">
-                    <table class="table table-hover text-center">
-                        <thead >
+                    <table class="table table-bordered table-hover text-center">
+                        <thead class="bg-gray-active" >
                             <tr style="font-size:16px">
                                 <th>Roll No</th>
                                 <th>Name</th>                         
@@ -218,9 +232,10 @@
                     success: function (data) {
                         console.log(data);
                         
+                        $('.title').html(data[0].year + "(" + data[0].class + ")");
                         $.each(data, function (i, item) {
-                            $('.box-title').html(item.class);
-                            $('#subject_name').html(item.subject);
+                           
+                            $('#subject_name').html(item.subject+'(20)');
                             var str = '<tr>' +
                                 '<td>' + item.rollno + '</td>' +
                                 '<td>' + item.name + '</td>' +

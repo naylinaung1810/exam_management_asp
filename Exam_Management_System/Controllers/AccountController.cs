@@ -16,7 +16,7 @@ namespace Exam_Management_System.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Login(Account user)
+        public string Login(Account user)
         {
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
             using (MySqlConnection conn = context.GetConnection())
@@ -28,10 +28,10 @@ namespace Exam_Management_System.Controllers
                     int count = Convert.ToInt32(command.ExecuteScalar());
                     conn.Close();
                     if (count == 1)
-                        return Redirect("/Home/Index");
+                        return "OK";
                 }
             }
-            return Redirect("/account/Index");
+            return "NO";
         }
 
         public IActionResult Logout()

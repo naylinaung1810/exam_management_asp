@@ -37,7 +37,7 @@ namespace Exam_Management_System.Controllers
         }
         
         [HttpPost]
-        public string AddMajor(Major major)
+        public IActionResult AddMajor(Major major)
         {
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
             using (MySqlConnection conn = context.GetConnection())
@@ -50,7 +50,7 @@ namespace Exam_Management_System.Controllers
                     conn.Close();
                 }
             }
-            return "Major is successfully added!";
+            return Redirect("/Major/index");
         }
         [HttpPost]
         public IActionResult EditMajor(Major majors)

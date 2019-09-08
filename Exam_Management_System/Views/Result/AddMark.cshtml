@@ -3,29 +3,33 @@
     ViewData["Title"] = "AddMark";
 }
 
-<section class="content-header bg-gray" style="padding-top:10px">
+<section class="content-header bg-gray-active" style="padding-top:10px">
     <h1 style="padding-top:10px;padding-bottom:20px">
+        <i class="fa fa-magic text-primary"></i>
         Result
         <small> > Mark</small><small style="font-size:16px"> > Add</small>
     </h1>
 </section>
 <!-- Main content -->
 <div id="alert"></div>
-<section class="content container-fluid">
+<section class="content container-fluid bg-info">
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12 hidden-sm hidden-lg hidden-md">
-                <a asp-controller="Subject" asp-action="Index" class="btn btn-success text-center btn-block hidden-sm hidden-lg hidden-md" style="margin-bottom:10px"><i class="fa fa-arrow-circle-left"></i> Mark</a>
-            </div>
+        <!--
+         <div class="row">
+        <div class="col-xs-12 hidden-sm hidden-lg hidden-md">
+            <a asp-controller="Subject" asp-action="Index" class="btn btn-success text-center btn-block hidden-sm hidden-lg hidden-md" style="margin-bottom:10px"><i class="fa fa-arrow-circle-left"></i> Mark</a>
         </div>
+    </div>
+    -->
+
         <div class="row">
-            <a asp-controller="Subject" asp-action="Index" class="btn btn-success pull-left hidden-xs"><i class="fa fa-arrow-circle-left"></i> Mark</a>
+            <!--<a asp-controller="Subject" asp-action="Index" class="btn btn-success pull-left hidden-xs"><i class="fa fa-arrow-circle-left"></i> Mark</a>-->
             <div class="col-md-6 col-sm-6 col-sm-offset-1 col-md-offset-2">
-                <div class="box">
+                <div class="box box-info" style="box-shadow:gainsboro 5px 5px">
                     <div class="box-header" style="border-bottom:1px solid lightgrey">
                         <i class="fa fa-plus-square fa-2x"></i> <span style="font-size:25px">Add Mark</span>
                     </div>
-                    <div class="box-body">
+                    <div class="box-body" style="padding:20px">
                         <form>
                             <div class="form-group">
                                 <label>Exam Title</label>
@@ -43,7 +47,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Subject</label>
+                                <label>Major</label>
                                 <select name="" id="major" class="form-control">
                                     <option value="1">CST</option>
                                     <option value="2">CS</option>
@@ -67,7 +71,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Mark</label>
-                                <input type="number" class="form-control" id="mark" name="S_mark" />
+                                <input type="number" min="0" max="100" class="form-control" id="mark" name="S_mark" />
                             </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-primary">Save <i class="fa fa-arrow-circle-right"></i></button>

@@ -22,7 +22,7 @@
                        
                         <div class="col-xs-12 container " style="margin-top:0px;">
                             <div class="col-xs-3" style="margin-top:10px;">
-                                <img src="~/student_img/9023d2aa-2838-40c5-8882-d2144f8c4f48_Screenshot_20170923_213240.png" id="image" class="image img-rounded img-responsive" />
+                                <img src="~/adminLTE/img/avatar.png" id="image" class="image img-rounded img-responsive" />
                             </div>
                             <div style="margin-top:10px" class="col-xs-9 table-responsive">
                                 <table class="table table-bordered  col-xs-8">
@@ -42,7 +42,7 @@
                                     <tr>
                                         <th class="col-xs-4" style="font-size:large">Old RollNo</th>
                                         <td class="col-xs-4" style="font-size:large">
-                                            <input list="rollno" class="form-control" id="roll" name="Student_id">
+                                            <input list="rollno" class="form-control" id="roll" name="Rollno">
 
                                             <datalist id="rollno">
                                             </datalist>
@@ -174,7 +174,7 @@
                         //console.log(data);
                         $("#rollno").html(null);
                         $.each(data, function (i, rollno) {
-                            var str = ' <option value="' + rollno.id + '">' + rollno.roll + '</option>';
+                            var str = ' <option value="' + rollno.roll + '"></option>';
                             $('#rollno').append(str);
                         });
                     }

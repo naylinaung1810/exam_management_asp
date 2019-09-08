@@ -36,7 +36,7 @@ namespace Exam_Management_System.Controllers
             }
             return View(list);
         }
-        public string AddYear(Year year)
+        public IActionResult AddYear(Year year)
         {
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
             using (MySqlConnection conn = context.GetConnection())
@@ -49,7 +49,7 @@ namespace Exam_Management_System.Controllers
                     conn.Close();
                 }
             }
-            return "Year is successfully added!";
+            return Redirect("/Year/index");
         }
 //<<<<<<< HEAD
 //=======
