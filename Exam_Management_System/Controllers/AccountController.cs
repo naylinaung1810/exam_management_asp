@@ -15,6 +15,27 @@ namespace Exam_Management_System.Controllers
            
             return View();
         }
+        public IActionResult Register()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public string Signup(Account account)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                string sql = $"Insert Into user (user_name,email,password) Values ('{account.User_Name}','{account.Email}','{account.Password}')";
+                using (MySqlCommand command = new MySqlCommand(sql, conn))
+                {
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            return "OK";
+        }
         [HttpPost]
         public string Login(Account user)
         {

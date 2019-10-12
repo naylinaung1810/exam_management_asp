@@ -134,48 +134,112 @@
             <input class="hidden" value="@ViewBag.year_id" id="year_id" />
             <input class="hidden" value="@ViewBag.major_id" id="major_id" />
             <div class="row">
-                <div class="col-xs-6" style="margin-top:5px">
-                    <div class="col-xs-4"><label style="font-size:16px;margin-top:5px" class="pull-right">Class Name : </label></div>
-                    <div class="col-xs-8">
-                        <select class="form-control" id="class">
-                            @{
-                                var classes = ViewBag.classes;
-                                foreach (var s in classes)
-                                {
-                                    <option value="@s.Id">@s.Name</option>
-                                }
-                            }
-                        </select>
+                <div class="col-xs-8" style="margin-top:5px">
+                    <div class="row">
+                        <div class="col-md-7 col-xs-12" style="margin-bottom:5px">
+                            <div class="row">
+                                <div class="col-xs-6"><label style="font-size:16px;margin-top:5px" class="pull-right">Class Name:</label></div>
+                                <div class="col-xs-6">
+                                    <select class="form-control" id="class">
+                                        @{
+                                            var classes = ViewBag.classes;
+                                            foreach (var s in classes)
+                                            {
+                                                <option value="@s.Id">@s.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-xs-12" style="margin-bottom:5px">
+                            <div class="row">
+                                <div class="col-xs-5"><label style="font-size:16px;margin-top:5px" class="pull-right">Month : </label></div>
+                                <div class="col-xs-7">
+                                    <select class="form-control" id="month">
+                                       <option>January</option>
+                                        <option>February</option>
+                                        <option>March</option>
+                                        <option>June</option>
+                                        <option>July</option>
+                                        <option>August</option>
+                                        <option>September</option>
+                                        <option>October</option>
+                                        <option>November</option>
+                                        <option>December</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                   
                 </div>
-                <div class="col-xs-6">
-                    <a class="btn btn-app pull-right" style="background-color:forestgreen;color:white" id="print">
+                <div class="col-xs-4">
+                    <a class="btn btn-app pull-right bg-yellow" style="background-color:forestgreen;color:white" id="print">
+                        <i class="fa fa-print"></i> Print Total
+                    </a>
+                    <a class="btn btn-app pull-right" style="background-color:forestgreen;color:white" id="printMonth">
                         <i class="fa fa-print"></i> Print
                     </a>
                 </div>
             </div>
             <div class="box box-info">
                 <div class="box-header" id="title" style="font-size:20px;margin-left:20px"></div>
-                <div class="box-body">
+                <div class="box-body table-responsive">
                     <table class="table">
                         <thead class="bg-gray">
-                            <tr ">
+                            <tr >
+                                <th>No</th>
                                 <th>Roll no</th>
                                 <th>Name</th>
                                 <th>Class</th>
                                 <th>Year</th>
                                 <th>Major</th>
-
-                                <th>Total</th>
-                                <th>Current</th>
+                                <th>Month</th>
                                 <th>Percentage</th>
+                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody id="myTable">
                         </tbody>
                     </table>
+                    <div id="result"></div>
                 </div>
             </div>
+
+            <!--Edit modal-->
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form id="form1">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title"> </h4>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" class="form-control" name="Id" id="id" />
+                                <div class="form-group">
+                                    <label>Total(Monthly)</label>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" id="total" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Current(Monthly)</label>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" name="Current" id="current" />
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
         </div>
     </div>
 </section>
@@ -185,12 +249,16 @@
            $("#search").on("keyup", function () {
                var value = $(this).val().toLowerCase();
                $("#myTable tr").filter(function () {
-                   $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                 
+                       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                 
+                   
                });
            });
            ////////////////////////////////////////////////////////
           
            var class_id = 0;
+           var month = null;
             var id = $('#year_id').val();
            var major = $('#major_id').val();
             GetData();
@@ -198,59 +266,107 @@
 
                 GetData();
             });
+            $('#month').change(function () {
+                GetData();
+            });
 
            $('#print').click(function () {
                console.log(class_id)
-                window.location.href = "https://localhost:44382/Attendence/Print/" + id + "?major=" + major + "&class_id=" + class_id;
+                window.location.href = "https://localhost:5001/Attendence/Print/" + id + "?major=" + major + "&class_id=" + class_id;
+           });
+           $('#printMonth').click(function () {
+               console.log(id)
+               console.log(major)
+               console.log(class_id)
+               console.log(month)
+               window.location.href = "https://localhost:5001/Attendence/PrintMonth/" + id + "?major=" + major + "&class_id=" + class_id + "&month=" +  $('#month').val();
            });
 
             function GetData()
             {
+                month = $('#month').val();
                 class_id = $('#class').val();
                 
-             $.ajax({
-            url: "/Attendence/GetAttendence/"+id+"?major="+major+"&class_id=" + class_id,
-            type: "GET",
+                $('tbody').html("<tr><td colspan='8'><h4 class='text-center text-danger'>No Data.....</h4></tr>");
+                var count = 1;
+                $.ajax({
+                    url: "/Attendence/GetAttendenceMonth/" + id + "?major=" + major + "&class_id=" + class_id + "&month=" + month,
+                   type  : "GET",
                  success: function (data) {
                      var tit = data[0].year + ' (' + data[0].class + ')';
                      $('#title').html(tit);
                     console.log(data);
                     $('tbody').html(null);
-                $.each(data, function (i, item) {
+                    $.each(data, function (i, item) {
                     var percent = item.current * 100 / item.total;
                     var str = null;
                     if (percent >= 75) {
-                         str = ' <tr style="border-left:2px solid green">' +
+                        str = ' <tr style="border-left:2px solid green">' +
+                            '<td>' + count + '</td>' +
                             '<td>' + item.rollno + '</td>' +
                             ' <td>' + item.name + '</td>' +
                             '<td>' + item.class + '</td>' +
                             ' <td>' + item.year + '</td>' +
                             ' <td>' + item.major + '</td>' +
-                            
-                            ' <td>' + item.total + '</td>' +
-                             ' <td>' + item.current + '</td>' +
+                             ' <td>' + item.month + '</td>' +
                              ' <td>' + (percent).toFixed(2) + '%</td>' +
+                              '<td><a class="btn btn-primary btn-sm" name="' + item.rollno_id + '" id="edit"><i class="fa fa-edit" name="' + item.rollno_id + '"></i></a></td>'+
                             ' </tr>';
                     } else {
-                         str = ' <tr class="bg-danger" style="border-left:2px solid red">' +
+                        str = ' <tr class="bg-danger" style="border-left:2px solid red">' +
+                             '<td>' + count + '</td>' +
                             '<td>' + item.rollno + '</td>' +
                             ' <td>' + item.name + '</td>' +
                             '<td>' + item.class + '</td>' +
                             ' <td>' + item.year + '</td>' +
                             ' <td>' + item.major + '</td>' +
-                            
-                            ' <td>' + item.total + '</td>' +
-                            ' <td>' + item.current + '</td>' +
-                            ' <td>' + (percent).toFixed(2) + '%</td>' +
+                            ' <td>' + item.month + '</td>' +
+                             ' <td>' + (percent).toFixed(2) + '%</td>' +
+                             '<td><a class="btn btn-primary btn-sm" name="' + item.rollno_id + '" id="edit"><i class="fa fa-edit" name="' + item.rollno_id + '"></i></a></td>'+
                             ' </tr>';
                     }
                        
-                        $('tbody').append(str);
+                    $('tbody').append(str);
+                    count++;
                   
                     });
-                }
-              });
-            }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+           }
+           //////////////////////////////////
+            $('body').delegate('table tbody tr td #edit', 'click', function (e) {
+                $('#editModal').modal('toggle');
+                console.log(e.target.name);
+                    $.ajax({
+                        url: "/Attendence/GetAttendenceOne/" + e.target.name+"?month="+ $('#month').val(),
+                        type: "get",
+                        success: function (data) {
+                            console.log(data);
+                            $('.modal-title').html('<i class="fa fa-edit"></i>'+data[0].month );
+                            $('#id').val(data[0].id);
+                            $('#total').val(data[0].total);
+                            $('#current').val(data[0].current);
+                           
+                        }
+                    });
+            });
+           $('#form1').submit(function (e) {
+               e.preventDefault()
+               $('#editModal').modal('toggle');
+               $.ajax({
+                   url: "/Attendence/EditAttendence",
+                   type: "post",
+                   data: $('#form1').serialize(),
+                   success: function (data) {
+                       console.log("OK");
+                       location.reload(true);
+                   }
+               });
+
+           });
        });
    </script>
  }

@@ -151,7 +151,7 @@
                                 </select>
                             </div>
                         </div>
-                    </div>           
+                    </div>
                 </div>
                 <div class="col-xs-6">
                     <div class="row">
@@ -170,7 +170,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                 </div>
             </div>
             <input class="hidden" value="@ViewBag.year_id" id="year_id" />
@@ -178,23 +178,47 @@
             <div class="box box-success ">
                 <div class="box-header text-center">
                     <span class="title text-center" style="font-size:25px"></span>
-                </div>               
+                </div>
                 <div class="box-body table-responsive">
                     <table class="table table-bordered table-hover text-center">
-                        <thead class="bg-gray-active" >
+                        <thead class="bg-gray-active">
                             <tr style="font-size:16px">
+                                <th>No</th>
                                 <th>Roll No</th>
-                                <th>Name</th>                         
+                                <th>Name</th>
                                 <th id="subject_name"></th>
+                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody id="myTable">
-                           
                         </tbody>
                     </table>
                 </div>
 
             </div>
+            <!--Edit modal-->
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form id="form1">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title"> </h4>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" class="form-control" name="Id" id="id" />
+                                <input type="hidden" class="form-control" name="Rollno_id" id="rollno_id" />
+                                <input type="hidden" class="form-control" name="Subject_id" id="subject_id" />
+                                <input type="number" class="form-control" name="mark" id="mark" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
         </div>
     </div>
 </section>
@@ -231,23 +255,58 @@
                     type: "get",
                     success: function (data) {
                         console.log(data);
-                        
+                        var count = 1;
                         $('.title').html(data[0].year + "(" + data[0].class + ")");
                         $.each(data, function (i, item) {
-                           
-                            $('#subject_name').html(item.subject+'(20)');
+
+                            $('#subject_name').html(item.subject + '(20)');
                             var str = '<tr>' +
+                                '<td>' + count + '</td>' +
                                 '<td>' + item.rollno + '</td>' +
                                 '<td>' + item.name + '</td>' +
                                 '<td>' + item.mark + '</td>' +
+                                ' <td>' +
+                                ' <a class="btn btn-primary btn-sm" name="' + item.id + '" id="edit"><i class="glyphicon glyphicon-edit" name="' + item.id + '"></i> Edit</a>' +                      
+                                '</td>' +
                                 '</tr>';
                             $('tbody').append(str);
+                            count++;
                         });
                     }
+                });
+               
+
+                $('#form1').submit(function (e) {
+                    e.preventDefault()
+                    $('#editModal').modal('toggle');
+                     $.ajax({
+                        url: "/Assignment/EditAssignment",
+                         type: "post",
+                         data: $('#form1').serialize(),
+                        success: function (data) {
+                            console.log("OK");
+                             location.reload(true);
+                        }
+                     });
+
                 })
             }
+             $('body').delegate('table tbody tr td #edit', 'click', function (e) {
+                    $('#editModal').modal('toggle');
+                    $.ajax({
+                        url: "/Assignment/GetAssignmentOne/" + e.target.name,
+                        type: "get",
+                        success: function (data) {
+                            console.log(data);
 
-
+                            $('.modal-title').html('<i class="fa fa-edit"></i>'+data[0].name + " of " + data[0].subject);
+                            $('#id').val(data[0].id);
+                            $('#rollno_id').val(data[0].rollno_id);
+                            $('#subject_id').val(data[0].subject_id);
+                            $('#mark').val(data[0].mark);
+                        }
+                    });
+                });
             
         });
     </script>

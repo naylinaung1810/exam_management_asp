@@ -14,22 +14,20 @@
             <input class="hidden" value="@ViewBag.class_id" id="class_id" />
             <div class="panel-heading">
                 <center>
-                    <h1>Computer University (Thaton)</h1>
-                    <h2>Roll Call Info</h2>
-                    <h3>@ViewBag.year</h3>
-                    <h4>@ViewBag.classes</h4>
+                    <h1>University of Computer Studies (Thaton)</h1>
+                    <h2>Roll Call Info (All Total)</h2>
+                    <h3 id="year"></h3>
+                    <h4 id="class"></h4>
                 </center>
             </div>
             <div class="panel-body">
                 <table class="table text-center table-bordered">
                     <thead >
                         <tr class="text-center">
+                            <th class="text-center">No</th>
                             <th class="text-center">Roll no</th>
                             <th class="text-center">Name</th>
-                            <th class="text-center">Class</th>
-                            <th class="text-center">Year</th>
-                            <th class="text-center">Major</th>
-
+                            
                             <th class="text-center">Percentage</th>
                         </tr>
                     </thead>
@@ -45,28 +43,40 @@
 <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 <script>
     $(function () {
-                var id = $('#year_id').val();
+        var id = $('#year_id').val();
         var major = $('#major_id').val();
         var class_id = $('#class_id').val();
          $.ajax({
             url: "/Attendence/GetAttendence/"+id+"?major="+major+"&class_id=" + class_id,
             type: "GET",
             success: function (data) {
-                       
+                        var count = 1;
                     console.log(data);
-                    $('tbody').html(null);
+                $('tbody').html(null);
+                 $('#year').html(data[0].year + '(' + data[0].major + ')');
+                $('#class').html(data[0].class);
                 $.each(data, function (i, item) {
                     var percent = item.current * 100 / item.total;
-                        var str = ' <tr>' +
+                    if (percent < 75) {
+                         var str = ' <tr class="bg-danger">' +
+                        '<td>' + count + '</td>' +
                             '<td>' + item.rollno + '</td>' +
                             ' <td>' + item.name + '</td>' +
-                            '<td>' + item.class + '</td>' +
-                            ' <td>' + item.year + '</td>' +
-                            ' <td>' + item.major + '</td>' +
-                            ' <td>' + (percent).toFixed(2) + '%</td>' +
+                            
+                            ' <td class="text-danger">' + (percent).toFixed(2) + '%</td>' +
                             ' </tr>';
-                        $('tbody').append(str);
-                  
+                    } else {
+                          var str = ' <tr class="">' +
+                        '<td>' + count + '</td>' +
+                            '<td>' + item.rollno + '</td>' +
+                            ' <td>' + item.name + '</td>' +
+                          
+                            ' <td class="text-success">' + (percent).toFixed(2) + '%</td>' +
+                            ' </tr>';
+                    }
+                   
+                    $('tbody').append(str);
+                    count++;
                     });
                 }
               });

@@ -125,12 +125,21 @@
                     type: "POST",
                     data: $('form').serialize(),
                     success: function (data) {
-                       // console.log(data);
-                         var str = ' <div class="alert alert-success navbar-fixed-bottom text-center" style="padding:25px" role="alert">' +
+                        console.log(data);
+                        var str = null;
+                        if (data == 'OK') {
+                              str = ' <div class="alert alert-success navbar-fixed-bottom text-center" style="padding:25px" role="alert">' +
                             '<strong><i class="fa fa-check-circle"></i> Successfully!</strong> Mark addition is successfully finished.' +
                             '</div>';
+                        } else {
+                             str = ' <div class="alert alert-danger navbar-fixed-bottom text-center" style="padding:25px" role="alert">' +
+                            '<strong><i class="fa fa-check-circle"></i> Warning!</strong> This subject mark is existed.' +
+                            '</div>';
+                        }
+                      
                         $('#alert').html(str);
                         $('#mark').val(null);
+                        
                     }
                 });
                  setTimeout(function () { $(".alert").alert('close') }, 3000);

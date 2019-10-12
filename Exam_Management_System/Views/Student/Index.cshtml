@@ -166,7 +166,7 @@
 
                     </table>
                 </div>
-               
+
                 <!-- Modal -->
                 <div class="modal fade modal-primary" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
@@ -178,7 +178,7 @@
                             <div class="modal-body" style="padding-bottom:100px">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <img class="img-rounded img-responsive" id="image"/>
+                                        <img class="img-rounded img-responsive" id="image" />
                                     </div>
                                     <div class="col-sm-8">
 
@@ -215,11 +215,11 @@
 
                                         </div>
                                         <!--
-       <label>Assignment</label>
-    <div class="progress " id="mod_assignment">
+                               <label>Assignment</label>
+                            <div class="progress " id="mod_assignment">
 
-    </div>
-    -->
+                            </div>
+                            -->
 
 
 
@@ -231,6 +231,74 @@
                         </div>
                     </div>
                 </div><!--End-->
+
+
+                <div class="modal fade" id="stopModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                            <form id="stopform" method="post" asp-controller="Student" asp-action="StopStudent">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title"><i class="fa fa-play"></i> Stop</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure to stop this student?</p>
+                                    <input type="hidden" name="Id" id="stu_id" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary bg-green-gradient">Save</button>
+                                </div>
+                            </form>
+
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+                <div class="modal fade" id="removeModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                            <form id="stopform" method="post" asp-controller="Student" asp-action="RemoveStudent">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title"><i class="fa fa-trash"></i> Remove</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure to remove this student?</p>
+                                    <input type="hidden" name="Id" id="stu1_id" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary bg-red-gradient">Delete</button>
+                                </div>
+                            </form>
+
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+                <div class="modal fade" id="playModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                            <form id="stopform" method="post" asp-controller="Student" asp-action="PlayStudent">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Modal title</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure to accept this student?</p>
+                                    <input type="hidden" name="Id" id="stu2_id" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-success">Accept</button>
+                                </div>
+                            </form>
+
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
             </div>
         </div>
     </div>
@@ -265,20 +333,59 @@
                      $('#title').html(tit);
                 console.log(data);
                 $('#myTable').html(null);
-                $.each(data, function (i, item) {
+                     $.each(data, function (i, item) {
+                         var str = null;
+                         if (item.status == 'stop') {
+                             str = ' <tr class="bg-danger" style="border-left:2px solid yellow">' +
+                                 '<td>' + count + '</td>' +
+                                 '<td>' + item.rollno + '</td>' +
+                                 ' <td>' + item.name + '</td>' +
+                                 '<td>' + item.class + '</td>' +
+                                 ' <td>' + item.year + '</td>' +
+                                 ' <td>' + item.major + '</td>' +
+                                 '<td>' +
+                                ' <div class="dropdown">'+
+                                 '<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-cogs text-success"></i>'+ 
+   
+                                 ' <span class="caret"></span>' +
+                                 '</button>' +
+                                 '<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">' +
+                                 ' <li style="border-bottom:1px solid green;border-top:3px solid green"><a class="text-success" name="' + item.id + '" id="profile" style="margin-right:10px;color:green"><i class="fa fa-user" name="' + item.id + '"></i> Profile</a></li>' +
+                                 '<li style="border-bottom:1px solid green"><a class="text-primary" name="' + item.id + '" id="edit" style="margin-right:10px;color:blue"><i class="fa fa-edit" name="' + item.id + '"></i> Edit</a></li>' +
+                                 '<li style="border-bottom:1px solid green"><a class="text-warning" name="' + item.student_id + '" id="resume" style="color:violet"><i class="fa fa-play" name="' + item.student_id + '"></i> Reach</a></li>' +
+                                 '<li style="border-bottom:2px solid green"><a class="text-warning" name="' + item.student_id + '" id="delete" style="color:red"><i class="fa fa-trash" name="' + item.student_id + '"></i> Delete(Transfer)</a></li>' +
+                                 '</ul>' +
+                                 '</div>' +
+
+                                 '</td > ' +
+                                 ' </tr>';
+                         } else {
+                              str = ' <tr class="">' +
+                                 '<td>' + count + '</td>' +
+                                 '<td>' + item.rollno + '</td>' +
+                                 ' <td>' + item.name + '</td>' +
+                                 '<td>' + item.class + '</td>' +
+                                 ' <td>' + item.year + '</td>' +
+                                 ' <td>' + item.major + '</td>' +
+                                 '<td>' +
+                                 ' <div class="dropdown">'+
+                                 '<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-cogs text-success"></i>'+ 
+   
+                                 ' <span class="caret"></span>' +
+                                 '</button>' +
+                                 '<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">' +
+                                 ' <li style="border-bottom:1px solid gray;border-top:3px solid gray"><a class="text-success" name="' + item.id + '" id="profile" style="margin-right:10px;color:green"><i class="fa fa-user" name="' + item.id + '"></i> Profile</a></li>' +
+                                 '<li style="border-bottom:1px solid gray"><a class="text-primary" name="' + item.id + '" id="edit" style="margin-right:10px;color:blue"><i class="fa fa-edit" name="' + item.id + '"></i> Edit</a></li>' +
+                                  '<li style="border-bottom:1px solid gray"><a class="text-warning" name="' + item.student_id + '" id="stop" style="color:violet"><i class="fa fa-stop" name="' + item.student_id + '"></i> Stop</a></li>' +
+                                  '<li style="border-bottom:2px solid gray"><a class="text-warning" name="' + item.student_id + '" id="delete" style="color:red"><i class="fa fa-trash" name="' + item.student_id + '"></i> Delete(Transfer)</a></li>' +
+                                 '</ul>' +
+                                 '</div>' +
+
+                                 '</td > ' +
+                                 '</td > ' +
+                                 ' </tr>';
+                         }
                    
-                    var str = ' <tr>' +
-                        '<td>' + count + '</td>' +
-                        '<td>' + item.rollno + '</td>' +
-                        ' <td>' + item.name + '</td>' +
-                        '<td>' + item.class + '</td>' +
-                        ' <td>' + item.year + '</td>' +
-                        ' <td>' + item.major + '</td>' +
-                        '<td>' +
-                        ' <a class="btn btn-success" name="' + item.id + '" id="profile" style="margin-right:10px"><i class="fa fa-user" name="' + item.id + '"></i></a>' +
-                        '<a class="btn btn-primary" name="' + item.id + '" id="edit"><i class="fa fa-edit" name="' + item.id + '"></i></a>' +
-                    '</td > '+
-                        ' </tr>';
                     $('#myTable').append(str);
                     count++;
                   
@@ -292,8 +399,26 @@
             //////////////////////////////////////////////////////////////////
             $('body').delegate('table tbody tr td #edit', 'click', function (e) {
                 console.log(e.target.name);
-                window.location.href = "https://localhost:44382/Student/EditStudent/" + e.target.name;
+                window.location.href = "https://192.168.43.141:5001/Student/EditStudent/" + e.target.name;
             })
+            $('body').delegate('table tbody tr td #stop', 'click', function (e) {
+                console.log(e.target.name);
+                $('#stopModal').modal('toggle');
+                $('#stu_id').val(e.target.name);
+
+            });
+              $('body').delegate('table tbody tr td #resume', 'click', function (e) {
+                console.log(e.target.name);
+                $('#playModal').modal('toggle');
+                $('#stu2_id').val(e.target.name);
+
+              });
+             $('body').delegate('table tbody tr td #delete', 'click', function (e) {
+                console.log(e.target.name);
+                $('#removeModal').modal('toggle');
+                $('#stu1_id').val(e.target.name);
+
+            });
             $('body').delegate('table tbody tr td #profile', 'click', function (e) {
                 console.log(e.target.name);
                 $('#myModal').modal('toggle');

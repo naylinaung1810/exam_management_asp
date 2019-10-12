@@ -230,3 +230,8 @@ C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\D
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\User\Home.g.cshtml.cs
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Exam\PrintMid.g.cshtml.cs
 C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Exam\PrintFinal.g.cshtml.cs
+C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Attendence\PrintMonth.g.cshtml.cs
+C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Result\FinalResult.g.cshtml.cs
+C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Result\Result.g.cshtml.cs
+C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Result\Results.g.cshtml.cs
+C:\Users\LENOVO\source\repos\Exam_Management_System\Exam_Management_System\obj\Debug\netcoreapp2.1\Razor\Views\Account\Register.g.cshtml.cs

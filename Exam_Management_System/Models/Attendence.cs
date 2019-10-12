@@ -15,6 +15,7 @@ namespace Exam_Management_System.Models
         public int Current { get; set; }
         public string Year { get; set; }
         public int Year_id { get; set; }
+        public int Rollno_id { get; set; }
         public string Class { get; set; }
         public string Major { get; set; }
     }

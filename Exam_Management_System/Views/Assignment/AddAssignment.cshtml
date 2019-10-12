@@ -101,7 +101,7 @@
                     url: "/Result/GetSubject/" + $('#year').val() + "?major=" + $('#major').val(),
                     type: "GET",
                     success: function (data) {
-                        //console.log(data);
+                        console.log(data);
                         $("#subject").html(null);
                         $.each(data, function (i, subject) {
                             var str = ' <option value="' + subject.id + '">' + subject.name + '</option>';

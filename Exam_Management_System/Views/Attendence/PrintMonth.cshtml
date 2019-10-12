@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "PrintMonth";
+    Layout = null;
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<section class=" container-fluid">
+    <div class="row">
+        <div class="panel">
+            <input class="hidden" value="@ViewBag.year_id" id="year_id" />
+            <input class="hidden" value="@ViewBag.major_id" id="major_id" />
+            <input class="hidden" value="@ViewBag.class_id" id="class_id" />
+            <input class="hidden" value="@ViewBag.month" id="month" />
+            <div class="panel-heading">
+                <center>
+                    <h1>University of Computer Studies (Thaton)</h1>
+                    <h2>Roll Call Info (@ViewBag.month)</h2>
+                    <h3 id="year"></h3>
+                    <h4 id="class"></h4>
+                </center>
+            </div>
+            <div class="panel-body">
+                <table class="table text-center table-bordered">
+                    <thead>
+                        <tr class="text-center">
+                            <th class="text-center">No</th>
+                            <th class="text-center">Roll no</th>
+                            <th class="text-center">Name</th>
+                            
+                           
+                            <th class="text-center">Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script>
+    $(function () {
+        var id = $('#year_id').val();
+        var major = $('#major_id').val();
+        var class_id = $('#class_id').val();
+        var month = $('#month').val();
+        console.log(id);
+        console.log(major);
+        console.log(class_id);
+        console.log(month);
+        $.ajax({
+            url: "/Attendence/GetAttendenceMonth/" + id + "?major=" + major + "&class_id=" + class_id + "&month=" + month,
+            type: "GET",
+            success: function (data) {
+                 var count = 1;
+                    console.log(data);
+                $('tbody').html(null);
+                $('#year').html(data[0].year + '(' + data[0].major + ')');
+                $('#class').html(data[0].class);
+                $.each(data, function (i, item) {
+                    //$('#major').html('(' + item[0].major + ')');
+                    var percent = item.current * 100 / item.total;
+                    var str = ' <tr>' +
+                        '<td>' + count + '</td>' +
+                            '<td>' + item.rollno + '</td>' +
+                            ' <td>' + item.name + '</td>' +
+                            
+                            ' <td>' + (percent).toFixed(2) + '%</td>' +
+                            ' </tr>';
+                    $('tbody').append(str);
+                    count++;
+                    });
+                }
+              });
+    })
+</script>

@@ -24,6 +24,7 @@ namespace Exam_Management_System.Models
         public int S_mark { get; set; }
         public int Subject_id { get; set; }
         public int Rollno_id { get; set; }
+        public int Total_mark { get; set; }
         public int Pass { get; set; }
 
         //public List<ResMark> ResMarks { get; set; }

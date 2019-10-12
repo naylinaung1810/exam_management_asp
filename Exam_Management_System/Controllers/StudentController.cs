@@ -37,6 +37,119 @@ namespace Exam_Management_System.Controllers
             ViewBag.academic = context.GetAcademic().Name;
             return View();
         }
+        [HttpPost]
+        public IActionResult StopStudent(Student student)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            int academic = context.GetAcademic().Id;
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                string sql = $"UPDATE student SET status='stop' where id={student.Id}";
+                using (MySqlCommand command1 = new MySqlCommand(sql, conn))
+                {
+                    command1.ExecuteNonQuery();
+                }
+            }
+            return Redirect("/Student/Index/1?major=1&class_id=1");
+        }
+        [HttpPost]
+        public IActionResult PlayStudent(Student student)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            int academic = context.GetAcademic().Id;
+           
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+               
+                string sql = $"UPDATE student SET status='has' where id={student.Id}";
+                using (MySqlCommand command1 = new MySqlCommand(sql, conn))
+                {
+                    command1.ExecuteNonQuery();
+                }
+
+            }
+            return Redirect("/Student/Index/1?major=1&class_id=1");
+        }
+        [HttpPost]
+        public IActionResult RemoveStudent(Student student)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            
+            int studentrollno_id = 0;
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM studentrollno where student_id=" + student.Id, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        studentrollno_id = Convert.ToInt32(reader["id"]);
+
+                    }
+                }
+                string sql = $"Delete from student where id={student.Id}";
+
+                using (MySqlCommand command = new MySqlCommand(sql, conn))
+                {
+                    command.ExecuteNonQuery();
+                    //conn.Close();
+                }
+                string sql1 = $"Delete from result where studentrollno_id={studentrollno_id}";
+
+                using (MySqlCommand command = new MySqlCommand(sql1, conn))
+                {
+                    command.ExecuteNonQuery();
+                    //conn.Close();
+                }
+                string sql2 = $"Delete from attendance where studentrollno_id={studentrollno_id}";
+
+                using (MySqlCommand command = new MySqlCommand(sql2, conn))
+                {
+                    command.ExecuteNonQuery();
+                    //conn.Close();
+                }
+                string sql3 = $"Delete from mark_mid where studentrollno_id={studentrollno_id}";
+
+                using (MySqlCommand command = new MySqlCommand(sql3, conn))
+                {
+                    command.ExecuteNonQuery();
+                    //conn.Close();
+                }
+                string sql4 = $"Delete from mark_final where studentrollno_id={studentrollno_id}";
+
+                using (MySqlCommand command = new MySqlCommand(sql4, conn))
+                {
+                    command.ExecuteNonQuery();
+                    //conn.Close();
+                }
+                string sql5 = $"Delete from assignment where studentrollno_id={studentrollno_id}";
+
+                using (MySqlCommand command = new MySqlCommand(sql5, conn))
+                {
+                    command.ExecuteNonQuery();
+                   // conn.Close();
+                }
+                string sql6 = $"Delete from studentrollno where id={studentrollno_id}";
+
+                using (MySqlCommand command = new MySqlCommand(sql6, conn))
+                {
+                    command.ExecuteNonQuery();
+                   // conn.Close();
+                }
+                string sql7 = $"Delete from student_detail where studentrollno_id={studentrollno_id}";
+
+                using (MySqlCommand command = new MySqlCommand(sql7, conn))
+                {
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            return Redirect("/Student/Index/1?major=1&class_id=1");
+        }
         public IActionResult GenerateRollno()
         {
            
@@ -150,7 +263,7 @@ namespace Exam_Management_System.Controllers
                         student.Nationality = reader["nationality"].ToString();
                         student.Nrc = reader["nrc"].ToString();
                         student.Mark = Convert.ToInt32(reader["mark"]);
-
+                        student.Img= reader["img"].ToString();
                     }
                 }
             }
@@ -161,11 +274,32 @@ namespace Exam_Management_System.Controllers
         public IActionResult PostEditStudent(Student student)
         {
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
-            
+            string img_name = null;
+
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                string sql = $"UPDATE student SET student_name='{student.Name}',gender='{student.Sex}',reg_date='{student.Reg_date}',father_name='{student.Father_name}',father_job='{student.Father_job}',father_nrc='{student.Father_nrc}',father_city='{student.Father_city}',father_religion='{student.Father_religion}',father_nationality='{student.Father_nationality}',mother_name='{student.Mother_name}',mother_job='{student.Mother_job}',mother_nrc='{student.Mother_nrc}',mother_city='{student.Mother_city}',mother_religion='{student.Mother_religion}',mother_nationality='{student.Mother_nationality}',religion='{student.Religion}',nationality='{student.Nationality}' where id={student.Id}";
+                MySqlCommand cmd = new MySqlCommand("select * from student where  id=" + student.Id, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        img_name = reader["img"].ToString();
+                    }
+                }
+                if (student.Photo != null)
+                {
+                    string webRootPath = hostingEnvironment.WebRootPath;
+                    var fullPath = webRootPath + "/student_img/" + img_name;
+                    System.IO.File.Delete(fullPath);
+                    ///////////////////////////
+                    string uploadFolder = Path.Combine(hostingEnvironment.WebRootPath, "student_img");
+                    img_name = Guid.NewGuid().ToString() + "_" + student.Photo.FileName;
+                    string filePath = Path.Combine(uploadFolder, img_name);
+                    student.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
+                }
+                string sql = $"UPDATE student SET student_name='{student.Name}',gender='{student.Sex}',reg_date='{student.Reg_date}',father_name='{student.Father_name}',father_job='{student.Father_job}',father_nrc='{student.Father_nrc}',father_city='{student.Father_city}',father_religion='{student.Father_religion}',father_nationality='{student.Father_nationality}',mother_name='{student.Mother_name}',mother_job='{student.Mother_job}',mother_nrc='{student.Mother_nrc}',mother_city='{student.Mother_city}',mother_religion='{student.Mother_religion}',mother_nationality='{student.Mother_nationality}',religion='{student.Religion}',nationality='{student.Nationality}',img='{img_name}' where id={student.Id}";
                 using (MySqlCommand command1 = new MySqlCommand(sql, conn))
                 {
                     command1.ExecuteNonQuery();
@@ -343,7 +477,8 @@ namespace Exam_Management_System.Controllers
                             Major_id = Convert.ToInt32(reader["major_id"]),
                             Major = reader["major_name"].ToString(),
                             Rollno = reader["rollno"].ToString(),
-
+                            Student_id= Convert.ToInt32(reader["student_id"]),
+                            Status= reader["status"].ToString(),
                         });
                     }
                 }
@@ -448,15 +583,16 @@ namespace Exam_Management_System.Controllers
             }
             return list;
         }
-        public List<Student> GetStudentYear(int id)
+        public List<Student> GetStudentYear(string id)
         {
             SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
             int academic_id = context.GetAcademic().Id;
+            int secondaca = context.GetAcademicSecond().Id;
             List<Student> list = new List<Student>();
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from studentrollno,student,old_student,result,major,year where result.studentrollno_id=studentrollno.id and studentrollno.student_id=student.id and old_student.student_id=student.id and studentrollno.student_id='"+id+"' and old_student.major_id=major.id and old_student.student_year_id=year.id order by result.academic_id", conn);
+                MySqlCommand cmd = new MySqlCommand("select * from studentrollno,student,old_student,result,major,year where result.studentrollno_id=studentrollno.id and studentrollno.student_id=student.id and old_student.student_id=student.id and studentrollno.rollno='"+id+"' and old_student.major_id=major.id and old_student.student_year_id=year.id order by result.academic_id", conn);
 
                 using (var reader = cmd.ExecuteReader())
                 {

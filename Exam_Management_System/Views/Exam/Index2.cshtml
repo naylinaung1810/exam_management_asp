@@ -14,18 +14,18 @@
             <h2 style="font-size:25px">
                 <i class="fa fa-folder text-orange"></i>
                 Final Exam
-                <small> > <span id="year"></span></small><small style="font-size:16px"> > <span id="major"></span></small>
+
             </h2>
         </div>
 
         <div class="col-sm-6">
             <!--
-       <div class="row" style="padding-top:15px;padding-bottom:5px">
-        <div class="col-md-6 ">
-            <input type="text" class="form-control" id="search" placeholder="Search.........." />
-        </div>
-    </div>
-    -->
+               <div class="row" style="padding-top:15px;padding-bottom:5px">
+                <div class="col-md-6 ">
+                    <input type="text" class="form-control" id="search" placeholder="Search.........." />
+                </div>
+            </div>
+            -->
 
         </div>
     </div>
@@ -140,27 +140,91 @@
             </div>
             <div class="box box-info">
                 <div class="box-header">
-                    <h3 class="box-title">@ViewBag.year</h3>
+                    <h3 class="text-center">@ViewBag.year</h3>
                 </div>
                 <div class="box-body">
                     <table class="table table-bordered table-striped">
                         <tr class="bg-gray">
                             <th style="width: 10px">No</th>
-                            <th>Subject</th>
-                            <th>Date</th>
+                            <th class="text-center">Subject</th>
+                            <th class="text-center">Date</th>
+                            <th class="text-center">Edit</th>
                         </tr>
                         @{
                             var count = 1;
                             foreach (var data in Model)
                             {
                                 <tr>
-                                    <td>@count</td>
-                                    <td>@data.Subject</td>
-                                    <td>
+                                    <td class="text-center">@count</td>
+                                    <td class="text-center">@data.Subject</td>
+                                    <td class="text-center">
                                         <p>@data.Start_time<span> - </span>@data.End_time</p>
                                         <p>(@data.Date)</p>
                                     </td>
+                                    <td class="text-center"><a class="btn btn-primary" id="edit" name="@data.Id"><i class="fa fa-edit"></i></a></td>
                                 </tr>
+
+                                <div class="modal fade" id="myEdit" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <form>
+                                                <input type="hidden" id="id" name="Id" />
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="title"></h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label>Date:</label>
+
+                                                        <div class="input-group date">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </div>
+                                                            <input type="text" name="Date" class="form-control pull-right" id="datepicker">
+                                                        </div>
+                                                        <!-- /.input group -->
+                                                    </div>
+                                                    <div class="bootstrap-timepicker">
+                                                        <div class="form-group">
+                                                            <label>Start Time:</label>
+
+                                                            <div class="input-group">
+                                                                <input type="text" id="start" name="Start_time" class="form-control timepicker">
+
+                                                                <div class="input-group-addon">
+                                                                    <i class="fa fa-clock-o"></i>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.input group -->
+                                                        </div>
+                                                        <!-- /.form group -->
+                                                    </div>
+                                                    <div class="bootstrap-timepicker">
+                                                        <div class="form-group">
+                                                            <label>End Time:</label>
+
+                                                            <div class="input-group">
+                                                                <input type="text" id="end" name="End_time" class="form-control timepicker">
+
+                                                                <div class="input-group-addon">
+                                                                    <i class="fa fa-clock-o"></i>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.input group -->
+                                                        </div>
+                                                        <!-- /.form group -->
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </form>
+
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
                                 count++;
                             }
                         }
@@ -171,5 +235,43 @@
         </div>
     </div>
 </section>
+@section Scripts{
+    <script>
+        $(function () {
+            $('.timepicker').timepicker({
+                showInputs: false
+            });
+            $('#datepicker').datepicker({
+                autoclose: true
+            });
+            $('body').delegate('table tr td #edit', 'click', function (e) {
+                console.log(e.target.name);
+                $('#myEdit').modal('toggle');
+                $.ajax({
+                    url: "/Exam/ExamOne/" + e.target.name,
+                    type: "GET",
+                    success: function (data) {
+                        $('#id').val(data[0].id);
+                        $('#datepicker').val(data[0].date);
+                        $('#start').val(data[0].start_time);
+                        $('#end').val(data[0].end_time);
+                         $('#title').val(data[0].subject);
+                    }
+                })
+            });
+            $('form').submit(function (e) {
+                //e.preventDefault();
+                console.log($('form').serialize())
+                $.ajax({
+                    url: "/Exam/PostEditExam",
+                    type: "POST",
+                    data: $('form').serialize(),
+                    success: function (data) {
+                        console.log(data);
 
-
+                    }
+                })
+            });
+        });
+    </script>
+}

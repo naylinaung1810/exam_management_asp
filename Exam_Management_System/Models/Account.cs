@@ -11,7 +11,7 @@ namespace Exam_Management_System.Models
         public string User_Name { get; set; }
         public string Password { get; set; }
         public string Roll_Id{ get; set; }
-        public int Email { get; set; }
+        public string Email { get; set; }
         
     }
 }

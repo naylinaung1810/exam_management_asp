@@ -28,7 +28,7 @@
 
                     <div class="col-xs-12 container " style="margin-top:0px;">
                         <div class="col-xs-3" style="margin-top:10px;">
-                            <img src="~/student_img/9023d2aa-2838-40c5-8882-d2144f8c4f48_Screenshot_20170923_213240.png" id="image" class="image img-rounded img-responsive" />
+                            <img src="~/student_img/IMG_20190912_141750.jpg" id="image" class="image img-rounded img-responsive" />
                         </div>
                         <div style="margin-top:10px" class="col-xs-9 table-responsive">
                             <table class="table table-bordered  col-xs-8">
@@ -207,7 +207,7 @@
             }
             if (flag == 1) {
                 $.ajax({
-                    url: "/Student/PostOldStudent",
+                    url: "/User/PostOldStudent",
                     type: "POST",
                     data: $('form').serialize(),
                     success: function (data) {

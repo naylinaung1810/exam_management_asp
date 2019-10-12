@@ -90,6 +90,13 @@ namespace Exam_Management_System.Controllers
                 using (MySqlCommand command = new MySqlCommand(sql, conn))
                 {
                     command.ExecuteNonQuery();
+                    //conn.Close();
+                }
+                int total_mark = context.GetTotalMark(assignment.Rollno_id, context.GetAcademic().Id);
+                string sql1 = $"Update result set total_mark='{total_mark}' where studentrollno_id={assignment.Rollno_id}";
+                using (MySqlCommand command = new MySqlCommand(sql1, conn))
+                {
+                    command.ExecuteNonQuery();
                     conn.Close();
                 }
             }
@@ -142,6 +149,64 @@ namespace Exam_Management_System.Controllers
                 }
             }
             return list;
+        }
+
+        public JsonResult GetAssignmentOne(int id)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            int academic_id = context.GetAcademic().Id;
+            List<Assignment> list = new List<Assignment>();
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from assignment,studentrollno,student,subject,student_detail,year,major,class where assignment.studentrollno_id=studentrollno.id and studentrollno.student_id=student.id and assignment.subject_id=subject.id and  student_detail.studentrollno_id=studentrollno.id and student_detail.year_id=year.id and student_detail.major_id=major.id and student_detail.class_id=class.id and assignment.id="+id, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new Assignment()
+                        {
+                            Id = Convert.ToInt32(reader["id"]),
+                            Name = reader["student_name"].ToString(),
+                            Rollno = reader["rollno"].ToString(),
+                            Subject = reader["subject_name"].ToString(),
+                            Mark = Convert.ToInt32(reader["mark"]),
+                            Year = reader["year_name"].ToString(),
+                            Major = reader["major_name"].ToString(),
+                            Class = reader["class_name"].ToString(),
+                            Rollno_id= Convert.ToInt32(reader["studentrollno_id"]),
+                            Subject_id = Convert.ToInt32(reader["subject_id"]),
+                        });
+                    }
+                }
+            }
+            return Json(list);
+        }
+        [HttpPost]
+        public string EditAssignment(Assignment assignment)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            int academic_id = context.GetAcademic().Id;
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                string sql = $"Update assignment set mark='{assignment.Mark}' where id={assignment.Id}";
+                using (MySqlCommand command = new MySqlCommand(sql, conn))
+                {
+                    command.ExecuteNonQuery();
+                   // conn.Close();
+                }
+                int total_mark = context.GetTotalMark(assignment.Rollno_id,context.GetAcademic().Id);
+                int pass = context.GetEditPass(assignment.Rollno_id, academic_id);
+                string sql1 = $"Update result set total_mark='{total_mark}',pass={pass} where studentrollno_id={assignment.Rollno_id}";
+                using (MySqlCommand command = new MySqlCommand(sql1, conn))
+                {
+                    command.ExecuteNonQuery();
+                     conn.Close();
+                }
+            }
+            return "This assignment is edit!";
         }
     }
 }

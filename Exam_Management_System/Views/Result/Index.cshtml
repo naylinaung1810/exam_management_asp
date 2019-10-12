@@ -157,7 +157,7 @@
             <input class="hidden" value="@ViewBag.major_id" id="major_id" />
             <div class="box box-info">
                 <div class="box-header text-center" id="tit" style="font-size:20px;margin-left:20px"></div>
-                <div class="box-body">
+                <div class="box-body table-responsive" >
                     <table class="table text-center table-bordered table-hover" style="margin-right:10px">
                         <thead class="bg-gray">
                             <tr>
@@ -180,6 +180,36 @@
                     <!--////////////////////////////////////////////////////////////////-->
                 </div>
             </div>
+
+
+            <!--Edit modal-->
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form id="form1">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title"> </h4>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" class="form-control" name="Id" id="id" />
+                                <div class="form-group">
+                                    <select class="form-control" name="Subject_id" id="subject">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="S_mark" id="mark" />
+                                </div>
+                               
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
             <!-- Modal -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
@@ -268,7 +298,7 @@
             });
             //////////////////////////////////////
             $('#print').click(function () {
-                window.location.href = "https://localhost:44382/Result/PrintMid/" + id + "?major=" + major + "&class_id=" + class_id;
+                window.location.href = "https://localhost:5001/Result/PrintMid/" + id + "?major=" + major + "&class_id=" + class_id;
             })
 
             function GetData() {
@@ -297,7 +327,9 @@
                                     '<td>' + item.rollno + '</td>' +
                                     '<td>' + item.name + '</td>' +
                                     '<td>' + item.grade + '</td>' +
-                                    '<td id="p' + item.rollno_id + '"><a id="' + item.rollno_id + '"><i class="fa fa-user" id="' + item.rollno_id + '"></i></a></td>' +
+                                    '<td id="p' + item.rollno_id + '"><a class="btn btn-success btn-sm" name="' + item.rollno_id + '" id="profile"><i class="fa fa-user" name="' + item.rollno_id + '"></i></a>' +
+                                    '<a class="btn btn-primary btn-sm" name="' + item.rollno_id + '" id="edit"><i class="fa fa-edit" name="' + item.rollno_id + '"></i></a>'+
+                                    '</td>' +
                                 '</tr > ';
                                 $('#myTable').append(tr);
                                   count++;
@@ -309,47 +341,100 @@
             }
          
         ///////////////////////////////////////////////////////
-        $('body').delegate('table tbody tr td a', 'click', function (e) {
-            console.log(e.target.id);
-           $('#myModal').modal('toggle');
-            $.ajax({
-                url: "/Result/GetStudentResult/" + e.target.id,
-                type: "GET",
-                success: function (data) {
-                    console.log(data);
-                     $('#image').attr("src", "/student_img/" + data[0].img);
-                    $('#title').html(data[0].name);
-                    $('#stu_roll').html(data[0].rollno);
-                    $('#stu_name').html(data[0].name);
-                    $('#stu_class').html(data[0].class);
-                    $('#stu_year').html(data[0].year);
-                    $('#stu_phone').html(data[0].phone);
-                    $('#stu_email').html(data[0].email);
-                    $('#stu_address').html(data[0].address);
-                     $('#showMark').html(null);
-                    $.each(data, function (i, item) {
-                        var str = null;
-                        if (item.s_mark < 40) {
-                            str = '<div class="row text-center text-danger text-bold" >' +
-                                '<div class="col-xs-4 " >' + item.subject + '</div>' +
-                                '<div class="col-xs-4">' + item.s_mark + '</div>' +
-                                '<div class="col-xs-4">' + item.grade + '</div>' +
-                                '</div><hr/>';
-                        } else {
-                             str = '<div class="row text-center text-success text-bold"">' +
-                                '<div class="col-xs-4 " >' + item.subject + '</div>' +
-                                '<div class="col-xs-4">' + item.s_mark + '</div>' +
-                                '<div class="col-xs-4">' + item.grade + '</div>' +
-                                '</div><hr/>';
-                        }
-                       
-                        $('#showMark').append(str);
-                    });
-                     
-                }
+            $('body').delegate('table tbody tr td #profile', 'click', function (e) {
+                console.log(e.target.name);
+                $('#myModal').modal('toggle');
+                $.ajax({
+                    url: "/Result/GetStudentResult/" + e.target.name,
+                    type: "GET",
+                    success: function (data) {
+                        console.log(data);
+                        $('#image').attr("src", "/student_img/" + data[0].img);
+                        $('#title').html(data[0].name);
+                        $('#stu_roll').html(data[0].rollno);
+                        $('#stu_name').html(data[0].name);
+                        $('#stu_class').html(data[0].class);
+                        $('#stu_year').html(data[0].year);
+                        $('#stu_phone').html(data[0].phone);
+                        $('#stu_email').html(data[0].email);
+                        $('#stu_address').html(data[0].address);
+                        $('#showMark').html(null);
+                        $.each(data, function (i, item) {
+                            var str = null;
+                            if (item.s_mark < 40) {
+                                str = '<div class="row text-center text-danger text-bold" >' +
+                                    '<div class="col-xs-4 " >' + item.subject + '</div>' +
+                                    '<div class="col-xs-4">' + item.s_mark + '</div>' +
+                                    '<div class="col-xs-4">' + item.grade + '</div>' +
+                                    '</div><hr/>';
+                            } else {
+                                str = '<div class="row text-center text-success text-bold"">' +
+                                    '<div class="col-xs-4 " >' + item.subject + '</div>' +
+                                    '<div class="col-xs-4">' + item.s_mark + '</div>' +
+                                    '<div class="col-xs-4">' + item.grade + '</div>' +
+                                    '</div><hr/>';
+                            }
+
+                            $('#showMark').append(str);
+                        });
+
+                    }
+                });
             });
-        })
-    });
+
+             $('body').delegate('table tbody tr td #edit', 'click', function (e) {
+                 $('#editModal').modal('toggle');
+                 console.log(e.target.name);
+                    $.ajax({
+                        url: "/Result/ResultMarkMidOne/" + e.target.name,
+                        type: "get",
+                        success: function (data) {
+                            console.log(data);
+                            $('#subject').html(null);
+                            $('.modal-title').html('<i class="fa fa-edit"></i>' + data[0].name);
+                            $('#id').val(e.target.name);
+                            $.each(data, function (i, item) {
+                                $('#subject').append(' <option value="' + item.subject_id + '">' + item.subject + '</option>')
+                            });
+                            $.ajax({
+                                url: "/Result/ResultMarkMidSubject/" + e.target.name + "?subject=" + $('#subject').val(),
+                                type: "GET",
+                                success: function (data) {
+                                    $('#mark').val(data[0].s_mark)
+                                }
+                            });
+                        }
+                    });
+                 $('#subject').change(function () {
+                     $.ajax({
+                         url: "/Result/ResultMarkMidSubject/" + e.target.name + "?subject=" + $('#subject').val(),
+                         type: "GET",
+                         success: function (data) {
+                             $('#mark').val(data[0].s_mark)
+                         }
+                     });
+                     console.log($('#subject').val())
+                 });
+
+                 $('#form1').submit(function (e) {
+                     e.preventDefault()
+                     $('#editModal').modal('toggle');
+                     $.ajax({
+                         url: "/Result/EditMid",
+                         type: "post",
+                         data: $('#form1').serialize(),
+                         success: function (data) {
+                             console.log("OK");
+                             location.reload(true);
+                         }
+                     });
+
+                 });
+             });
+           
+
+            
+        });
     </script>
 
 }

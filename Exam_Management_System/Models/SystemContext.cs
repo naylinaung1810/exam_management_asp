@@ -240,7 +240,46 @@ namespace Exam_Management_System.Models
             }
             return total;
         }
-      public  int tt = 0;
+        public int CheckMidMark(int id,int subject,int academic)
+        {
+            int total = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select count(*) from mark_mid where studentrollno_id=" + id + " and academic_id=" + academic+" and subject_id="+subject, conn);
+
+                total = Convert.ToInt32(cmd.ExecuteScalar());
+                conn.Close();
+            }
+            return total;
+        }
+        public int CheckAttendence(int id, string month, int academic)
+        {
+            int total = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select count(*) from attendance where studentrollno_id=" + id + " and academic_id=" + academic + " and month='" + month+"'", conn);
+
+                total = Convert.ToInt32(cmd.ExecuteScalar());
+                conn.Close();
+            }
+            return total;
+        }
+        public int CheckFinalMark(int id, int subject, int academic)
+        {
+            int total = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select count(*) from mark_final where studentrollno_id=" + id + " and academic_id=" + academic + " and subject_id=" + subject, conn);
+
+                total = Convert.ToInt32(cmd.ExecuteScalar());
+                conn.Close();
+            }
+            return total;
+        }
+        public  int tt = 0;
         public int GetPass(int id, int academic,int subject,int mark)
         {
             int total = mark;
@@ -259,7 +298,7 @@ namespace Exam_Management_System.Models
                         total += m;
                     }
                 }
-                total = (total*60)/200;
+                total = (total*80)/200;
                 
                 MySqlCommand cmd1 = new MySqlCommand("select * from assignment where studentrollno_id=" + id + " and academic_id=" + academic + " and subject_id=" + subject, conn);
 
@@ -280,7 +319,7 @@ namespace Exam_Management_System.Models
                     }
                 }
                 tt = total;
-                if (total<50)
+                if (total<=50)
                 {
                     res = 0;
                    
@@ -291,6 +330,110 @@ namespace Exam_Management_System.Models
                 }
             }
             return res*cu;
+        }
+
+        public int GetEditPass(int id, int academic)
+        {
+            int total = 0;
+            int res = 1;
+            int cu = 1;
+            int mid = 0;
+            int final = 0;
+            int ass = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+
+                MySqlCommand cmd1 = new MySqlCommand("select * from mark_final where studentrollno_id=" + id + " and academic_id=" + academic , conn);
+
+                using (var reader = cmd1.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        total = 0;
+                        //total += Convert.ToInt32(reader["mark"]);
+                        mid= Convert.ToInt32(reader["mark"]);
+                        final = GetMidMarkOne(id, Convert.ToInt32(reader["subject_id"]), academic);
+                        ass = GetAss_MarkOne(id, Convert.ToInt32(reader["subject_id"]), academic);
+                        total = (mid + final) * 80 / 200;
+                        total = total + ass;
+                        if (total < 50)
+                        {
+                            res = res * 0;
+
+                        }
+                        else
+                        {
+                            res =res * 1;
+
+                        }
+                    }
+                }
+               /* MySqlCommand cmd2 = new MySqlCommand("select * from result where studentrollno_id=" + id + " and academic_id=" + academic, conn);
+
+                using (var reader = cmd2.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        cu = Convert.ToInt32(reader["pass"]);
+                    }
+                }
+                tt = total;*/
+               
+            }
+            return res;
+        }
+        public int GetCredit(int id, int academic, int mark,int subject)
+        {
+            int total = mark;
+            int res = 0;
+            int cu = 1;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from mark_mid where studentrollno_id=" + id + " and academic_id=" + academic + " and subject_id=" + subject, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int m = Convert.ToInt32(reader["mark"]);
+                        total += m;
+                    }
+                }
+                total = (total * 80) / 200;
+
+                MySqlCommand cmd1 = new MySqlCommand("select * from assignment where studentrollno_id=" + id + " and academic_id=" + academic + " and subject_id=" + subject, conn);
+
+                using (var reader = cmd1.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        total += Convert.ToInt32(reader["mark"]);
+                    }
+                }
+                MySqlCommand cmd2 = new MySqlCommand("select * from result where studentrollno_id=" + id + " and academic_id=" + academic, conn);
+
+                using (var reader = cmd2.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        cu = Convert.ToInt32(reader["pass"]);
+                    }
+                }
+                tt = total;
+                if (total < 65)
+                {
+                    res= 0;
+
+                }
+                else
+                {
+                    res = 1;
+
+                }
+            }
+                return res*cu;
         }
         public int GetMid_Mark(int id,int academic)
         {
@@ -308,6 +451,54 @@ namespace Exam_Management_System.Models
                     }
                 }
                
+            }
+            return total;
+        }
+
+        public int GetTotalMark(int id, int academic)
+        {
+            int total = 0;
+            int mid_mark =( GetMid_Mark(id, academic)*60)/200;
+            int final_mark =( GetFinal_Mark(id, academic)*60)/200;
+            int ass_mark = GetAss_Mark(id, academic);
+            total = mid_mark + final_mark + ass_mark;
+            return total;
+        }
+
+        public int GetMidMarkOne(int id,int subject,int academic)
+        {
+            int mark = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select mark from mark_mid where studentrollno_id=" + id + " and academic_id=" + academic + " and subject_id="+subject, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        mark = Convert.ToInt32(reader["mark"]);
+                    }
+                }
+
+            }
+            return mark;
+        }
+        public int GetAss_MarkOne(int id,int subject,int academic)
+        {
+            int total = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select *,sum(mark) from assignment where studentrollno_id=" + id + " and academic_id=" + academic + " and subject_id="+subject, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        total = Convert.ToInt32(reader["SUM(mark)"]);
+                    }
+                }
             }
             return total;
         }

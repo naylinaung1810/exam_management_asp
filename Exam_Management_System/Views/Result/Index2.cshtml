@@ -152,7 +152,7 @@
                     </a>
                 </div>
             </div>
-           <input class="hidden" value="@ViewBag.year_id" id="year_id" />
+            <input class="hidden" value="@ViewBag.year_id" id="year_id" />
             <input class="hidden" value="@ViewBag.major_id" id="major_id" />
             <div class="box box-info">
                 <div class="box-header text-center" id="tit" style="font-size:20px;margin-left:20px"></div>
@@ -171,6 +171,7 @@
                                     }
                                 }
                                 <th>Pass</th>
+                                <th>Edit</th>
                             </tr>
                         </thead>
 
@@ -180,6 +181,35 @@
 
                 </div>
             </div>
+
+            <!--Edit modal-->
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form id="form1">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title"> </h4>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" class="form-control" name="Id" id="id" />
+                                <div class="form-group">
+                                    <select class="form-control" name="Subject_id" id="subject">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="S_mark" id="mark" />
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
         </div>
     </div>
 </section>
@@ -203,56 +233,102 @@
 
         $('#print').click(function () {
             console.log("OK")
-                window.location.href = "https://localhost:44382/Result/PrintFinal/" + id + "?major=" + major + "&class_id=" + class_id;
+                window.location.href = "https://localhost:5001/Result/PrintFinal/" + id + "?major=" + major + "&class_id=" + class_id;
             })
         ////////////////////////////////////////
         function GetData() {
               class_id = $('#class').val();
-             $.ajax({
-            url: "/Result/ResultMarkFinal/"+id+"?major="+major+"&class_id=" + class_id,
-            type: "GET",
-            success: function (data) {
-                var start = 0;
-                var count = 1;
-                console.log(data);
-                $('tbody').html(null);
-                $('#tit').html(data[0].year + "(" + data[0].class + ")");
-                $.each(data, function (i, item) {
-                    var tit = item.year ;
-                            
-                    $('#year').html(item.year);
-                    $('#major').html(item.major);
-                  
-                     if (item.rollno_id == start) {
-                                start = item.rollno_id;
-                                var td = '<td>' + item.s_mark + '</td>';
-                                $('#p' + item.rollno_id).before(td);
+            $.ajax({
+                url: "/Result/ResultMarkFinal/" + id + "?major=" + major + "&class_id=" + class_id,
+                type: "GET",
+                success: function (data) {
+                    var start = 0;
+                    var count = 1;
+                    console.log(data);
+                    $('tbody').html(null);
+                    $('#tit').html(data[0].year + "(" + data[0].class + ")");
+                    $.each(data, function (i, item) {
+                        var tit = item.year;
+
+                        $('#year').html(item.year);
+                        $('#major').html(item.major);
+
+                        if (item.rollno_id == start) {
+                            start = item.rollno_id;
+                            var td = '<td>' + item.s_mark + '</td>';
+                            $('#p' + item.rollno_id).before(td);
+                        } else {
+                            start = item.rollno_id;
+                            var tr = null;
+                            if (item.pass == 1) {
+                                tr = ' <tr id="t' + item.rollno_id + '" class="bg-success">' +
+                                    '<td>' + count + '</td>' +
+                                    '<td>' + item.rollno + '</td>' +
+                                    '<td>' + item.name + '</td>' +
+                                    '<td>' + item.s_mark + '</td>' +
+                                    '<td id="p' + item.rollno_id + '"><a id="' + item.rollno_id + '"><i class="fa fa-check-circle" id="' + item.rollno_id + '"></i></a></td>' +
+                                    '<td><a class="btn btn-primary btn-sm" id="edit" name="' + item.rollno_id + '"><i class="fa fa-edit" name="' + item.rollno_id + '"></i></a></td>' +
+                                    '</tr > ';
                             } else {
-                         start = item.rollno_id;
-                         var tr = null;
-                         if (item.pass == 1) {
-                             tr = ' <tr id="t' + item.rollno_id + '" class="bg-success">' +
-                                 '<td>' + count + '</td>' +
-                                 '<td>' + item.rollno + '</td>' +
-                                 '<td>' + item.name + '</td>' +
-                                 '<td>' + item.s_mark + '</td>' +
-                                 '<td id="p' + item.rollno_id + '"><a id="' + item.rollno_id + '"><i class="fa fa-check-circle" id="' + item.rollno_id + '"></i></a></td>' +
-                                 '</tr > ';
-                         } else {
-                             tr = ' <tr id="t' + item.rollno_id + '" class="bg-danger">' +
-                                 '<td>' + count + '</td>' +
-                                 '<td>' + item.rollno + '</td>' +
-                                 '<td>' + item.name + '</td>' +
-                                 '<td>' + item.s_mark + '</td>' +
-                                 '<td id="p' + item.rollno_id + '"><a id="' + item.rollno_id + '"><i class="fa fa-times text-danger" id="' + item.rollno_id + '"></i></a></td>' +
-                                 '</tr > ';
-                         }
-                         count++;
-                                $('#myTable').append(tr);
+                                tr = ' <tr id="t' + item.rollno_id + '" class="bg-danger">' +
+                                    '<td>' + count + '</td>' +
+                                    '<td>' + item.rollno + '</td>' +
+                                    '<td>' + item.name + '</td>' +
+                                    '<td>' + item.s_mark + '</td>' +
+                                    '<td id="p' + item.rollno_id + '"><a id="' + item.rollno_id + '"><i class="fa fa-times text-danger" id="' + item.rollno_id + '"></i></a></td>' +
+                                    '<td><a class="btn btn-primary btn-sm" id="edit" name="' + item.rollno_id + '"><i class="fa fa-edit" name="' + item.rollno_id + '"></i></a></td>' +
+                                    '</tr > ';
                             }
+                            count++;
+                            $('#myTable').append(tr);
+                        }
+                    });
+                },
+            });
+
+              $('body').delegate('table tbody tr td #edit', 'click', function (e) {
+                  $('#editModal').modal('toggle');
+                  console.log("OK");
+                    $.ajax({
+                        url: "/Result/ResultMarkFinalOne/" + e.target.name,
+                        type: "get",
+                        success: function (data) {
+                            console.log(data);
+                             $('#subject').html(null);
+                            $('.modal-title').html('<i class="fa fa-edit"></i>'+data[0].name );
+                            $('#id').val(data[0].id);
+                            $.each(data, function (i, item) {
+                                $('#subject').append(' <option value="' + item.subject_id + '">' + item.subject + '</option>')
+                            });
+                            
+                        }
+                    });
+              });
+             $('#subject').change(function () {
+                 $.ajax({
+                    url: "/Result/ResultMarkFinalSubject/"+$('#subject').val(),
+                    type: "GET",
+                     success: function (data) {
+                         $('#mark').val(data[0].s_mark)
+                    }
                 });
-            },
-        });
+             });
+
+             $('#form1').submit(function (e) {
+                   // e.preventDefault()
+                    $('#editModal').modal('toggle');
+                     $.ajax({
+                        url: "/Result/EditFinal",
+                         type: "post",
+                         data: $('#form1').serialize(),
+                        success: function (data) {
+                            console.log("OK");
+                             location.reload(true);
+                        }
+                     });
+
+                })
+
         }
         
     });

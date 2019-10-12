@@ -20,6 +20,13 @@
             <form id="form1" asp-controller="Student" asp-action="PostEditStudent" method="post" style="margin-top:10px;" enctype="multipart/form-data">
                 <input type="hidden" class="form-control" style="border:none" name="Id" required value="@student.Id" />
                 <div class="container-fluid  table-responsive" style="margin-top:30px;">
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+                            <img src="~/student_img/@student.Img" class="img-bordered img-responsive" id="img"/>
+                            <input type="file" class="form-control" name="Photo" id="imgInp"/>
+                        </div>
+                       
+                    </div>
                     <table class="table table-bordered" style="border:1px solid black">
                         <tr>
 
@@ -91,7 +98,7 @@
                         <tr>
                             <th style="font-size:large">7</th>
                             <th style="font-size:large">Job</th>
-                            <td style="font-size:large"><input type="text" class="form-control" style="border:none" required /></td>
+                            <td style="font-size:large"><input type="text" class="form-control hidden" style="border:none"  /></td>
                             <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="father_job" required value="@student.Father_job" /></td>
                             <td style="font-size:large"><input type="text" class="form-control" style="border:none" name="mother_job" required value="@student.Mother_job" /></td>
 
@@ -184,7 +191,21 @@
                 autoclose: true
          });
         ///////////////////////////////////////
-       
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function () {
+            readURL(this);
+        });
     });
     </script>
 }

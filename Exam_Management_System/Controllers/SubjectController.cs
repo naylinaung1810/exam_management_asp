@@ -65,7 +65,18 @@ namespace Exam_Management_System.Controllers
                     command.ExecuteNonQuery();
                     
                 }
-                string sql1 = $"Insert Into subject_major (subject_id,major_id) Values ('{subject.Name}','{subject.Major_id}')";
+                int sub_id = 0;
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM subject ORDER BY  id DESC LIMIT 1", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        sub_id = Convert.ToInt32(reader["id"]);
+                    }
+                }
+               
+                string sql1 = $"Insert Into subject_major (subject_id,major_id) Values ('{sub_id}','{subject.Major_id}')";
                 using (MySqlCommand command = new MySqlCommand(sql1, conn))
                 {
                     command.ExecuteNonQuery();
@@ -99,7 +110,7 @@ namespace Exam_Management_System.Controllers
                 }
 
             }
-            return Redirect("/year/index");
+            return Redirect("/Subject/index");
         }
 
         public IActionResult RemoveSubject(int id)

@@ -70,6 +70,37 @@ namespace Exam_Management_System.Controllers
             }
             return list;
         }
+
+        public List<Exam> ExamOne(int id)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            int academic_id = context.GetAcademic().Id;
+            List<Exam> list = new List<Exam>();
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from exam,subject where exam.subject_id=subject.id and exam.id=" + id, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                       
+                        list.Add(new Exam()
+                        {
+                            Id = Convert.ToInt32(reader["id"]),
+                           
+                            Subject = reader["subject_name"].ToString(),
+                            Date = reader["date"].ToString(),
+                            Start_time = reader["start"].ToString(),
+                            End_time = reader["end"].ToString(),
+                            
+                        });
+                    }
+                }
+            }
+            return list;
+        }
         [HttpPost]
         public string PostAddExam(Exam exam)
         {
@@ -89,6 +120,23 @@ namespace Exam_Management_System.Controllers
                 }
             }
             return "OK";
+        }
+        [HttpPost]
+        public string PostEditExam(Exam exam)
+        {
+            SystemContext context = HttpContext.RequestServices.GetService(typeof(Exam_Management_System.Models.SystemContext)) as SystemContext;
+            int academic_id = context.GetAcademic().Id;
+            using (MySqlConnection conn = context.GetConnection())
+            {
+                conn.Open();
+                string sql = $"Update exam set date='{exam.Date}',start='{exam.Start_time}',end='{exam.End_time}' where id={exam.Id}";
+                using (MySqlCommand command = new MySqlCommand(sql, conn))
+                {
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            return "OK" ;
         }
         public List<Subject> GetSubject(int id)
         {

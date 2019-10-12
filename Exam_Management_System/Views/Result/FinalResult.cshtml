@@ -1,0 +1,394 @@
+﻿
+@{
+    ViewData["Title"] = "FinalResult";
+}
+
+<section class="content-header bg-gray-active" style="padding-top:10px;margin-top:-10px">
+    <div class="row">
+        <div class="col-sm-4">
+            <h2 style="font-size:25px">
+                <i class="fa fa-magic text-primary"></i>
+                Final Result
+                <small> > <span id="year"></span></small><small style="font-size:16px"> > <span id="major"></span></small>
+            </h2>
+        </div>
+        <div class="col-sm-8">
+            <div class="row" style="padding-top:15px;padding-bottom:5px">
+                <div class="col-md-6 col-md-offset-2">
+                    <div class="input-group">
+                        <span class="input-group-addon bg-gray"><i class="fa fa-search"></i></span>
+                        <input type="text" class="form-control" id="search" placeholder="Search.........." />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Main content -->
+<section class="content container-fluid bg-info">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h3 class="panel-title text-center" style="padding:5px">
+                            <a asp-controller="Result" asp-action="AddMark">
+                                <i class="fa fa-plus fa-2x"></i>
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h3 class="panel-title text-center" style="padding:5px">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                First Year
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="collapseOne" class='panel-collapse collapse' role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <ul class="list-unstyled text-center" style="font-size:18px">
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Result" asp-action="FinalResult" asp-route-id="1" asp-route-major="1">CST </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h3 class="panel-title text-center" style="padding:5px">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                Second Year
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <ul class="list-unstyled text-center" style="font-size:18px">
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Result" asp-action="FinalResult" asp-route-id="2" asp-route-major="2">CS </a></li>
+                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Result" asp-action="FinalResult" asp-route-id="2" asp-route-major="3">CT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h3 class="panel-title text-center" style="padding:5px">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                                Third Year
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <ul class="list-unstyled text-center" style="font-size:18px">
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Result" asp-action="FinalResult" asp-route-id="3" asp-route-major="2">CS </a></li>
+                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Result" asp-action="FinalResult" asp-route-id="3" asp-route-major="3">CT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h3 class="panel-title text-center" style="padding:5px">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                                Fourth Year
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <ul class="list-unstyled text-center" style="font-size:18px">
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Result" asp-action="FinalResult" asp-route-id="4" asp-route-major="2">CS</a></li>
+                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Result" asp-action="FinalResult" asp-route-id="4" asp-route-major="3">CT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h3 class="panel-title text-center" style="padding:5px">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseOne">
+                                Final Year
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <ul class="list-unstyled text-center" style="font-size:18px">
+                                <li style="border:1px solid grey;border-radius:5px;padding:3px"><a asp-controller="Result" asp-action="FinalResult" asp-route-id="5" asp-route-major="2">CS </a></li>
+                                <li style="border:1px solid grey;border-radius:5px;margin-top:5px;padding:3px"><a asp-controller="Result" asp-action="FinalResult" asp-route-id="5" asp-route-major="3">CT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-xs-6" style="margin-top:5px">
+                    <div class="col-xs-4"><label style="font-size:16px;margin-top:5px" class="pull-right">Class Name : </label></div>
+                    <div class="col-xs-8">
+                        <select class="form-control" id="class">
+                            @{
+                                var classes = ViewBag.classes;
+                                foreach (var s in classes)
+                                {
+                                    <option value="@s.Id">@s.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <a class="btn btn-app pull-right" style="background-color:forestgreen;color:white" id="print">
+                        <i class="fa fa-print"></i> Print
+                    </a>
+                </div>
+            </div>
+            <input class="hidden" value="@ViewBag.year_id" id="year_id" />
+            <input class="hidden" value="@ViewBag.major_id" id="major_id" />
+
+            <div class="box box-info">
+                <div class="box-header text-center" id="tit" style="font-size:20px;margin-left:20px"></div>
+                <div class="box-body table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="bg-gray">
+                            <tr>
+                                <th>No</th>
+                                <th>Roll no</th>
+                                <th>Name</th>
+                                @{
+                                    var subject = ViewBag.subject;
+                                    foreach (var s in subject)
+                                    {
+                                        <th class="text-center">@s.Name</th>
+                                    }
+                                }
+                                <th>Pass</th>
+                                <th>Credit</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="myTable">
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <!--Edit modal-->
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form id="form1">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title"> </h4>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" class="form-control" name="Id" id="id" />
+                                <div class="form-group">
+                                    <select class="form-control" name="Subject_id" id="subject">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="S_mark" id="mark" />
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        </div>
+    </div>
+</section>
+@section Scripts
+{
+    <script>
+        $(function () {
+
+            $("#search").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+
+            var class_id = 0;
+        var id = $('#year_id').val();
+        var major = $('#major_id').val();
+        GetData();
+         $('#class').change(function () {
+                GetData();
+         });
+              $('#print').click(function () {
+            //console.log("OK")
+                window.location.href = "https://localhost:5001/Result/Results/" + id + "?major=" + major + "&class_id=" + class_id;
+              })
+            //GetData();
+             ////////////////////////////////////////
+            function GetData() {
+                class_id = $('#class').val();
+                $.ajax({
+                    url: "/Result/ResultFinalResult/" + id + "?major=" + major + "&class_id=" + class_id,
+                    type: "GET",
+                    success: function (data) {
+                        var start = 0;
+                        var count = 1;
+                        var total_mark = 0;
+                     $('#year').html(data[0].year);
+                        $('#major').html(data[0].major);
+                       // console.log(data);
+                        $('tbody').html(null);
+                        $('#tit').html(data[0].year + "(" + data[0].class + ")");
+                        $.each(data, function (i, ite) {
+
+                            var tr = ' <tr id="t' + ite.rollno_id + '" class="">' +
+                                '<td>' + count + '</td>' +
+                                '<td>' + ite.rollno + '</td>' +
+                                '<td>' + ite.name + '</td>' +
+
+                                '<td id="g' + ite.rollno_id + '" class="ic text-center"></td>' +
+                                '<td id="credit" class="text-center"></td>' +
+                                '<td><a class="btn btn-primary btn-sm" id="edit" name="' + ite.rollno_id + '"><i class="fa fa-edit" name="' + ite.rollno_id + '"></i></a></td>' +
+                                '<td id="total' + ite.rollno_id + '" class="total">' + ite.total_mark + '</td>' +
+                                '</tr > ';
+                            count++;
+                            $('#myTable').append(tr);
+                            $.ajax({
+                                url: "/Result/ResultFinalResultOne/" + ite.rollno_id,
+                                type: "GET",
+                                success: function (res) {
+                                    // console.log(res)
+                                    $.each(res, function (i, item) {
+                                        if (item.s_mark >= 80) {
+                                            td = '<td class="text-center"><span class="badge bg-yellow" id="mk">' + item.s_mark + '</td>' +
+                                                '<td class="hidden">' + item.s_mark + '</td>';
+                                        } else {
+
+                                            td = '<td id="mk" class="text-center">' + item.s_mark + '</td>' +
+                                                '<td class="hidden">' + item.s_mark + '</td>';
+                                        }
+                                        $('#g' + ite.rollno_id).before(td);
+                                    });
+                                    $('tbody tr').each(function () {
+                                        var ck = 1;
+                                        $(this).find('#mk').each(function () {
+                                            //console.log($(this).text())
+                                            if ($(this).text() >= 50) {
+                                                ck = ck * 1;
+                                            }
+                                            else {
+                                                ck = ck * 0;
+                                            }
+
+                                        });
+                                        if (ck == 1) {
+
+                                            $(this).css({ 'border-left': '3px solid green' })
+                                            $(this).addClass('bg-success')
+                                            $(this).find('.ic').html('<a><i class="fa fa-check-circle text-success"></i></a>')
+                                        } else {
+                                            $(this).css({ 'border-left': '2px solid red' })
+                                            $(this).addClass('bg-danger')
+                                            $(this).find('.ic').html('<a><i class="fa fa-times-circle text-danger"></i></a>')
+                                        }
+
+                                    });
+                                    $('tbody tr').each(function () {
+                                        var ck = 1;
+                                        $(this).find('#mk').each(function () {
+
+                                            if (parseInt($(this).text()) >= 65) {
+                                                ck = ck * 1;
+                                            }
+                                            else {
+                                                ck = ck * 0;
+                                            }
+
+                                        });
+                                        if (ck == 1) {
+                                            //console.log(ck)
+                                            $(this).find('#credit').html('<span class="badge bg-green">credit</span>')
+                                        } else {
+                                            $(this).find('#credit').html('-')
+                                        }
+
+                                    });
+
+                                    //console.log("End")
+                                }
+                            });
+
+                            
+                        });
+                        
+                       
+                    },
+                });
+                    
+                
+            }
+
+            ////////////////////////////////////////
+            $('body').delegate('table tbody tr td #edit', 'click', function (e) {
+                $('#editModal').modal('toggle');
+                console.log(e.target.name);
+                $.ajax({
+                    url: "/Result/ResultMarkFinalOne/" + e.target.name,
+                    type: "get",
+                    success: function (data) {
+                        console.log(data);
+                        $('.modal-title').html('<i class="fa fa-edit"></i>' + data[0].name);
+                        $('#id').val(e.target.name);
+                        $.each(data, function (i, item) {
+                            $('#subject').append(' <option value="' + item.subject_id + '">' + item.subject + '</option>')
+                        });
+                        $.ajax({
+                            url: "/Result/ResultMarkFinalSubject/" + e.target.name + "?subject=" + $('#subject').val(),
+                            type: "GET",
+                            success: function (data) {
+                                $('#mark').val(data[0].s_mark)
+                            }
+                        });
+                    }
+                });
+                $('#subject').change(function () {
+                    $.ajax({
+                        url: "/Result/ResultMarkFinalSubject/" + e.target.name + "?subject=" + $('#subject').val(),
+                        type: "GET",
+                        success: function (data) {
+                            $('#mark').val(data[0].s_mark)
+                        }
+                    });
+                    console.log($('#subject').val())
+                });
+
+                $('#form1').submit(function (e) {
+                    e.preventDefault()
+                    $('#editModal').modal('toggle');
+                    $.ajax({
+                        url: "/Result/EditFinal",
+                        type: "post",
+                        data: $('#form1').serialize(),
+                        success: function (data) {
+                            console.log("OK");
+                            location.reload(true);
+                        }
+                    });
+
+                });
+            });
+
+           
+
+        });
+    </script>
+}

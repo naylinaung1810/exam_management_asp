@@ -11,11 +11,12 @@
 <link rel="stylesheet" href="~/css/adminLTE/font-awesome/css/font-awesome.css" />
 <link rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<span id="alert"></span>
 <div class="container" style="padding:20px">
     <div class="row">
         <div class="panel">
             <div class="panel-body bg-info">
-                <form id="form1" asp-controller="Student" asp-action="PostNewStudent" method="post" style="margin-top:10px;" enctype="multipart/form-data">
+                <form id="form1" asp-controller="User" asp-action="PostNewStudent" method="post" style="margin-top:10px;" enctype="multipart/form-data">
 
                     <center>
                         <h1>University of Computer Studies<b>(Thaton)</b></h1>
@@ -30,19 +31,19 @@
                         </div>
                         <div class="col-md-8 container " style="margin-top:0px;">
 
-                            <div style="margin-top:30px" class=" table-responsive">
-                                <table class="table table-bordered col-md-8" style="border:1px solid black;border-color:black;">
-                                    <tr>
+                            <div style="margin-top:50px" class=" table-responsive">
+                                <table class="table table-bordered col-md-8" style="border:1px solid black;border-color:black;margin-top:40px">
+                                    <tr style="margin-top:20px">
                                         <th class="col-xs-4" style="font-size:large">Academic Year</th>
                                         <td class="col-xs-4" style="font-size:large">
                                             <select class="form-control" name="academic_id" id="academic" required></select>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr class="hidden">
                                         <th class="col-xs-4" style="font-size:large">University NRC Number</th>
                                         <td class="col-xs-4" style="font-size:large"><input type="text" class="form-control" style="" /> </td>
                                     </tr>
-                                    <tr>
+                                    <tr class="hidden">
                                         <th class="col-xs-4" style="font-size:large">University Entrance Year</th>
                                         <td class="col-xs-4" style="font-size:large"><input type="text" class="form-control" style="" /> </td>
                                     </tr>
@@ -226,7 +227,7 @@
                             <tr>
                                 <th style="font-size:large">7</th>
                                 <th style="font-size:large">Job</th>
-                                <td style="font-size:large"><input type="text" class="form-control" style="" required /></td>
+                                <td style="font-size:large" ><input type="text" class="form-control hidden" style=""  /></td>
                                 <td style="font-size:large"><input type="text" class="form-control" style="" name="father_job" required /></td>
                                 <td style="font-size:large"><input type="text" class="form-control" style="" name="mother_job" required /></td>
 
@@ -283,7 +284,7 @@
 
                                 <th style="font-size:large">Mark</th>
 
-                                <td style="font-size:large"><input type="number" class="form-control" style="" name="Mark" required /></td>
+                                <td style="font-size:large"><input type="number" min="0" max="600" class="form-control" style="" name="Mark" required /></td>
 
                             </tr>
                             <tr>
@@ -381,6 +382,20 @@
                 });
             }
         });
+        /*
+        $('form').submit(function () {
+            $.ajax({
+                url: "/Student/PostNewStudent",
+                type: "POST",
+                data: $('form').serialize(),
+                success: function (data) {
+                   var str = ' <div class="alert alert-success navbar-fixed-bottom text-center" style="padding:25px" role="alert">' +
+                            '<strong><i class="fa fa-check-circle"></i> Successfully!</strong> Exam addition is successfully finished.' +
+                            '</div>';
+                        $('#alert').html(str);
+                }
+            });
+        });*/
          function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
